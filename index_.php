@@ -5,7 +5,7 @@
   $pageName = 'index';
   
 ?>
-
+<!-- 123 -->
 <?php include __DIR__. '/parts/html-head.php' ?>
 <?php include __DIR__. '/parts/spinner.php' ?>
 <?php include __DIR__. '/parts/slidebar.php' ?>
