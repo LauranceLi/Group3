@@ -27,6 +27,7 @@ if (!empty($shippingStatus)) {
 }
 $stmt_select->execute();
 $searchResults = $stmt_select->fetchAll();
+$rowCount = count($rows);
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/navbar.php' ?>
@@ -37,6 +38,9 @@ $searchResults = $stmt_select->fetchAll();
             <?php include __DIR__ . '/search_input.php'; ?>
             <div class="mt-3">
                 <a class="btn btn-primary" href="./list-admin.php">返回列表</a>
+                <div class="row">
+					<div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
+				</div>
             </div>
             <?php if (empty($searchResults)) : ?>
                 <table class="table table-bordered table-striped mt-3">
