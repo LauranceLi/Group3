@@ -17,6 +17,8 @@ $sql = $pdo->prepare('SELECT * FROM `order` WHERE
 	shipping_date LIKE ? OR 
 	order_date LIKE ?');
 $sql->execute([$keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword]);
+$rows=$sql->fetchAll();
+$rowCount = count($rows);
 ?>
 
 <div class="container">
@@ -26,6 +28,10 @@ $sql->execute([$keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyw
 			<?php include __DIR__ . '/search_input.php'; ?>
 			<div class="mt-3">
 				<a class="btn btn-primary" href="./list-admin.php">返回列表</a>
+				<div class="row">
+					<div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
+				</div>
+
 			</div>
 			<table class="table table-bordered table-striped  mt-3">
 				<tr>
@@ -44,7 +50,7 @@ $sql->execute([$keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyw
 					<th><i class="fa-solid fa-trash"></i></th>
 				</tr>
 				<?php
-				foreach ($sql->fetchAll() as $row) {
+				foreach ($rows as $row) {
 					echo '<tr>';
 					echo '<td>', $row['order_status'], '</td>';
 					echo '<td><a href="order_detail.php?transaction_id=' . htmlentities($row['transaction_id']) . '">', $row['transaction_id'], '</a></td>';
