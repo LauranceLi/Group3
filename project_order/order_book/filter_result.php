@@ -1,5 +1,7 @@
 <?php
 require __DIR__ . '/parts/pdo-connect.php';
+$title = '篩選列表';
+$pageName = 'filter_result';
 $orderStatus = isset($_POST['order_status']) ? $_POST['order_status'] : '';
 $paymentStatus = isset($_POST['payment_status']) ? $_POST['payment_status'] : '';
 $shippingStatus = isset($_POST['shipping_status']) ? $_POST['shipping_status'] : '';
@@ -27,6 +29,7 @@ if (!empty($shippingStatus)) {
 }
 $stmt_select->execute();
 $searchResults = $stmt_select->fetchAll();
+$rowCount = count($searchResults);
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/navbar.php' ?>
@@ -36,10 +39,13 @@ $searchResults = $stmt_select->fetchAll();
             <?php include __DIR__ . '/filter.php'; ?>
             <?php include __DIR__ . '/search_input.php'; ?>
             <div class="mt-3">
-                <a class="btn btn-primary" href="./list-admin.php">返回列表</a>
+                <a class="btn btn-primary mb-3" href="./list-admin.php">返回列表</a>
+                <div class="row">
+                    <div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
+                </div>
             </div>
             <?php if (empty($searchResults)) : ?>
-                <table class="table table-bordered table-striped mt-3">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>訂單狀態</th>
                         <th>交易編號</th>
@@ -76,7 +82,7 @@ $searchResults = $stmt_select->fetchAll();
                     ?>
                 </table>
             <?php else : ?>
-                <table class="table table-bordered table-striped  mt-3">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>訂單狀態</th>
                         <th>交易編號</th>
