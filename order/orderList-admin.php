@@ -54,6 +54,7 @@ if ($sort_column !== '') {
 
 <div class="m-4">
     <div class="bg-secondary rounded h-100 p-4 w-100">
+    <h3 class="pb-3">訂單列表</h3>
         <div class="row g-4">
             <div class="col mt-3 mb-1 d-flex justify-content-between">
                 <?php include __DIR__ . '/filter.php'; ?>
@@ -79,7 +80,7 @@ if ($sort_column !== '') {
                             <th>送貨地址<a href="?page=<?= $page ?>&sort_column=shipping_address&sort_order=<?= $sort_column === 'shipping_address' && $sort_order === 'ASC' ? 'DESC' : 'ASC' ?>"><i class="fa-solid fa-sort"></i></a></th>
                             <th>送貨日期<a href="?page=<?= $page ?>&sort_column=shipping_date&sort_order=<?= $sort_column === 'shipping_date' && $sort_order === 'ASC' ? 'DESC' : 'ASC' ?>"><i class="fa-solid fa-sort"></i></a></th>
                             <th>下單日期<a href="?page=<?= $page ?>&sort_column=order_date&sort_order=<?= $sort_column === 'order_date' && $sort_order === 'ASC' ? 'DESC' : 'ASC' ?>"><i class="fa-solid fa-sort"></i></a></th>
-                            <th><i class="fa-solid fa-file-pen"></i></th>
+                            <th><i class="fa-solid fa-pen-to-square"></i></th>
                             <th><i class="fa-solid fa-trash"></i></th>
                         </tr>
                     </thead>
@@ -97,7 +98,7 @@ if ($sort_column !== '') {
                                 <td><?= $r['shipping_address'] ?></td>
                                 <td><?= $r['shipping_date'] ?></td>
                                 <td><?= $r['order_date'] ?></td>
-                                <td><a href="edit.php?order_id=<?= $r['order_id'] ?>"><i class="fa-solid fa-file-pen"></i></a></td>
+                                <td><a href="edit.php?order_id=<?= $r['order_id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                 <td><a href="javascript:deleteOne(<?= $r['order_id'] ?>)"><i class="fa-solid fa-trash  text-danger"></i></a></td>
                             </tr>
                         <?php endforeach ?>

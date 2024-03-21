@@ -6,11 +6,12 @@
   
 ?>
 <?php include '../parts/html-head.php' ?>
+
 <?php include '../parts/spinner.php' ?>
 <?php include '../parts/slidebar.php' ?>
 <?php include '../parts/navbar.php' ?>
 
-<iframe src="../order/orderList.php" width="1200" height="2000" frameborder="0"></iframe>
+<iframe src="../itinerary/itinerary.php" width="1400" height="2000" frameborder="0"></iframe>
 
 
 

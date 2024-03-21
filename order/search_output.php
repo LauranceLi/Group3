@@ -53,7 +53,7 @@ $rowCount = count($rows);
 						<th>送貨地址</th>
 						<th>送貨日期</th>
 						<th>下單日期</th>
-						<th><i class="fa-solid fa-file-pen"></i></th>
+						<th><i class="fa-solid fa-pen-to-square"></i></th>
 						<th><i class="fa-solid fa-trash"></i></th>
 					</tr>
 					<?php
@@ -70,7 +70,7 @@ $rowCount = count($rows);
 						echo '<td>', $row['shipping_address'], '</td>';
 						echo '<td>', $row['shipping_date'], '</td>';
 						echo '<td>', $row['order_date'], '</td>';
-						echo '<td><a href="edit.php?order_id=', $row['order_id'], '"><i class="fa-solid fa-file-pen"></i></a></td>';
+						echo '<td><a href="edit.php?order_id=', $row['order_id'], '"><i class="fa-solid fa-pen-to-square"></i></a></td>';
 						echo '<td><a href="javascript:deleteOne(', $row['order_id'], ')"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
 						echo '</tr>';
 						echo "\n";

@@ -1,8 +1,16 @@
-<?php include __DIR__ . '/../part/html-head.php'; 
-include __DIR__ . '/serve_navbar.php';  #主要欄位
-require __DIR__ . '/serve_pdo-connect.php';  #附上資料庫連結
+<?php
+require '../parts/pdo-connect.php';
+session_start();
+$title = "服務預約表單";
+$pageName = 'serveList';
 
+?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
 
+<?php
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;   #轉換成整數
 if ($page < 1) {
     header('Location: ?page=1');
@@ -42,81 +50,83 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 <!-- 點列表LIST出現的部分 -->
-<div class="tab-content" id="pills-tabContent">
+<div class="container-fluid pt-4 px-4" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-        <!-- <span>總頁數<?= $totalPages ?></span> -->
-<!-- 頁碼區塊 -->
-        <span>
+        <div class="bg-secondary rounded h-100 p-4 ">
+            <h3 class="pb-3">服務預約列表一覽</h3>
+
+            <!-- 下方欄位區塊 -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">修改</th>
+                        <th class="text-center">編號</th>
+                        <th class="text-center">團體行程 I D</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">手機</th>
+                        <th class="text-center">信箱</th>
+                        <th class="text-center">餐廳</th>
+                        <th class="text-center">餐廳地址</th>
+                        <th class="text-center">餐廳預約時間</th>
+                        <th class="text-center">航空公司</th>
+                        <th class="text-center">機場名</th>
+                        <th class="text-center">搭機時間</th>
+                        <th class="text-center">飯店名稱</th>
+                        <th class="text-center">飯店地址</th>
+                        <th class="text-center">刪除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($rows as $r) : ?>
+                        <tr>
+                            <td class="text-center"><a href="serve_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class="text-center"><?= $r['sid'] ?></td>
+                            <td class="text-center"><?= $r['group_id'] ?></td>
+                            <td class="text-center"><?= $r['name'] ?></td>
+                            <td class="text-center"><?= $r['mobile'] ?></td>
+                            <td class="text-center"><?= $r['email'] ?></td>
+                            <td class="text-center"><?= $r['restaurant'] ?></td>
+                            <td class="text-center"><?= $r['restaurantaddress'] ?></td>
+                            <td class="text-center"><?= $r['restauranttime'] ?></td>
+                            <td class="text-center"><?= $r['airline'] ?></td>
+                            <td class="text-center"><?= $r['airportplace'] ?></td>
+                            <td class="text-center"><?= $r['airporttime'] ?></td>
+                            <td class="text-center"><?= $r['hotelname'] ?></td>
+                            <td class="text-center"><?= $r['hoteladdress'] ?></td>
+                            <td class="text-center"><a href="serve_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                        </tr>
+
+                    <?php endforeach ?>
+                </tbody>
+            </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    
-                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                    <a class="page-link" href="?page=1"><i class="fa-solid fa-angles-left"></i></a>
+                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
+                        <a class="page-link bg-secondary border-light" href="?page=<?= 1 ?>">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </a>
                     </li>
-
-                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-chevron-left"></i></a></li>
-
+                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                        <a class="page-link bg-secondary border-light" href="?page=<?= $page - 1 ?>">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </a>
+                    </li>
                     <?php for ($i = $page - 3; $i <= $page + 3; $i++) : ?>
                         <?php if ($i >= 1 and $i <= $totalPages) : ?>
-                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                    
-                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-                    </li>
+                            <li class="page-item <?= $i != $page ?: 'active' ?>">
+                                <a class="page-link <?= $i != $page ? 'bg-secondary border-light' : 'active' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
                         <?php endif ?>
                     <?php endfor ?>
-                    
-                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-chevron-right"></i></a></li>
 
-                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $totalPages ?>"><i class="fa-solid fa-angles-right"></i></a></li>
+                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link bg-secondary border-light" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-angle-right"></i></a></li>
+
+                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link bg-secondary border-light" href="?page=<?= $totalPages ?>"><i class="fa-solid fa-angles-right"></i></a></li>
 
                 </ul>
             </nav>
-        </span>
-<!-- 下方欄位區塊 -->
-        <table class="table table-dark table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center">修改</th>
-                    <th class="text-center">編號</th>
-                    <th class="text-center">團體行程 I D</th>
-                    <th class="text-center">姓名</th>
-                    <th class="text-center">手機</th>
-                    <th class="text-center">信箱</th>
-                    <th class="text-center">餐廳</th>
-                    <th class="text-center">餐廳地址</th>
-                    <th class="text-center">餐廳預約時間</th>
-                    <th class="text-center">航空公司</th>
-                    <th class="text-center">機場名</th>
-                    <th class="text-center">搭機時間</th>
-                    <th class="text-center">飯店名稱</th>
-                    <th class="text-center">飯店地址</th>
-                    <th class="text-center">刪除</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($rows as $r) : ?>
-                    <tr>
-                        <td class="text-center"><a href="serve_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></td>
-<td class="text-center"><?= $r['sid'] ?></td>
-                        <td class="text-center"><?= $r['group_id'] ?></td>
-                        <td class="text-center"><?= $r['name'] ?></td>
-                        <td class="text-center"><?= $r['mobile'] ?></td>
-                        <td class="text-center"><?= $r['email'] ?></td>
-                        <td class="text-center"><?= $r['restaurant'] ?></td>
-                        <td class="text-center"><?= $r['restaurantaddress'] ?></td>
-                        <td class="text-center"><?= $r['restauranttime'] ?></td>
-                        <td class="text-center"><?= $r['airline'] ?></td>
-                        <td class="text-center"><?= $r['airportplace'] ?></td>
-                        <td class="text-center"><?= $r['airporttime'] ?></td>
-                        <td class="text-center"><?= $r['hotelname'] ?></td>
-                        <td class="text-center"><?= $r['hoteladdress'] ?></td>
-                        <td class="text-center"><a href="serve_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-regular fa-trash-can"></i></a></td>
-                    </tr>
-
-                <?php endforeach ?>
-            </tbody>
-        </table>
-</div>
+        </div>
+    </div>
 
     <!-- 新增區 -->
     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
@@ -166,27 +176,27 @@ $rows = $pdo->query($sql)->fetchAll();
                                     <div class="form-text"></div>
                                 </div>
                                 <div class="mb-2 ">
-                                <label for="airline" class="form-label">航空公司</label>
+                                    <label for="airline" class="form-label">航空公司</label>
                                     <input type="text" class="form-control" id="airline" name="airline">
                                     <div class="form-text"></div>
                                 </div>
                                 <div class="mb-2 ">
-                                <label for="airportplace" class="form-label">機場名</label>
+                                    <label for="airportplace" class="form-label">機場名</label>
                                     <input type="text" class="form-control" id="airportplace" name="airportplace">
                                     <div class="form-text"></div>
                                 </div>
                                 <div class="mb-2 ">
-                                <label for="airporttime" class="form-label">搭機時間</label>
+                                    <label for="airporttime" class="form-label">搭機時間</label>
                                     <input type="datetime-local" class="form-control" id="airporttime" name="airporttime">
                                     <div class="form-text"></div>
                                 </div>
                                 <div class="mb-2 ">
-                                <label for="hotelname" class="form-label">飯店名稱</label>
+                                    <label for="hotelname" class="form-label">飯店名稱</label>
                                     <input type="text" class="form-control" id="hotelname" name="hotelname">
                                     <div class="form-text"></div>
                                 </div>
                                 <div class="mb-2 ">
-                                <label for="hoteladdress" class="form-label">飯店地址</label>
+                                    <label for="hoteladdress" class="form-label">飯店地址</label>
                                     <input type="text" class="form-control" id="hoteladdress" name="hoteladdress">
                                     <div class="form-text"></div>
                                 </div>
@@ -235,6 +245,8 @@ $rows = $pdo->query($sql)->fetchAll();
 
     </div>
 </div>
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 
 <script>
     const {
@@ -293,7 +305,7 @@ $rows = $pdo->query($sql)->fetchAll();
             groupidField.nextElementSibling.innerHTML = '請輸入正確的行程編號(1~99)';
         }
         //name必填，檢查格式，空白錯誤
-        if (nameField.value === '' ) {
+        if (nameField.value === '') {
             isPass = false;
             nameField.style.border = "2px solid red";
             nameField.nextElementSibling.innerHTML = '請輸入姓名';
@@ -311,49 +323,49 @@ $rows = $pdo->query($sql)->fetchAll();
             emailField.nextElementSibling.innerHTML = '請輸入正確的 Email 格式';
         }
         //restaurant必填，檢查格式，空白錯誤
-        if (restaurantField.value === '' ) {
+        if (restaurantField.value === '') {
             isPass = false;
             restaurantField.style.border = "2px solid red";
             restaurantField.nextElementSibling.innerHTML = '請輸入餐廳店名';
         }
         //restaurantaddress必填，檢查格式，空白錯誤
-        if (restaurantaddressField.value === '' ) {
+        if (restaurantaddressField.value === '') {
             isPass = false;
             restaurantaddressField.style.border = "2px solid red";
             restaurantaddressField.nextElementSibling.innerHTML = '請輸入餐廳地點';
         }
         //restauranttime必填，檢查格式，空白錯誤
-        if (restauranttimeField.value === '' ) {
+        if (restauranttimeField.value === '') {
             isPass = false;
             restauranttimeField.style.border = "2px solid red";
             restauranttimeField.nextElementSibling.innerHTML = '請輸入餐廳預約時間';
         }
         //airline必填，檢查格式，空白錯誤
-        if (airlineField.value === '' ) {
+        if (airlineField.value === '') {
             isPass = false;
             airlineField.style.border = "2px solid red";
             airlineField.nextElementSibling.innerHTML = '請輸入航空公司名稱';
         }
         //airportplace必填，檢查格式，空白錯誤
-        if (airportplaceField.value === '' ) {
+        if (airportplaceField.value === '') {
             isPass = false;
             airportplaceField.style.border = "2px solid red";
             airportplaceField.nextElementSibling.innerHTML = '請輸入機場名稱';
         }
         //airporttime必填，檢查格式，空白錯誤
-        if (airporttimeField.value === '' ) {
+        if (airporttimeField.value === '') {
             isPass = false;
             airporttimeField.style.border = "2px solid red";
             airporttimeField.nextElementSibling.innerHTML = '請輸入搭機時間';
         }
         //hotelname必填，檢查格式，空白錯誤
-        if (hotelnameField.value === '' ) {
+        if (hotelnameField.value === '') {
             isPass = false;
             hotelnameField.style.border = "2px solid red";
             hotelnameField.nextElementSibling.innerHTML = '請輸入住宿飯店名稱';
         }
         //hoteladdress必填，檢查格式，空白錯誤
-        if (hoteladdressField.value === '' ) {
+        if (hoteladdressField.value === '') {
             isPass = false;
             hoteladdressField.style.border = "2px solid red";
             hoteladdressField.nextElementSibling.innerHTML = '請輸入住宿飯店地址';
@@ -413,4 +425,4 @@ $rows = $pdo->query($sql)->fetchAll();
     const failureModal = new bootstrap.Modal('#failureModal');
     const failureInfo = document.querySelector('#failureModal .alert-danger');
 </script>
-<?php include __DIR__ . '/../part/html-foot.php'; ?>
+<?php include '../parts/html-foot.php' ?>

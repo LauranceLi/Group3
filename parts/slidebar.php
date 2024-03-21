@@ -28,7 +28,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="../itinerary/itinerary.php" class="dropdown-item">套裝行程</a>
+                    <a href="../test/test.php" class="dropdown-item">套裝行程</a>
                     <a href="../itinerary_order/itinerary_order.php" class="dropdown-item">套裝訂單</a>
                 </div>
             </div>
@@ -40,11 +40,11 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="" class="dropdown-item">團體表單</a>
-                    <a href="" class="dropdown-item">講座表單</a>
-                    <a href="" class="dropdown-item">客製化表單</a>
-                    <a href="" class="dropdown-item">興趣表單</a>
-                    <a href="" class="dropdown-item">服務預約表單</a>
+                    <a href="../form/group_form/group_list.php" class="dropdown-item">團體表單</a>
+                    <a href="../form/speech_form/speech_list.php" class="dropdown-item">講座表單</a>
+                    <a href="../form/customization_form/customization_list.php" class="dropdown-item">客製化表單</a>
+                    <a href="../form/interest_form/interest_list.php" class="dropdown-item">興趣表單</a>
+                    <a href="../form/serve_form/serve_list.php" class="dropdown-item">服務預約表單</a>
                 </div>
             </div>
 

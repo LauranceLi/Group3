@@ -62,7 +62,7 @@ $rowCount = count($searchResults);
                             <th>送貨地址</th>
                             <th>送貨日期</th>
                             <th>下單日期</th>
-                            <th><i class="fa-solid fa-file-pen"></i></th>
+                            <th><i class="fa-solid fa-pen-to-square"></i></th>
                             <th><i class="fa-solid fa-trash"></i></th>
                         </tr>
                         <?php foreach ($searchResults as $result) {
@@ -78,7 +78,7 @@ $rowCount = count($searchResults);
                             echo '<td>', $result['shipping_address'], '</td>';
                             echo '<td>', $result['shipping_date'], '</td>';
                             echo '<td>', $result['order_date'], '</td>';
-                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '"><i class="fa-solid fa-file-pen"></i></a></td>';
+                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '"><i class="fa-solid fa-pen-to-square"></i></a></td>';
                             echo '<td><a href="javascript:deleteOne(', $result['order_id'], ')"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
                             echo '</tr>';
                             echo "\n";
@@ -99,7 +99,7 @@ $rowCount = count($searchResults);
                             <th>送貨地址</th>
                             <th>送貨日期</th>
                             <th>下單日期</th>
-                            <th><i class="fa-solid fa-file-pen"></i></th>
+                            <th><i class="fa-solid fa-pen-to-square"></i></th>
                             <th><i class="fa-solid fa-trash "></i></th>
                         </tr>
                         <?php foreach ($searchResults as $result) {
@@ -115,7 +115,7 @@ $rowCount = count($searchResults);
                             echo '<td>', $result['shipping_address'], '</td>';
                             echo '<td>', $result['shipping_date'], '</td>';
                             echo '<td>', $result['order_date'], '</td>';
-                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '"><i class="fa-solid fa-file-pen"></i></a></td>';
+                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '"><i class="fa-solid fa-pen-to-square"></i></a></td>';
                             echo '<td><a href="javascript:deleteOne(', $result['order_id'], ')"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
                             echo '</tr>';
                             echo "\n";

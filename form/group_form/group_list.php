@@ -1,8 +1,16 @@
-<?php include __DIR__ . '/../part/html-head.php';
-include __DIR__ . '/group_navbar.php';  #主要欄位
-require __DIR__ . '/group_pdo-connect.php';  #附上資料庫連結
+<?php
+require '../parts/pdo-connect.php';
+session_start();
+$title = "團體表單";
+$pageName = 'groupList';
 
+?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
 
+<?php
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;   #轉換成整數
 if ($page < 1) {
   header('Location: ?page=1');
@@ -42,70 +50,72 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 <!-- 點列表LIST出現的部分 -->
-<div class="tab-content" id="pills-tabContent">
+<div class="container-fluid pt-4 px-4" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-    <!-- <span>總頁數<?= $totalPages ?></span> -->
-    <!-- 頁碼區塊 -->
-    <span>
+    <div class="bg-secondary rounded h-100 p-4 ">
+      <!-- 下方欄位區塊 -->
+      <h3 class="pb-3">團體表單一覽</h3>
+      <!-- 下方欄位區塊 -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">修改</th>
+            <th class="text-center">編號</th>
+            <th class="text-center">團體行程 I D</th>
+            <th class="text-center">姓名</th>
+            <th class="text-center">身分證</th>
+            <th class="text-center">生日</th>
+            <th class="text-center">信箱</th>
+            <th class="text-center">手機號碼</th>
+            <th class="text-center">地址</th>
+            <th class="text-center">刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($rows as $r) : ?>
+            <tr>
+              <td class="text-center"><a href="group_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td class="text-center"><?= $r['sid'] ?></td>
+              <td class="text-center"><?= $r['group_id'] ?></td>
+              <td class="text-center"><?= $r['name'] ?></td>
+              <td class="text-center"><?= $r['nameid'] ?></td>
+              <td class="text-center"><?= $r['birthday'] ?></td>
+              <td><?= $r['email'] ?></td>
+              <td class="text-center"><?= $r['mobile'] ?></td>
+              <td class="text-center"><?= $r['address'] ?></td>
+              <td class="text-center"><a href="group_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+            </tr>
+
+          <?php endforeach ?>
+        </tbody>
+      </table>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-
-          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-            <a class="page-link" href="?page=1"><i class="fa-solid fa-angles-left"></i></a>
+          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
+            <a class="page-link bg-secondary border-light" href="?page=<?= 1 ?>">
+              <i class="fa-solid fa-angles-left"></i>
+            </a>
           </li>
-
-          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-chevron-left"></i></a></li>
-
+          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+            <a class="page-link bg-secondary border-light" href="?page=<?= $page - 1 ?>">
+              <i class="fa-solid fa-angle-left"></i>
+            </a>
+          </li>
           <?php for ($i = $page - 3; $i <= $page + 3; $i++) : ?>
             <?php if ($i >= 1 and $i <= $totalPages) : ?>
-              <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-
-              <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+              <li class="page-item <?= $i != $page ?: 'active' ?>">
+                <a class="page-link <?= $i != $page ? 'bg-secondary border-light' : 'active' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
               </li>
             <?php endif ?>
           <?php endfor ?>
 
-          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-chevron-right"></i></a></li>
+          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link bg-secondary border-light" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-angle-right"></i></a></li>
 
-          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $totalPages ?>"><i class="fa-solid fa-angles-right"></i></a></li>
+          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link bg-secondary border-light" href="?page=<?= $totalPages ?>"><i class="fa-solid fa-angles-right"></i></a></li>
 
         </ul>
       </nav>
-    </span>
-    <!-- 下方欄位區塊 -->
-    <table class="table table-dark table-bordered table-hover">
-      <thead>
-        <tr>
-          <th class="text-center">修改</th>
-          <th class="text-center">編號</th>
-          <th class="text-center">團體行程 I D</th>
-          <th class="text-center">姓名</th>
-          <th class="text-center">身分證</th>
-          <th class="text-center">生日</th>
-          <th class="text-center">信箱</th>
-          <th class="text-center">手機號碼</th>
-          <th class="text-center">地址</th>
-          <th class="text-center">刪除</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($rows as $r) : ?>
-          <tr>
-            <td class="text-center"><a href="group_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></td>
-            <td class="text-center"><?= $r['sid'] ?></td>
-            <td class="text-center"><?= $r['group_id'] ?></td>
-            <td class="text-center"><?= $r['name'] ?></td>
-            <td class="text-center"><?= $r['nameid'] ?></td>
-            <td class="text-center"><?= $r['birthday'] ?></td>
-            <td><?= $r['email'] ?></td>
-            <td class="text-center"><?= $r['mobile'] ?></td>
-            <td class="text-center"><?= $r['address'] ?></td>
-            <td class="text-center"><a href="group_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-regular fa-trash-can"></i></a></td>
-          </tr>
-
-        <?php endforeach ?>
-      </tbody>
-    </table>
+    </div>
   </div>
 
   <!-- 新增區 -->
@@ -200,7 +210,8 @@ $rows = $pdo->query($sql)->fetchAll();
 
   </div>
 </div>
-
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
   const {
     group_id: groupidField,
@@ -338,4 +349,4 @@ $rows = $pdo->query($sql)->fetchAll();
   const failureModal = new bootstrap.Modal('#failureModal');
   const failureInfo = document.querySelector('#failureModal .alert-danger');
 </script>
-<?php include __DIR__ . '/../part/html-foot.php'; ?>
+<?php include '../parts/html-foot.php' ?>
