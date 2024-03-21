@@ -4,13 +4,12 @@
 
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
-		$picture= $_POST['picture'];
 		$product_Id = $_POST['product_Id'];
 		$product = $_POST['product'];
 		$price = $_POST['price'];
 		$title = $_POST['title'];
 		$description = $_POST['description'];
-		$sql = "UPDATE the_travel_project SET picture = '$picture', product_Id = '$product_Id', product = '$product', price = '$price', title = '$title', description = '$description' WHERE id = '$id'";
+		$sql = "UPDATE products SET product_Id = '$product_Id', product = '$product', price = '$price', title = '$title', description = '$description' WHERE id = '$id'";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){

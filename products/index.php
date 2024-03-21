@@ -76,7 +76,7 @@
 					<tbody>
 						<?php
 							include_once('connection.php');
-							$sql = "SELECT * FROM project";
+							$sql = "SELECT * FROM products";
 
 							//use for MySQLi-OOP
 							$query = $conn->query($sql);

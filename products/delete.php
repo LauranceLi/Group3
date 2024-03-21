@@ -3,7 +3,7 @@
 	include_once('connection.php');
 
 	if(isset($_GET['id'])){
-		$sql = "DELETE FROM the_travel_project WHERE id = '".$_GET['id']."'";
+		$sql = "DELETE FROM products WHERE id = '".$_GET['id']."'";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){

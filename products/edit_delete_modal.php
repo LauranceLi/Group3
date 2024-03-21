@@ -10,7 +10,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="container-fluid">
-				<div class="row form-group">
+				<!-- <div class="row form-group">
 						<div class="col-sm-2">
 							<label class="control-label modal-label">picture:</label>
 						</div>
@@ -24,7 +24,7 @@
 							<img src="" alt="" id="mypic1" width="300" />
 							<br />
 						</div>
-					</div>
+					</div> -->
 					<form method="POST" action="edit.php"form="form2">
 						<input type="hidden" class="form-control" name="id" value="<?php echo $row['id']; ?>">
 						<div class="row form-group">
