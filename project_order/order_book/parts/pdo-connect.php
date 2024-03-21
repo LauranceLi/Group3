@@ -1,9 +1,9 @@
 <?php
 //設定資料庫連線  
 $db_host = "localhost";  //localhost可以改成其他IP就可以連到其他電腦的資料庫
-$db_user = 'root';      //資料庫的使用者名稱
+$db_user = 'the_travel_project';      //資料庫的使用者名稱
 $db_pass =  '';       //資料庫的密碼
-$db_name = 'test_order'; //要連線的資料庫
+$db_name = 'the_travel_project'; //要連線的資料庫
 
 //data source name 字串中間不能有空白   如果不是使用3306的PORT 後面就要多寫PORT=連線埠號碼
 $dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";
