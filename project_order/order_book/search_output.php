@@ -1,8 +1,12 @@
 <?php require __DIR__ . '/parts/pdo-connect.php';
+$title = '搜尋結果';
+$pageName = 'search_result';
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
+
 <?php include __DIR__ . '/parts/navbar.php' ?>
 <?php
+
 $keyword = isset($_REQUEST['keyword']) ? '%' . $_REQUEST['keyword'] . '%' : '%';
 $sql = $pdo->prepare('SELECT * FROM `order` WHERE 
 	order_status LIKE ? OR 
@@ -17,7 +21,7 @@ $sql = $pdo->prepare('SELECT * FROM `order` WHERE
 	shipping_date LIKE ? OR 
 	order_date LIKE ?');
 $sql->execute([$keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword, $keyword]);
-$rows=$sql->fetchAll();
+$rows = $sql->fetchAll();
 $rowCount = count($rows);
 ?>
 
@@ -27,13 +31,12 @@ $rowCount = count($rows);
 			<?php include __DIR__ . '/filter.php'; ?>
 			<?php include __DIR__ . '/search_input.php'; ?>
 			<div class="mt-3">
-				<a class="btn btn-primary" href="./list-admin.php">返回列表</a>
+				<a class="btn btn-primary mb-3" href="./list-admin.php">返回列表</a>
 				<div class="row">
 					<div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
 				</div>
-
 			</div>
-			<table class="table table-bordered table-striped  mt-3">
+			<table class="table table-bordered table-striped">
 				<tr>
 					<th>訂單狀態</th>
 					<th>交易編號</th>
