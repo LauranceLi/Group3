@@ -34,7 +34,7 @@
             </div>
 
 
-            <a href="" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
+            <a href="./project_order/order_book/orderList.php" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
             <a href="" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-bag-shopping me-2"></i>商品上架管理</a>
 
             <div class="nav-item dropdown">
