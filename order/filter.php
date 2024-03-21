@@ -1,5 +1,5 @@
 <div class="row d-inline-flex">
-    <form action="filter_result.php" method="POST" class="mb-3">
+    <form action="filter_result.php" method="POST" class="mb-1">
         <div class="input-group">
             <select name="order_status" class="form-select" aria-label="Select order status">
                 <option value="">訂單狀態</option>
@@ -17,7 +17,7 @@
                 <option value="已出貨">已出貨</option>
                 <option value="未出貨">未出貨</option>
             </select>
-            <button class="btn btn-primary" type="submit">篩選</button>
+            <button class="btn btn-outline-info " type="submit">篩選</button>
         </div>
     </form>
 </div>
