@@ -37,29 +37,8 @@ CREATE TABLE `cart` (
 
 -- --------------------------------------------------------
 
---
--- 資料表結構 `members`
---
-
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `mobile` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  `hash` varchar(255) NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT 0,
-  `nickname` varchar(255) NOT NULL,
-  `create_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- 傾印資料表的資料 `members`
---
-
-INSERT INTO `members` (`id`, `email`, `password`, `mobile`, `address`, `birthday`, `hash`, `activated`, `nickname`, `create_at`) VALUES
-(3, 'ming@gg.com', '$2y$10$5Aqv69.1FvokUpqvuEWp5O2FRxD3MZ7xbaTZLnC3lXAHr/wFYyaM.', '0918222333', '', '1990-02-02', '52c61e86824899ca67e8d815a7a7afb0ce43878c', 0, '老明', '2019-01-07 10:39:38');
 
 -- --------------------------------------------------------
 
@@ -537,13 +516,7 @@ INSERT INTO `transactions` (`transaction_id`) VALUES
 --
 
 --
--- 資料表索引 `members`
---
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
 
---
 -- 資料表索引 `order`
 --
 ALTER TABLE `order`

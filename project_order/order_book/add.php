@@ -137,7 +137,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                <a href="list.php" class="btn btn-primary">跳到列表頁</a>
+                <a href="orderList.php" class="btn btn-primary">跳到列表頁</a>
             </div>
         </div>
     </div>

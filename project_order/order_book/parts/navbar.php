@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link <?= $pageName == 'list' ? 'active' : '' ?>" href="list.php">訂單列表</a>
+            <a class="nav-link <?= $pageName == 'list' ? 'active' : '' ?>" href="orderList.php">訂單列表</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="add.php">新增訂單</a>
@@ -28,9 +28,7 @@
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           <?php if (isset($_SESSION['admin'])) : ?>
-            <li class="nav-item">
-              <a class="nav-link"><?= $_SESSION['admin']['nickname']?></a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="logout.php">登出</a>
             </li>

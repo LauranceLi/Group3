@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $db_host = "localhost";
-$db_user = 'root';
+$db_user = 'the_travel_project';
 $db_pass =  '';
-$db_name = 'test_order';
+$db_name = 'the_travel_project';
 
 $dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";
 

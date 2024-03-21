@@ -39,7 +39,7 @@ $rowCount = count($searchResults);
             <?php include __DIR__ . '/filter.php'; ?>
             <?php include __DIR__ . '/search_input.php'; ?>
             <div class="mt-3">
-                <a class="btn btn-primary mb-3" href="./list-admin.php">返回列表</a>
+                <a class="btn btn-primary mb-3" href="./orderList-admin.php">返回列表</a>
                 <div class="row">
                     <div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
                 </div>

@@ -10,7 +10,7 @@ if (!empty($order_id)) {
 }
 
 //刪除時頁面跳轉到當下的頁面(不再跳轉到第一頁)  HTTP_REFERER上一個網頁的URL
-$backTo = 'list.php';
+$backTo = 'orderList.php';
 if (!empty($_SERVER['HTTP_REFERER'])) {
     $backTo = $_SERVER['HTTP_REFERER'];
 }

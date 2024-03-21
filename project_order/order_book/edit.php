@@ -6,7 +6,7 @@ $pageName = 'edit';
 $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
 if (empty($order_id)) {
-    header('Location: list.php');
+    header('Location: orderList.php');
     exit;
 }
 $row = $pdo->query("SELECT * FROM `order` WHERE order_id=$order_id")->fetch();
