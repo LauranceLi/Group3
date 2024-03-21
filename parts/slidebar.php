@@ -31,8 +31,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="crud_datatable_tcpdf_itinerary" class="dropdown-item">套裝行程</a>
-                    <a href="crud_datatable_tcpdf_oder" class="dropdown-item">套裝訂單</a>
+                    <a href="itinerary" class="dropdown-item">套裝行程</a>
+                    <a href="itinerary_oder" class="dropdown-item">套裝訂單</a>
                 </div>
             </div>
 
