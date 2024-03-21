@@ -39,8 +39,8 @@ $rowCount = count($rows);
             <div class="mt-3">
                 <a class="btn btn-primary" href="./list-admin.php">返回列表</a>
                 <div class="row">
-					<div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
-				</div>
+			<div class="col"><span> 總筆數 : <?= $rowCount ?></span></div>
+		</div>
             </div>
             <?php if (empty($searchResults)) : ?>
                 <table class="table table-bordered table-striped mt-3">
