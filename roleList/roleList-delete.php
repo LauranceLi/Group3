@@ -1,6 +1,6 @@
 <?php
 // require __DIR__ . '/parts/admin-require.php';
-require __DIR__ . "/parts/pdo_connect.php";
+require '../parts/pdo_connect.php';
 
 $role_id = isset($_GET['role_id']) ? intval($_GET['role_id']) : 0;
 

@@ -1,15 +1,15 @@
 <?php
-require __DIR__ . '/parts/pdo_connect.php';
+
 session_start();
 $title = "歡迎回來";
 $pageName = 'index';
 
 ?>
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
-<?php include __DIR__ . '/parts/spinner.php' ?>
-<?php include __DIR__ . '/parts/slidebar.php' ?>
-<?php include __DIR__ . '/parts/navbar.php' ?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
 <!-- error Start -->
 <div class="container-fluid ">
   <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
@@ -24,8 +24,9 @@ $pageName = 'index';
 
 
 
-<?php include __DIR__ . '/parts/footer.php' ?>
-<?php include __DIR__ . '/parts/scripts.php' ?>
+
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
   let seconds = 3;
   const countdown = () => {
@@ -43,4 +44,4 @@ $pageName = 'index';
   
 </script>
 
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

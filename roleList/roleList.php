@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/pdo_connect.php';
+  require '../parts/pdo_connect.php';
 session_start();
 $title = "Role List";
 $pageName = 'roleList';
@@ -58,7 +58,7 @@ function isView($item)
 {
   if ($item == 'view' || $item == 'edit') {
     echo 'checked="true"';
-  } else{
+  } else {
     echo '';
   }
 }
@@ -66,7 +66,7 @@ function isEdit($item)
 {
   if ($item == 'edit') {
     echo 'checked="true"';
-  } else{
+  } else {
     echo '';
   }
 }
@@ -74,21 +74,21 @@ function isEdit($item)
 ?>
 
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
+<?php include '../parts/html-head.php' ?>
 <style>
   table {
     table-layout: fixed;
   }
 </style>
 
-<?php include __DIR__ . '/parts/spinner.php' ?>
-<?php include __DIR__ . '/parts/slidebar.php' ?>
-<?php include __DIR__ . '/parts/navbar.php' ?>
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
 <!-- Table Start -->
 <div class="container-fluid pt-4 px-4">
   <div class="row g-4">
     <div class="col-sm-12 col-xl-12">
-      <div class="bg-secondary rounded h-100 p-4">
+      <div class="bg-secondary rounded h-100 p-4 ">
         <div class="roleListTitleBox d-flex justify-content-between">
           <h3 class="mb-3">角色權限一覽</h3>
           <!-- add form start -->
@@ -105,7 +105,7 @@ function isEdit($item)
                   <div class="modal-body ">
                     <h6>角色名稱</h6>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1" name="new_role_name">
+                      <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1" name="new_role_name" required>
                     </div>
 
                     <div class="permissionBox d-flex justify-content-between">
@@ -334,7 +334,7 @@ function isEdit($item)
                 <div class="modal fade " id="editBackdrop<?= $r['role_id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content bg-secondary border-0">
-                      <form action="roleList.php" method="post">
+                      <form action="roleList-edit.php?role_id=<?=$r['role_id'] ?>" method="post" id="editFormBox">
                         <div class="modal-header">
                           <h5 class="modal-title" id="editLabel">編輯角色</h5>
                         </div>
@@ -351,14 +351,29 @@ function isEdit($item)
                                 <h6>角色設置</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="1" type="checkbox" role="switch" id="<?= $r['role_id'] ?>roleSetCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>roleSet')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="1" type="checkbox" role="switch" id="<?= $r['role_id'] ?>roleSetCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>roleSet[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>roleSetCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>roleSet" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewRoleSet" autocomplete="off" <?php isView($r['role_set']) ?> onclick="allCheck('<?= $r['role_id'] ?>roleSetCheckAll','<?= $r['role_id'] ?>roleSet') ">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>roleSet[]"
+                                    type="checkbox"
+                                    class="btn-check"
+                                    id="<?= $r['role_id'] ?>viewRoleSet"
+                                    autocomplete="off" <?php isView($r['role_set']) ?>
+                                    onclick="allCheck('<?= $r['role_id'] ?>roleSetCheckAll','<?= $r['role_id'] ?>roleSet[]') "
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewRoleSet">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>roleSet" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editRoleSet" autocomplete="off" <?php isEdit($r['role_set']) ?> onclick="allCheck('<?= $r['role_id'] ?>roleSetCheckAll','<?= $r['role_id'] ?>roleSet')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>roleSet[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editRoleSet" 
+                                    autocomplete="off" <?php isEdit($r['role_set']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>roleSetCheckAll','<?= $r['role_id'] ?>roleSet[]')"
+                                    value="edit">
+
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editRoleSet">編輯</label>
                                   </div>
                                 </div>
@@ -367,16 +382,29 @@ function isEdit($item)
                                 <h6>員工管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="2" type="checkbox" role="switch" id="<?= $r['role_id'] ?>employeesCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>employee')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="2" type="checkbox" role="switch" id="<?= $r['role_id'] ?>employeesCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>employee[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>employeesCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>employee" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewEmployee" autocomplete="off"  <?php isView($r['employees']) ?> onclick="allCheck('<?= $r['role_id'] ?>employeesCheckAll','<?= $r['role_id'] ?>employee')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>employee[]"
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewEmployee" 
+                                    autocomplete="off" <?php isView($r['employees']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>employeesCheckAll','<?= $r['role_id'] ?>employee[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewEmployee">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>employee" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editEmployee" autocomplete="off"  <?php isEdit($r['employees']) ?> onclick="allCheck('<?= $r['role_id'] ?>employeesCheckAll','<?= $r['role_id'] ?>employee')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>employee[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editEmployee" 
+                                    autocomplete="off" <?php isEdit($r['employees']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>employeesCheckAll','<?= $r['role_id'] ?>employee[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editEmployee">編輯</label>
-
                                   </div>
                                 </div>
                               </div>
@@ -384,14 +412,28 @@ function isEdit($item)
                                 <h6>會員管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="3" type="checkbox" role="switch" id="<?= $r['role_id'] ?>membersCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>member')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="3" type="checkbox" role="switch" id="<?= $r['role_id'] ?>membersCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>member[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>membersCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>member" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewMember" autocomplete="off"  <?php isView($r['members']) ?> onclick="allCheck('<?= $r['role_id'] ?>membersCheckAll','<?= $r['role_id'] ?>member')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>member[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewMember" 
+                                    autocomplete="off" <?php isView($r['members']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>membersCheckAll','<?= $r['role_id'] ?>member[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewMember">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>member" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editMember" autocomplete="off"  <?php isEdit($r['members']) ?> onclick="allCheck('<?= $r['role_id'] ?>membersCheckAll','<?= $r['role_id'] ?>member')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>member[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editMember" 
+                                    autocomplete="off" <?php isEdit($r['members']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>membersCheckAll','<?= $r['role_id'] ?>member[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editMember">編輯</label>
 
                                   </div>
@@ -401,14 +443,28 @@ function isEdit($item)
                                 <h6>積分管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="4" type="checkbox" role="switch" id="<?= $r['role_id'] ?>pointsCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>point')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="4" type="checkbox" role="switch" id="<?= $r['role_id'] ?>pointsCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>point[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>pointsCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>point" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewPoint" autocomplete="off"  <?php isView($r['points']) ?> onclick="allCheck('<?= $r['role_id'] ?>pointsCheckAll','<?= $r['role_id'] ?>point')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>point[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewPoint" 
+                                    autocomplete="off" <?php isView($r['points']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>pointsCheckAll','<?= $r['role_id'] ?>point[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewPoint">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>point" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editPoint" autocomplete="off"  <?php isEdit($r['points']) ?> onclick="allCheck('<?= $r['role_id'] ?>pointsCheckAll','<?= $r['role_id'] ?>point')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>point[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editPoint" 
+                                    autocomplete="off" <?php isEdit($r['points']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>pointsCheckAll','<?= $r['role_id'] ?>point[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editPoint">編輯</label>
                                   </div>
                                 </div>
@@ -420,14 +476,28 @@ function isEdit($item)
                                 <h6>套裝行程管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="5" type="checkbox" role="switch" id="<?= $r['role_id'] ?>itineraryCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>itinerary')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="5" type="checkbox" role="switch" id="<?= $r['role_id'] ?>itineraryCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>itinerary[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>itineraryCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>itinerary" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewItinerary" autocomplete="off"  <?php isView($r['itinerary']) ?> onclick="allCheck('<?= $r['role_id'] ?>itineraryCheckAll','<?= $r['role_id'] ?>itinerary')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>itinerary[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewItinerary" 
+                                    autocomplete="off" <?php isView($r['itinerary']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>itineraryCheckAll','<?= $r['role_id'] ?>itinerary[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewItinerary">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>itinerary" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editItinerary" autocomplete="off"  <?php isEdit($r['itinerary']) ?> onclick="allCheck('<?= $r['role_id'] ?>itineraryCheckAll','<?= $r['role_id'] ?>itinerary')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>itinerary[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editItinerary" 
+                                    autocomplete="off" <?php isEdit($r['itinerary']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>itineraryCheckAll','<?= $r['role_id'] ?>itinerary[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editItinerary">編輯</label>
                                   </div>
                                 </div>
@@ -436,14 +506,28 @@ function isEdit($item)
                                 <h6>訂單管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="6" type="checkbox" role="switch" id="<?= $r['role_id'] ?>ordersCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>order')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="6" type="checkbox" role="switch" id="<?= $r['role_id'] ?>ordersCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>order[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>ordersCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>order" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewOrder" autocomplete="off"  <?php isView($r['orders']) ?> onclick="allCheck('<?= $r['role_id'] ?>ordersCheckAll','<?= $r['role_id'] ?>order')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>order[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewOrder" 
+                                    autocomplete="off" <?php isView($r['orders']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>ordersCheckAll','<?= $r['role_id'] ?>order[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewOrder">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>order" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editOrder" autocomplete="off"  <?php isEdit($r['orders']) ?> onclick="allCheck('<?= $r['role_id'] ?>ordersCheckAll','<?= $r['role_id'] ?>order')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>order[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editOrder" 
+                                    autocomplete="off" <?php isEdit($r['orders']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>ordersCheckAll','<?= $r['role_id'] ?>order[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editOrder">編輯</label>
                                   </div>
                                 </div>
@@ -452,14 +536,28 @@ function isEdit($item)
                                 <h6>商品上架管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="7" type="checkbox" role="switch" id="<?= $r['role_id'] ?>productsCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>product')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="7" type="checkbox" role="switch" id="<?= $r['role_id'] ?>productsCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>product[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>productsCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>product" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewProduct" autocomplete="off"   <?php isView($r['products']) ?> onclick="allCheck('<?= $r['role_id'] ?>productsCheckAll','<?= $r['role_id'] ?>product')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>product[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewProduct" 
+                                    autocomplete="off" <?php isView($r['products']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>productsCheckAll','<?= $r['role_id'] ?>product[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewProduct">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>product" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editProduct" autocomplete="off"  <?php isEdit($r['products']) ?> onclick="allCheck('<?= $r['role_id'] ?>productsCheckAll','<?= $r['role_id'] ?>product')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>product[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editProduct" 
+                                    autocomplete="off" <?php isEdit($r['products']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>productsCheckAll','<?= $r['role_id'] ?>product[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editProduct">編輯</label>
                                   </div>
                                 </div>
@@ -468,14 +566,28 @@ function isEdit($item)
                                 <h6>表單管理</h6>
                                 <div class="bg-secondary rounded h-100 p-1 d-flex">
                                   <div class="form-check form-switch me-4 d-flex align-items-center">
-                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="8" type="checkbox" role="switch" id="<?= $r['role_id'] ?>formCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>form')">
+                                    <input class="form-check-input me-2" name="<?= $r['role_id'] ?>isAuthorized[]" value="8" type="checkbox" role="switch" id="<?= $r['role_id'] ?>formCheckAll" onclick="checkAll(this,'<?= $r['role_id'] ?>form[]')">
                                     <label class="form-check-label " for="<?= $r['role_id'] ?>formCheckAll">全選</label>
                                   </div>
                                   <div class="btn-group" role="group">
-                                    <input name="<?= $r['role_id'] ?>form" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>viewForm" autocomplete="off"  <?php isView($r['form']) ?> onclick="allCheck('<?= $r['role_id'] ?>formCheckAll','<?= $r['role_id'] ?>form')" >
+                                    <input 
+                                    name="<?= $r['role_id'] ?>form[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>viewForm" 
+                                    autocomplete="off" <?php isView($r['form']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>formCheckAll','<?= $r['role_id'] ?>form[]')"
+                                    value="view">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>viewForm">檢視</label>
 
-                                    <input name="<?= $r['role_id'] ?>form" type="checkbox" class="btn-check" id="<?= $r['role_id'] ?>editForm" autocomplete="off"  <?php isEdit($r['form']) ?> onclick="allCheck('<?= $r['role_id'] ?>formCheckAll','<?= $r['role_id'] ?>form')">
+                                    <input 
+                                    name="<?= $r['role_id'] ?>form[]" 
+                                    type="checkbox" 
+                                    class="btn-check" 
+                                    id="<?= $r['role_id'] ?>editForm" 
+                                    autocomplete="off" <?php isEdit($r['form']) ?> 
+                                    onclick="allCheck('<?= $r['role_id'] ?>formCheckAll','<?= $r['role_id'] ?>form[]')"
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editForm">編輯</label>
 
                                   </div>
@@ -484,17 +596,18 @@ function isEdit($item)
                             </div>
                             <div class="form-floating m-3">
                               <h6>相關描述</h6>
-                              <textarea class="form-control p-2" name="new_role_desc" id="new_role_desc" style="min-height: 91%"></textarea>
-                              <label for="new_role_desc"></label>
+                              <textarea 
+                              class="form-control p-2" 
+                              name="<?=$r['role_id']?>edit_role_desc" id="<?=$r['role_id']?>edit_role_desc" style="min-height: 91%"></textarea>
+                              <label for="<?=$r['role_id']?>edit_role_desc"></label>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="submit" class="btn btn-outline-info">編輯</button>
+                          <button type="submit" class="btn btn-outline-info" onclick="editOne(<?=$r['role_id']?>)">編輯</button>
                         </div>
                       </form>
-
                     </div>
                   </div>
                 </div>
@@ -511,14 +624,14 @@ function isEdit($item)
         <!-- Role List end -->
         <!-- 頁碼條 Start -->
         <nav aria-label="First group">
-          <ul class="pagination">
-            <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-              <a class="page-link" href="?page=<?= 1 ?>">
+          <ul class="pagination justify-content-center ">
+            <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
+              <a class="page-link bg-secondary border-light" href="?page=<?= 1 ?>">
                 <i class="fa-solid fa-angles-left"></i>
               </a>
             </li>
             <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-              <a class="page-link" href="?page=<?= $page - 1 ?>">
+              <a class="page-link bg-secondary border-light" href="?page=<?= $page - 1 ?>">
                 <i class="fa-solid fa-angle-left"></i>
               </a>
             </li>
@@ -526,17 +639,17 @@ function isEdit($item)
             <?php for ($i = $page - 5; $i <= $page + 5; $i++) : ?>
               <?php if ($i >= 1 and $i <= $total_pages) : ?>
                 <li class="page-item <?= $i != $page ?: 'active' ?>">
-                  <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                  <a class="page-link <?= $i != $page ? 'bg-secondary border-light' : 'active' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
                 </li>
               <?php endif ?>
             <?php endfor ?>
             <li class="page-item <?= $page == $total_pages ? 'disabled' : '' ?>">
-              <a class="page-link" href="?page=<?= $page + 1 ?>">
+              <a class="page-link bg-secondary border-light" href="?page=<?= $page + 1 ?>">
                 <i class="fa-solid fa-angle-right"></i>
               </a>
             </li>
             <li class="page-item <?= $page == $total_pages ? 'disabled' : '' ?>">
-              <a class="page-link" href="?page=<?= $total_pages ?>">
+              <a class="page-link bg-secondary border-light" href="?page=<?= $total_pages ?>">
                 <i class="fa-solid fa-angles-right"></i>
               </a>
             </li>
@@ -549,9 +662,10 @@ function isEdit($item)
 </div>
 <!-- Table End -->
 
-<?php include __DIR__ . '/parts/footer.php' ?>
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
+
   const checkAll = (CheckAll, setGroupName) => {
     let checkboxs = document.getElementsByName(setGroupName);
     for (let i = 0; i < checkboxs.length; i++) {
@@ -562,6 +676,9 @@ function isEdit($item)
   const allCheck = (checkAll, setGroup) => {
     let checkboxs = document.getElementsByName(setGroup);
     let checkswitch = document.getElementById(checkAll);
+    if (checkboxs[1].checked) {
+      checkboxs[0].checked = true;
+    }
     if (checkboxs[0].checked && checkboxs[1].checked) {
       return checkswitch.checked = true;
     } else {
@@ -576,6 +693,7 @@ function isEdit($item)
       return
     }
   }
+
 </script>
 
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

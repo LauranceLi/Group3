@@ -48,7 +48,7 @@ if ($employee_result->num_rows == 1) {
 
 
 
-    header("Location: index_.php");
+    header("Location: homepage/homepage.php");
     exit();
   } else {
     $signinResultText = "密碼錯誤，請重新嘗試。";
