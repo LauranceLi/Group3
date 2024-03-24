@@ -1,10 +1,10 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-secondary navbar-dark">
-        <a href="index.php" class="navbar-brand mx-4 mb-3">
+        <a href="homepage.php" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary"><i class="fa-solid fa-tree me-2"></i>締杉旅遊</h3>
         </a>
-        <div class="d-flex align-items-center ms-4 mb-4">
+        <div class="d-flex align-items-center ms-4 mb-3">
 
             <div class="ms-3">
                 <h4 class="mb-0"><?=$_SESSION['admin']['employee_nickname']?></h4>
@@ -26,10 +26,23 @@
 
 
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="../../itinerary/itinerary.php" class="dropdown-item">套裝行程</a>
-                    <a href="../../itinerary_order/itinerary_order.php" class="dropdown-item">套裝訂單</a>
+                <?php if ($pageName == 'itinerary' || $pageName == 'itinerary_order') {
+                    $isItineraryActive = 'active';
+                    $isItineraryExpand = 'true';
+                    $isItineraryProper = 'none';
+                    $isItineraryShow = 'show';
+                }else {
+                    $isItineraryActive = '';
+                    $isItineraryExpand = 'false';
+                    $isItineraryProper = '';
+                }
+                ?>
+                <a href="#" class="nav-link dropdown-toggle <?=$isItineraryActive?>" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
+
+                <div class="dropdown-menu bg-transparent border-0 <?= $isItineraryShow?>">
+                    <a href="../../itinerary/itinerary.php" class="dropdown-item <?=$pageName == 'itinerary' ? 'active show' : ''?>" aria-expanded="<?= $isItineraryExpand?>" data-bs-popper="<?= $isItineraryProper?>">套裝行程</a>
+
+                    <a href="../../itinerary_order/itinerary_order.php" class="dropdown-item <?=$pageName == 'itinerary_order' ? 'active show' : ''?>" aria-expanded="<?= $isItineraryExpand?>" data-bs-popper="<?= $isItineraryProper?>">套裝訂單</a>
                 </div>
             </div>
 
@@ -39,25 +52,25 @@
 
             <div class="nav-item dropdown">
                 <?php if ($pageName == 'groupList' || $pageName == 'speechList'  || $pageName == 'customizationList'  || $pageName == 'interestList'  || $pageName == 'serveList') {
-                    $isActive = 'active';
-                    $isExpand = 'true';
-                    $isProper = 'none';
-                    $isShow = 'show';
+                    $isFormActive = 'active';
+                    $isFormExpand = 'true';
+                    $isFormProper = 'none';
+                    $isFormShow = 'show';
                 }else {
-                    $isActive = '';
-                    $isExpand = 'false';
-                    $isProper = '';
+                    $isFormActive = '';
+                    $isFormExpand = 'false';
+                    $isFormProper = '';
                 }
                 ?>
-                <a href="#" class="nav-link dropdown-toggle <?=$isActive?>" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
+                <a href="#" class="nav-link dropdown-toggle <?=$isFormActive?>" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
 
-                <div class="dropdown-menu bg-transparent border-0 <?= $isShow?>">
-                    <a href="../group_form/group_list.php" class="dropdown-item <?=$pageName == 'groupList' ? 'active show' : ''?>" aria-expanded="<?= $isExpand?>" data-bs-popper="<?= $isProper?>">團體表單</a>
+                <div class="dropdown-menu bg-transparent border-0 <?= $isFormShow?>">
+                    <a href="../group_form/group_list.php" class="dropdown-item <?=$pageName == 'groupList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">團體表單</a>
 
-                    <a href="../speech_form/speech_list.php" class="dropdown-item <?=$pageName == 'speechList' ? 'active show' : ''?>" aria-expanded="<?= $isExpand?>" data-bs-popper="<?= $isProper?>">講座表單</a>
-                    <a href="../customization_form/customization_list.php" class="dropdown-item <?=$pageName == 'customizationList' ? 'active' : ''?>" aria-expanded="<?= $isExpand?>" data-bs-popper="<?= $isProper?>">客製化表單</a>
-                    <a href="../interest_form/interest_list.php" class="dropdown-item <?=$pageName == 'interestList' ? 'active show' : ''?>" aria-expanded="<?= $isExpand?>" data-bs-popper="<?= $isProper?>">興趣表單</a>
-                    <a href="../serve_form/serve_list.php" class="dropdown-item <?=$pageName == 'serveList' ? 'active show' : ''?>" aria-expanded="<?= $isExpand?>" data-bs-popper="<?= $isProper?>">服務預約表單</a>
+                    <a href="../speech_form/speech_list.php" class="dropdown-item <?=$pageName == 'speechList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">講座表單</a>
+                    <a href="../customization_form/customization_list.php" class="dropdown-item <?=$pageName == 'customizationList' ? 'active' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">客製化表單</a>
+                    <a href="../interest_form/interest_list.php" class="dropdown-item <?=$pageName == 'interestList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">興趣表單</a>
+                    <a href="../serve_form/serve_list.php" class="dropdown-item <?=$pageName == 'serveList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">服務預約表單</a>
                 </div>
             </div>
 
