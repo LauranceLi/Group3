@@ -1,9 +1,9 @@
 <?php
+require '../parts/pdo-connect.php';
+session_start();
+$title = "興趣表單";
+$pageName = 'interestList';
 
-include __DIR__ . '/interest_navbar.php';  #主要欄位
-require __DIR__ . '/interest_pdo-connect.php'; #附上資料庫連結
-$title = '編輯通訊列表';
-$pageName = 'edit';
 
 // 編輯，去篩選sid，亂輸入
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
@@ -18,7 +18,10 @@ if (empty($r)) {
     exit;
 }
 ?>
-<?php include __DIR__ . '/../part/html-head.php'; ?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
 
 <style>
     form .mb-3 .form-text {
@@ -30,9 +33,9 @@ if (empty($r)) {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">編輯通訊錄</h5>
+        <div class="mt-4">
+                <div class="card-body bg-secondary rounded h-100 p-4">
+                    <h5 class="card-title">編輯興趣表單</h5>
 
                     <form name="form1" onsubmit="sendData(event)">
 
@@ -113,7 +116,8 @@ if (empty($r)) {
     </div>
 </div>
 
-
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 
 <script>
     const {
@@ -227,4 +231,4 @@ if (empty($r)) {
     const failureModal = new bootstrap.Modal('#failureModal');
     const failureInfo = document.querySelector('#failureModal .alert-danger');
 </script>
-<?php include __DIR__ . '/../part/html-foot.php'; ?>
+<?php include '../parts/html-foot.php' ?>
