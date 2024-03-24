@@ -31,4 +31,5 @@
 		$_SESSION['error'] = '先填寫表格';
 	}
 
-	header('location: index.php');
+
+	header('location: products.php');

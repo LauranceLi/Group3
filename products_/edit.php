@@ -23,5 +23,5 @@
 		$_SESSION['error'] = 'Select member to edit first';
 	}
 
-	header('location: index.php');
+	header('location: products.php');
 

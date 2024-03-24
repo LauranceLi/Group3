@@ -28,9 +28,9 @@
 </head>
 <body>
 <div class="container">
-	<h1 class="page-header text-center">Database</h1>
+	<h1 class="page-header text-center">商品上架管理</h1>
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col">
 			<div class="row">
 			<?php
 				if(isset($_SESSION['error'])){
