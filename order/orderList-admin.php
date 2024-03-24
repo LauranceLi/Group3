@@ -55,6 +55,7 @@ if ($sort_column !== '') {
 <div class="m-4">
     <div class="bg-secondary rounded h-100 p-4 w-100">
     <h3 class="pb-3">訂單列表</h3>
+
         <div class="row g-4">
             <div class="col mt-3 mb-1 d-flex justify-content-between">
                 <?php include __DIR__ . '/filter.php'; ?>
@@ -66,6 +67,7 @@ if ($sort_column !== '') {
 
         <div class="row d-flex">
             <div class="col">
+            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='add.php';">新增</button>
                 <table class="table table-bordered table-striped w-100">
                     <thead>
                         <tr>
@@ -157,4 +159,4 @@ if ($sort_column !== '') {
         }
     }
 </script>
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

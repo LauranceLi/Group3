@@ -1,15 +1,14 @@
-<?php require __DIR__ . '/parts/admin-required.php';
+<?php 
 require __DIR__ . '/parts/pdo-connect.php';
 
 $title = '新增訂單';
-$pageName = 'add';
+$pageName = 'orderList';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
-<?php include __DIR__ . '/parts/html-head.php' ?>
+<?php include '../parts/html-head.php' ?>
 <style>
     form .mb-3 .form-text {
         color: red;
@@ -30,12 +29,13 @@ if (session_status() === PHP_SESSION_NONE) {
         display: none;
     }
 </style>
-
-<?php include __DIR__ . '/parts/navbar.php' ?>
-<div class="container">
-    <div class="row">
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
+<div class="m-4">
+    <div class="row d-flex justify-content-center">
         <div class="col-6">
-            <div class="card">
+        <div class="bg-secondary rounded h-100 p-4 w-100">
                 <div class="card-body">
                     <h5 class="card-title">新增訂單</h5>
                     <form name="form1" onsubmit="sendData(event)">
@@ -54,7 +54,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <input type="text" class="form-control" id="purchaser_email" name="purchaser_email">
                             <div class="form-text"></div>
                         </div>
-                        <button type="button" class="mb-3 btn btn-secondary" id="same">同訂購人資料</button>
+                        <button type="button" class="mb-3 btn btn-outline-success" id="same">同訂購人資料</button>
                         <div class="mb-3">
                             <label for="recipient_name" class="form-label">收件人姓名</label>
                             <input type="text" class="form-control" id="recipient_name" name="recipient_name">
@@ -165,8 +165,8 @@ if (session_status() === PHP_SESSION_NONE) {
 </div>
 
 
-
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     const {
         purchaser_name: nameEl,
@@ -305,4 +305,4 @@ if (session_status() === PHP_SESSION_NONE) {
     const failModal = new bootstrap.Modal('#failModal');
     const failInfo = document.querySelector('#failModal .alert-danger');
 </script>
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

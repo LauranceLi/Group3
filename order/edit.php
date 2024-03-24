@@ -1,7 +1,7 @@
-<?php require __DIR__ . '/parts/pdo-connect.php';
-require __DIR__ . '/parts/admin-required.php';
+<?php 
+require __DIR__ . '/parts/pdo-connect.php';
 $title = '編輯訂單';
-$pageName = 'edit';
+$pageName = 'orderList';
 
 $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
@@ -13,18 +13,20 @@ $row = $pdo->query("SELECT * FROM `order` WHERE order_id=$order_id")->fetch();
 
 ?>
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
+<?php include '../parts/html-head.php' ?>
 <style>
     form .mb-3 .form-text {
         color: red;
     }
 </style>
 
-<?php include __DIR__ . '/parts/navbar.php' ?>
-<div class="container">
-    <div class="row">
+<?php include '../parts/spinner.php' ?>
+<?php include '../parts/slidebar.php' ?>
+<?php include '../parts/navbar.php' ?>
+<div class="m-4">
+    <div class="row d-flex justify-content-center">
         <div class="col-6">
-            <div class="card">
+        <div class="bg-secondary rounded h-100 p-4 w-100">
                 <div class="card-body">
                     <h5 class="card-title">編輯訂單</h5>
                     <form name="form1" onsubmit="sendData(event)">
@@ -178,9 +180,8 @@ $row = $pdo->query("SELECT * FROM `order` WHERE order_id=$order_id")->fetch();
     </div>
 </div>
 
-
-
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include '../parts/footer.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     const {
         purchaser_name: nameEl,
