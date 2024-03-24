@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-03-21 10:07:03
+-- 產生時間： 2024-03-24 19:58:41
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -187,7 +187,8 @@ INSERT INTO `employees` (`employee_id`, `employee_name`, `password`, `email`, `r
 (2, '張筱筠', '123456', 'molly3898@gmail.com', '2024-03-08 12:45:14', NULL, 1, 1, 0, 0, '筱筠'),
 (3, '韓光樺', '123456', 'helenhan46@gmail.com', '2024-03-08 12:45:14', NULL, 1, 1, 0, 0, '光樺'),
 (4, '周韋霆', '123456', 'asd0979724893@gmail.com', '2024-03-08 12:45:14', NULL, 1, 1, 0, 0, '韋霆'),
-(5, '黄柏皓', '123456', 'daniel1761590944@gmail.com', '2024-03-08 12:45:14', NULL, 1, 1, 0, 0, '柏皓');
+(5, '黄柏皓', '123456', 'daniel1761590944@gmail.com', '2024-03-08 12:45:14', NULL, 538, 1, 0, 0, '柏皓'),
+(6, 'test', '123456', 'guest@gmail.com', '2024-03-24 19:37:13', NULL, 536, 0, 0, 0, 'guest');
 
 -- --------------------------------------------------------
 
@@ -333,7 +334,8 @@ INSERT INTO `group_list` (`sid`, `group_id`, `name`, `mobile`, `email`, `nameid`
 (97, '10', '宋姣筱', '0927616196', 'erin2660@outlook.com', 'N298987345', '2007-02-21', '新北市', '2018-12-28 09:46:59', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (98, '16', '郭然益', '0970452597', 'aubrey8640@gmail.com', 'F108810988', '1997-01-15', '雲林縣', '2008-08-23 22:19:07', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (99, '7', '簡道鴻', '0960470316', 'nicole790@hotmail.com', 'U117540688', '1978-03-28', '桃園市', '2012-12-16 04:02:56', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(100, '19', '林召招', '0913669485', 'ronald1230@gmail.com', 'F167985411', '2005-02-24', '屏東縣', '2024-03-21 06:21:57', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+(100, '19', '林召招', '0913669485', 'ronald1230@gmail.com', 'F167985411', '2005-02-24', '屏東縣', '2024-03-21 06:21:57', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(104, '97', '李某某', '0986123456', 'lars108218@gmail.com', 'R123456789', '2000-08-05', '育平里育平路214號', '2024-03-24 06:40:18', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -457,8 +459,7 @@ INSERT INTO `interest_list` (`sid`, `name`, `mobile`, `email`, `contect`, `callt
 (100, '張月靜', '0961800523', 'hammer4049@gmail.com', '', '2023-12-28'),
 (101, '我猜猜', '0900000099', 'miyohatsu@gmail.com', 'qqqqq', '2024-03-11'),
 (103, '我猜猜', '0900007898', 'miyohatsu@gmail.com', 'sadxfg', '2024-03-19'),
-(105, '我不猜', '0900000888', 'miyoha11tsu@gmail.com', '韓國7天', '2024-03-22'),
-(106, '牛頭人', '0986108218', 'lars108218@gmail.com', '123', '2024-03-28');
+(105, '我不猜', '0900000888', 'miyoha11tsu@gmail.com', '韓國7天', '2024-03-22');
 
 -- --------------------------------------------------------
 
@@ -704,8 +705,12 @@ CREATE TABLE `permission` (
 
 INSERT INTO `permission` (`permission_role_id`, `sid`, `role_set`, `employees`, `members`, `points`, `itinerary`, `orders`, `products`, `form`) VALUES
 (1, 3, 'edit', 'edit', 'edit', 'edit', 'edit', 'edit', 'edit', 'edit'),
-(2, 4, 'edit', 'edit', 'view', 'edit', 'view', 'view', 'noAuthority', 'noAuthority'),
-(534, 495, 'edit', 'edit', 'noAuthority', 'view', '', 'view', 'view', 'edit');
+(2, 4, 'view', 'edit', 'view', 'edit', 'view', 'edit', 'edit', 'edit'),
+(534, 495, 'edit', 'edit', 'view', 'view', 'view', 'view', 'view', 'view'),
+(535, 496, 'view', 'noAuthority', 'noAuthority', 'view', 'view', 'view', 'edit', 'view'),
+(536, 497, 'view', 'noAuthority', 'noAuthority', 'noAuthority', 'noAuthority', 'view', 'edit', 'noAuthority'),
+(537, 498, 'view', 'view', 'edit', 'edit', 'view', 'edit', 'view', 'edit'),
+(538, 499, 'view', 'noAuthority', 'view', 'view', 'view', 'view', 'view', 'edit');
 
 -- --------------------------------------------------------
 
@@ -774,8 +779,12 @@ CREATE TABLE `role_set` (
 
 INSERT INTO `role_set` (`role_id`, `role_name`, `description`, `created_at`, `employee_id`) VALUES
 (1, '管理員', '2134', '2024-03-18 09:43:50', 1),
-(2, '銷售部門經理', '2134', '2024-03-18 09:49:22', 1),
-(534, '人事部門經理', '', '2024-03-21 10:25:19', 1);
+(2, '銷售部門經理', '', '2024-03-18 09:49:22', 1),
+(534, '人事部門經理', '', '2024-03-21 10:25:19', 1),
+(535, '商品上架人員', '', '2024-03-24 19:21:18', 1),
+(536, '员工训练账号', '', '2024-03-24 19:33:43', 1),
+(537, '订单管理人员', '', '2024-03-25 02:03:06', 1),
+(538, '行政人员', '', '2024-03-25 02:34:45', 1);
 
 -- --------------------------------------------------------
 
@@ -812,7 +821,8 @@ CREATE TABLE `serve_list` (
 
 INSERT INTO `serve_list` (`sid`, `group_id`, `name`, `mobile`, `email`, `serveitem`, `restaurant`, `restaurantaddress`, `restauranttime`, `restaurantpeople`, `airline`, `airportplace`, `airporttime`, `airportpeople`, `consultation`, `consultation question`, `consultationtime`, `contact`, `hotelname`, `hoteladdress`) VALUES
 (1, '30', '我不猜', '0900000888', 'miyoha11tsu@gmail.com', '', '悅嵐鐵板燒', '台南市東區', '2024-03-18 03:16:00', '', '長榮航空', '台南機場', '2024-03-18 03:18:00', '', '', '', '', '', '塔木德酒店-台南館', '台南市東區裕農路602-1號'),
-(4, '25', '我猜猜', '0900000010', 'miyohatsu@gmail.com', '', '港式', '台南市東區', '2024-03-18 06:24:00', '', '長榮航空', '台南機場', '2024-03-18 09:18:00', '', '', '', '', '', '華南商旅', '台南市永康區中華路152-2號');
+(4, '25', '我猜猜', '0900000010', 'miyohatsu@gmail.com', '', '港式', '台南市東區', '2024-03-18 06:24:00', '', '長榮航空', '台南機場', '2024-03-18 09:18:00', '', '', '', '', '', '華南商旅', '台南市永康區中華路152-2號'),
+(5, '97', '李某某', '0986123456', 'lars108218@gmail.com', '', '123', '育平里育平路214號', '2024-03-31 03:00:00', '', '123', 'CHIENCHUN', '2024-03-31 09:00:00', '', '', '', '', '', 'Lee', '育平里育平路214號');
 
 -- --------------------------------------------------------
 
@@ -837,7 +847,7 @@ CREATE TABLE `speech_list` (
 --
 
 INSERT INTO `speech_list` (`sid`, `group_id`, `speechtime`, `speechplace`, `speechtell`, `speechname`, `speechpeoplelimit`, `country`, `introduction`) VALUES
-(1, '1', '2024-01-14 10:30:00', '台北市內湖區洲子街72號一樓', '02-66041913', '游國珍', '30', '南極', '包船 圓夢南極\r\n地球上的最後一塊淨土–南極，是旅人的最終夢想。但是對大多數人來說，遙遠的距離、惡劣的天候、語言的隔閡，都讓旅人難以企及。\r\n2023年，以包船的方式，安排日月合朔號，帶領200位台灣人遠征南極。\r\n2024年，進一步包下更新、更大、更豪華的Seabourn Pursuit 南極追夢號，這一次，對台灣人來說，南極不再是一趟艱辛、遙遠的旅途。以2023.08下水的Seabourn旗艦船--南極追夢號款待貴賓，從台灣出發、全程安排中文領隊，讓您以最舒適奢華的行程，成就人生壯遊！\r\n\r\n想了解南極有什麼獨特生態、旅遊行程資訊或是郵輪相關細節嗎？\r\n歡迎各位親臨講座，由2024年初才從南極返台的元本旅遊董事長游國珍為您揭開南極旅遊的小秘密！'),
+(1, '1', '2024-01-14 10:30:00', '台北市內湖區洲子街72號一樓', '02-66041913', '游國珍', '30', '南極', '包艘船 圓夢南極地球上的最後一塊淨土–南極，是旅人的最終夢想。但是對大多數人來說，遙遠的距離、惡劣的天候、語言的隔閡，都讓旅人難以企及。2023年，以包船的方式，安排日月合朔號，帶領200位台灣人遠征南極。2024年，進一步包下更新、更大、更豪華的Seabourn Pursuit 南極追夢號，這一次，對台灣人來說，南極不再是一趟艱辛、遙遠的旅途。以2023.08下水的Seabourn旗艦船--南極追夢號款待貴賓，從台灣出發、全程安排中文領隊，讓您以最舒適奢華的行程，成就人生壯遊！想了解南極有什麼獨特生態、旅遊行程資訊或是郵輪相關細節嗎？歡迎各位親臨講座，由2024年初才從南極返台的元本旅遊董事長游國珍為您揭開南極旅遊的小秘密！'),
 (2, '2', '2024-01-10 10:30:00', '台北市內湖區洲子街72號一樓', '02-66041914', '歐洲旅遊達人Daniel', '30', '葡萄牙', '提到葡萄牙這個國家，可能大部分的人首先會聯想到足球明星C羅。但是你可能不知道葡萄牙不但是大航海時代的初代全球霸權，還是全世界第一個廢除吸毒刑事處罰的國家，更是全球一半的軟木塞的出產國。\r\n葡萄牙到底還有哪些歷史、文化、美食、景點故事，就讓歐洲達人Daniel為您一一道來。'),
 (3, '3', '2023-12-05 02:30:00', '台北市內湖區洲子街72號一樓', '02-66041915', '歐洲旅遊達人Daniel', '30', '法國', '融合了奔跑的激情與紅酒的醇香，波爾多梅鐸紅酒馬拉松不僅是一場馬拉松，也是探索法國波爾多深厚葡萄酒文化的絕佳機會。這個獨一無二的活動將帶領你穿越波爾多最美麗的葡萄園經過各大酒莊的補給，在賽道上享受美酒和當地美食。\r\n從波爾多的古老街道到巴塞隆納的現代藝術，帶您體驗西南法、巴塞隆納最精彩的面貌，法國和西班牙的豐富文化、絕美景致和令人難忘的旅遊體驗。'),
 (4, '4', '2023-11-22 06:30:00', '台北市內湖區洲子街72號一樓', '02-66041916', '歐洲旅遊達人Daniel', '30', '法國', '南法最美法國里維埃拉-蔚藍海岸，濃郁飄香南法普羅旺斯山城小鎮、南法最美村莊-山居歲月法式優雅生活哲學，世界文化遺產聖艾米濃中世紀小鎮葡萄酒產區濃濃酒香，羅亞爾河城堡區值不值得入住?住宿古蹟城堡一晚，法國旅遊還有什麼可以看？快來跟著元本旅遊規劃師一起神遊法國吧！'),
@@ -1175,7 +1185,8 @@ INSERT INTO `transactions` (`transaction_id`) VALUES
 ('20240320000014'),
 ('20240320000015'),
 ('20240321000001'),
-('20240321000002');
+('20240321000002'),
+('20240324000001');
 
 -- --------------------------------------------------------
 
@@ -1355,25 +1366,25 @@ ALTER TABLE `travel_`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `customization_list`
 --
 ALTER TABLE `customization_list`
-  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=101;
+  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=102;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `group_list`
 --
 ALTER TABLE `group_list`
-  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=102;
+  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=105;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `interest_list`
 --
 ALTER TABLE `interest_list`
-  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=108;
+  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=109;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_detail`
@@ -1391,31 +1402,31 @@ ALTER TABLE `order_group`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `permission`
 --
 ALTER TABLE `permission`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=496;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `role_set`
 --
 ALTER TABLE `role_set`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=535;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=539;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `serve_list`
 --
 ALTER TABLE `serve_list`
-  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=5;
+  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `speech_list`
 --
 ALTER TABLE `speech_list`
-  MODIFY `sid` int(10) NOT NULL AUTO_INCREMENT COMMENT '起頭序號', AUTO_INCREMENT=16;
+  MODIFY `sid` int(10) NOT NULL AUTO_INCREMENT COMMENT '起頭序號', AUTO_INCREMENT=18;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `travel_`
