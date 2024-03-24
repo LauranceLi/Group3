@@ -2,6 +2,9 @@
 header('Content-type:text/html; charset=utf-8');
 session_start();
 include './parts/pdo_connect.php';
+if(isset($_SESSION['admin'])){
+  header('Location: homepage/homepage.php');
+}
 
 $email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
@@ -32,19 +35,21 @@ if ($employee_result->num_rows == 1) {
   ON role_set.role_id = permission.permission_role_id
   WHERE role_id = $role_id";
 
-  $permission_result = $conn->query($permission_sql);
-  $permission_row = $permission_result->fetch_assoc();
+  $permission_result = $conn->query($permission_sql)->fetch_assoc();
+
   $_SESSION['permission'] = [
-    'role_set' => $permission_row['role_set'],
-    'role_name' => $permission_row['role_name'],
-    'employees' => $permission_row['employees'],
-    'members' => $permission_row['members'],
-    'points' => $permission_row['points'],
-    'itinerary' => $permission_row['itinerary'],
-    'orders' => $permission_row['orders'],
-    'products' => $permission_row['products'],
-    'form' => $permission_row['form']
+    'role_set' => $permission_result['role_set'],
+    'role_name' => $permission_result['role_name'],
+    'employees' => $permission_result['employees'],
+    'members' => $permission_result['members'],
+    'points' => $permission_result['points'],
+    'itinerary' => $permission_result['itinerary'],
+    'orders' => $permission_result['orders'],
+    'products' => $permission_result['products'],
+    'form' => $permission_result['form']
   ];
+
+
 
 
 

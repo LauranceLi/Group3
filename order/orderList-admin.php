@@ -1,5 +1,11 @@
 <!-- 用引用檔案的方式連線資料庫 -->
 <?php require __DIR__ . '/parts/pdo-connect.php';
+$isAbled = $_SESSION['permission']['orders'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['orders']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
+
 $title = '訂單列表';
 $pageName = 'orderList';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -67,7 +73,7 @@ if ($sort_column !== '') {
 
         <div class="row d-flex">
             <div class="col">
-            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='add.php';">新增</button>
+            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='add.php';" <?= $isAbled ?>>新增</button>
                 <table class="table table-bordered table-striped w-100">
                     <thead>
                         <tr>
@@ -100,8 +106,8 @@ if ($sort_column !== '') {
                                 <td><?= $r['shipping_address'] ?></td>
                                 <td><?= $r['shipping_date'] ?></td>
                                 <td><?= $r['order_date'] ?></td>
-                                <td><a href="edit.php?order_id=<?= $r['order_id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                <td><a href="javascript:deleteOne(<?= $r['order_id'] ?>)"><i class="fa-solid fa-trash  text-danger"></i></a></td>
+                                <td><a href="edit.php?order_id=<?= $r['order_id'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td><a href="javascript:deleteOne(<?= $r['order_id'] ?>)" class="<?= $isAbled ?>"><i class="fa-solid fa-trash  text-danger"></i></a></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

@@ -1,7 +1,14 @@
 <?php
 require __DIR__ . '/parts/pdo-connect.php';
 $title = '篩選列表';
-$pageName = 'filter_result';
+$pageName = 'orderList';
+
+$pageName = 'orderList';
+$isAbled = $_SESSION['permission']['orders'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['orders']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $orderStatus = isset($_POST['order_status']) ? $_POST['order_status'] : '';
 $paymentStatus = isset($_POST['payment_status']) ? $_POST['payment_status'] : '';
 $shippingStatus = isset($_POST['shipping_status']) ? $_POST['shipping_status'] : '';
@@ -115,8 +122,11 @@ $rowCount = count($searchResults);
                             echo '<td>', $result['shipping_address'], '</td>';
                             echo '<td>', $result['shipping_date'], '</td>';
                             echo '<td>', $result['order_date'], '</td>';
-                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '"><i class="fa-solid fa-pen-to-square"></i></a></td>';
-                            echo '<td><a href="javascript:deleteOne(', $result['order_id'], ')"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
+
+
+                            echo '<td><a href="edit.php?order_id=', $result['order_id'], '" class="', $isAbled ,'"><i class="fa-solid fa-pen-to-square"></i></a></td>';
+                            echo '<td><a href="javascript:deleteOne(', $result['order_id'], ')"  class="', $isAbled ,'"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
+
                             echo '</tr>';
                             echo "\n";
                         }

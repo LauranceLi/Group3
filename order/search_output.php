@@ -1,6 +1,11 @@
 <?php require __DIR__ . '/parts/pdo-connect.php';
 $title = '搜尋結果';
-$pageName = 'search_result';
+$pageName = 'orderList';
+$isAbled = $_SESSION['permission']['orders'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['orders']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 ?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/spinner.php' ?>
@@ -70,8 +75,8 @@ $rowCount = count($rows);
 						echo '<td>', $row['shipping_address'], '</td>';
 						echo '<td>', $row['shipping_date'], '</td>';
 						echo '<td>', $row['order_date'], '</td>';
-						echo '<td><a href="edit.php?order_id=', $row['order_id'], '"><i class="fa-solid fa-pen-to-square"></i></a></td>';
-						echo '<td><a href="javascript:deleteOne(', $row['order_id'], ')"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
+						echo '<td><a href="edit.php?order_id=', $row['order_id'], '" class="', $isAbled ,'"><i class="fa-solid fa-pen-to-square"></i></a></td>';
+						echo '<td><a href="javascript:deleteOne(', $row['order_id'], ')"  class="', $isAbled ,'"><i class="fa-solid fa-trash  text-danger"></i></a></td>';
 						echo '</tr>';
 						echo "\n";
 					}

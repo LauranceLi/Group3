@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-hant-TW">
 
@@ -32,5 +37,26 @@
     <style>
         .sidebar {
             overflow: hidden;
+        }
+
+        .noAuthority {
+            background-color: black !important;
+            pointer-events: none !important;
+            border: 0;
+            opacity: 0.3 !important;
+            user-select: none;
+        }
+
+        a.noAuthority:hover,
+        a.disabled:hover {
+
+            cursor: not-allowed;
+            /* 禁止鼠标点击事件 */
+        }
+
+        .disabled {
+            pointer-events: none !important;
+            opacity: 0.3 !important;
+            user-select: none;
         }
     </style>
