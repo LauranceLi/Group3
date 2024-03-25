@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "講座表單";
-$pageName = 'speechList';
+$pageName = 'speechForm';
 
 
 // 編輯，去篩選sid，亂輸入
@@ -95,7 +100,7 @@ if (empty($r)) {
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary">修改</button>
+                        <button type="submit" class="btn btn-primary" <?= $isAbled ?>>修改</button>
                     </form>
 
                 </div>

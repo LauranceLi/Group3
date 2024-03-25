@@ -2,7 +2,7 @@
 require '../parts/form_pdo-connect.php';
 session_start();
 $title = "團體表單";
-$pageName = 'groupList';
+$pageName = 'groupForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>

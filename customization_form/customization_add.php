@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "客製化表單";
-$pageName = 'customizationList';
+$pageName = 'customizationForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>

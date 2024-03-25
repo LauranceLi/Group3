@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "服務預約表單";
-$pageName = 'serveList';
+$pageName = 'serveForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>
@@ -87,7 +92,7 @@ $pageName = 'serveList';
                                     <input type="text" class="form-control" id="hoteladdress" name="hoteladdress">
                                     <div class="form-text"></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">送出</button>
+                                <button type="submit" class="btn btn-primary" <?= $isAbled ?>>送出</button>
                             </form>
                         </div>
                     </div>

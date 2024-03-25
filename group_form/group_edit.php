@@ -3,7 +3,7 @@
 require '../parts/form_pdo-connect.php';
 session_start();
 $title = '團體表單';
-$pageName = 'groupList';
+$pageName = 'groupForm';
 
 // 編輯，去篩選sid，亂輸入
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

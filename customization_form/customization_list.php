@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "客製化表單";
-$pageName = 'customizationList';
+$pageName = 'customizationForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>
@@ -56,7 +61,7 @@ $rows = $pdo->query($sql)->fetchAll();
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
         <div class="bg-secondary rounded h-100 p-4 ">
             <h3 class="pb-3">客製化表單一覽</h3>
-            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='customization_add.php';">新增</button>
+            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='customization_add.php';" <?=$isAbled?>>新增</button>
             <!-- 下方欄位區塊 -->
             <table class="table table-bordered table-hover">
                 <thead>
@@ -76,7 +81,7 @@ $rows = $pdo->query($sql)->fetchAll();
                 <tbody>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
-                            <td class="text-center"><a href="customization_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class="text-center"><a href="customization_edit.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
 
                             <td class="text-center"><?= $r['sid'] ?></td>
                             <td class="text-center"><?= $r['name'] ?></td>
@@ -86,7 +91,7 @@ $rows = $pdo->query($sql)->fetchAll();
                             <td class="text-center"><?= $r['transportation'] ?></td>
                             <td class="text-center"><?= $r['budget'] ?></td>
                             <td class="text-center"><?= $r['calltime'] ?></td>
-                            <td class="text-center"><a href="customization_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="customization_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>

@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "興趣表單";
-$pageName = 'interestList';
+$pageName = 'interestForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>
@@ -54,7 +59,7 @@ $rows = $pdo->query($sql)->fetchAll();
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
         <div class="bg-secondary rounded h-100 p-4 ">
             <h3 class="pb-3">興趣表單一覽</h3>
-            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='interest_add.php';">新增</button>
+            <button class="btn btn-outline-primary mb-2" type="button" onclick="window.location.href='interest_add.php';" <?= $isAbled?>>新增</button>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -71,14 +76,14 @@ $rows = $pdo->query($sql)->fetchAll();
                 <tbody>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
-                            <td class="text-center"><a href="interest_edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class="text-center"><a href="interest_edit.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td class="text-center"><?= $r['sid'] ?></td>
                             <td class="text-center"><?= $r['name'] ?></td>
                             <td class="text-center"><?= $r['mobile'] ?></td>
                             <td><?= $r['email'] ?></td>
                             <td class="text-center"><?= $r['contect'] ?></td>
                             <td class="text-center"><?= $r['calltime'] ?></td>
-                            <td class="text-center"><a href="interest_delite.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="interest_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>

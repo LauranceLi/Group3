@@ -1,8 +1,13 @@
 <?php
 require '../parts/form_pdo-connect.php';
 session_start();
+$isAbled = $_SESSION['permission']['form'] == 'view' ? 'disabled' : '';
+if ($_SESSION['permission']['form']=='noAuthority'){
+    header('Location: ../index.php');
+    exit;
+}
 $title = "講座表單";
-$pageName = 'speechList';
+$pageName = 'speechForm';
 
 ?>
 <?php include '../parts/html-head.php' ?>
@@ -103,7 +108,7 @@ $pageName = 'speechList';
                                     <textarea class="form-control" id="floatingTextarea2" name="introduction" style="height: 100px"></textarea>
                                     <div class="form-text"></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">送出</button>
+                                <button type="submit" class="btn btn-primary" <?= $isAbled ?>>送出</button>
                             </form>
                         </div>
                     </div>
