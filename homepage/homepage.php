@@ -12,7 +12,7 @@ $pageName = 'homepage';
 
 <?php
 date_default_timezone_set('Asia/Shanghai');
-$current_time = date("Y-m-d H:i:s");
+$current_time = date("Y-m-d H:i");
 $current_hour = date('H:i');
 
 $another_hour = date('H:i', strtotime('12:00'));
