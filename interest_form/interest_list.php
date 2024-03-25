@@ -83,7 +83,7 @@ $rows = $pdo->query($sql)->fetchAll();
                             <td><?= $r['email'] ?></td>
                             <td class="text-center"><?= $r['contect'] ?></td>
                             <td class="text-center"><?= $r['calltime'] ?></td>
-                            <td class="text-center"><a href="interest_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="interest_delete.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>

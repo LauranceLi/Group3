@@ -98,7 +98,7 @@ $rows = $pdo->query($sql)->fetchAll();
                             <td class="text-center"><?= $r['airporttime'] ?></td>
                             <td class="text-center"><?= $r['hotelname'] ?></td>
                             <td class="text-center"><?= $r['hoteladdress'] ?></td>
-                            <td class="text-center"><a href="serve_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="serve_delete.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>

@@ -87,7 +87,7 @@ $rows = $pdo->query($sql)->fetchAll();
                                 </button>
                             </td>
 
-                            <td class="text-center"><a href="speech_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="speech_delete.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>

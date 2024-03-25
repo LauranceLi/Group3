@@ -91,7 +91,7 @@ $rows = $pdo->query($sql)->fetchAll();
                             <td class="text-center"><?= $r['transportation'] ?></td>
                             <td class="text-center"><?= $r['budget'] ?></td>
                             <td class="text-center"><?= $r['calltime'] ?></td>
-                            <td class="text-center"><a href="customization_delite.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                            <td class="text-center"><a href="customization_delete.php?sid=<?= $r['sid'] ?>" class="<?= $isAbled ?>"><i class="fa-solid fa-trash text-danger"></i></a></td>
                         </tr>
 
                     <?php endforeach ?>
