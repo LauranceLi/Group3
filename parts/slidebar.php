@@ -64,12 +64,12 @@
                 <a href="#" class="nav-link dropdown-toggle <?=$isFormActive?> <?=$_SESSION['permission']['form']?>" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
 
                 <div class="dropdown-menu bg-transparent border-0 <?= $isFormShow?>">
-                    <a href="../form/group_form/group_list.php" class="dropdown-item <?=$pageName == 'groupList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">團體表單</a>
+                    <a href="../group_form/group_list.php" class="dropdown-item <?=$pageName == 'groupList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">團體表單</a>
 
-                    <a href="../form/speech_form/speech_list.php" class="dropdown-item <?=$pageName == 'speechList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">講座表單</a>
-                    <a href="../form/customization_form/customization_list.php" class="dropdown-item <?=$pageName == 'customizationList' ? 'active' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">客製化表單</a>
-                    <a href="../form/interest_form/interest_list.php" class="dropdown-item <?=$pageName == 'interestList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">興趣表單</a>
-                    <a href="../form/serve_form/serve_list.php" class="dropdown-item <?=$pageName == 'serveList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">服務預約表單</a>
+                    <a href="../speech_form/speech_list.php" class="dropdown-item <?=$pageName == 'speechList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">講座表單</a>
+                    <a href="../customization_form/customization_list.php" class="dropdown-item <?=$pageName == 'customizationList' ? 'active' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">客製化表單</a>
+                    <a href="../interest_form/interest_list.php" class="dropdown-item <?=$pageName == 'interestList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">興趣表單</a>
+                    <a href="../serve_form/serve_list.php" class="dropdown-item <?=$pageName == 'serveList' ? 'active show' : ''?>" aria-expanded="<?= $isFormExpand?>" data-bs-popper="<?= $isFormProper?>">服務預約表單</a>
                 </div>
             </div>
 
