@@ -30,6 +30,6 @@
 		$_SESSION['error'] = 'Select item to edit first';
 	}
 
-	header('location: index.php');
+	header('location: itinerary.php');
 
 ?>

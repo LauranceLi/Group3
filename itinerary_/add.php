@@ -27,4 +27,4 @@ include_once('connection.php');
 		$_SESSION['error'] = 'Fill up add form first';
 	}
 
- header('location: index.php');
+ header('location: itinerary.php');

@@ -28,6 +28,6 @@ if (isset($_POST['edit'])) {
 	$_SESSION['error'] = 'Select item to edit first';
 }
 
-header('location: index.php');
+header('location: itinerary_order.php');
 
 ?>

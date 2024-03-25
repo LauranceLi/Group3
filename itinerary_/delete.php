@@ -19,5 +19,5 @@
 		$_SESSION['error'] = 'Select itinerary to delete first';
 	}
 
-	header('location: index.php');
+	header('location: itinerary.php');
 ?>

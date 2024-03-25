@@ -28,5 +28,5 @@
 		$_SESSION['error'] = 'Fill up add form first';
 	}
 
-	header('location: index.php');
+	header('location: itinerary_order.php');
 ?>
