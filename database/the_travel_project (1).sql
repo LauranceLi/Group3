@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-03-24 19:58:41
+-- 產生時間： 2024-03-25 06:13:31
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -708,7 +708,7 @@ INSERT INTO `permission` (`permission_role_id`, `sid`, `role_set`, `employees`, 
 (2, 4, 'view', 'edit', 'view', 'edit', 'view', 'edit', 'edit', 'edit'),
 (534, 495, 'edit', 'edit', 'view', 'view', 'view', 'view', 'view', 'view'),
 (535, 496, 'view', 'noAuthority', 'noAuthority', 'view', 'view', 'view', 'edit', 'view'),
-(536, 497, 'view', 'noAuthority', 'noAuthority', 'noAuthority', 'noAuthority', 'view', 'edit', 'noAuthority'),
+(536, 497, 'view', 'noAuthority', 'noAuthority', 'noAuthority', 'view', 'view', 'edit', 'view'),
 (537, 498, 'view', 'view', 'edit', 'edit', 'view', 'edit', 'view', 'edit'),
 (538, 499, 'view', 'noAuthority', 'view', 'view', 'view', 'view', 'view', 'edit');
 
@@ -1420,13 +1420,13 @@ ALTER TABLE `role_set`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `serve_list`
 --
 ALTER TABLE `serve_list`
-  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=6;
+  MODIFY `sid` int(4) NOT NULL AUTO_INCREMENT COMMENT '起頭編號', AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `speech_list`
 --
 ALTER TABLE `speech_list`
-  MODIFY `sid` int(10) NOT NULL AUTO_INCREMENT COMMENT '起頭序號', AUTO_INCREMENT=18;
+  MODIFY `sid` int(10) NOT NULL AUTO_INCREMENT COMMENT '起頭序號', AUTO_INCREMENT=19;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `travel_`
