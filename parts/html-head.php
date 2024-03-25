@@ -59,4 +59,11 @@ if (!isset($_SESSION)) {
             opacity: 0.3 !important;
             user-select: none;
         }
+
+        /* #shipping_date {
+            color: red;
+        } */
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
     </style>
