@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/parts/pdo-connect.php';session_start();
 $isAbled = $_SESSION['permission']['orders'] == 'view' ? 'disabled' : '';
 if ($_SESSION['permission']['orders']=='noAuthority'){
-    header('Location: ../index.php');
+    header('Location: ../noAuthority.php');
     exit;
 }
 
