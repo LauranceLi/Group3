@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style-new.css">
+</head>
+<body>
+    <div class="mainMenu d-flex align-items-center justify-content-between">
+        <!-- Close Icon -->
+        <div class="closeIcon">
+            <i class="ti-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo Area -->
+        <div class="logo-area">
+            <a href="index.html">Sonar</a>
+        </div>
+        <!-- Nav -->
+        <div class="sonarNav wow fadeInUp" data-wow-delay="1s">
+            <nav>
+                <ul>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about-me.html">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="elements.html">Elements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lecture.html">Lecture</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Copwrite Text -->
+        <div class="copywrite-text">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+        </div>
+    </div>
+    <header class="header-area" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="menu-area d-flex justify-content-between">
+                        <!-- Logo Area  -->
+                        <div class="logo-area">
+                            <a href="index.html">Sonar</a>
+                        </div>
+                        <div class="menu-content-area d-flex align-items-center">
+                            <!-- Header Social Area -->
+                            <div class="header-social-area d-flex align-items-center">
+                                <a href="./cart.html" data-toggle="tooltip" data-placement="bottom" title="Cart"><i class="fa-solid fa-cart-shopping" ></i></a>
+                            </div>
+                            <!-- Menu Icon -->
+                            <span class="navbar-toggler-icon" id="menuIcon"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="circle">
+            <h4>1</h4>
+        </div>
+        <h4 class="remind">填寫訂單資訊</h4>
+        <div class="border"></div>
+        <div class="circle2">
+            <h4>2</h4>
+        </div>
+        <h4 class="remind">完成付款</h4>
+    </div>
+    <section>
+        <div class="container">
+            <form action="#" name="">
+                <div class="main-checkout">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">填寫詳細資訊</h5>
+                            <div class="mb-3">
+                                <label for="purchaser_name" class="form-label">訂購人姓名</label>
+                                <input type="text" class="form-control" id="purchaser_name" name="purchaser_name">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="purchaser_mobile" class="form-label">訂購人手機號碼</label>
+                                <input type="text" class="form-control" id="purchaser_mobile" name="purchaser_mobile">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="purchaser_email" class="form-label">訂購人email</label>
+                                <input type="text" class="form-control" id="purchaser_email" name="purchaser_email">
+                                <div class="form-text"></div>
+                            </div>
+                            <button type="button" class="mb-3 btn btn-secondary" id="same">同訂購人資料</button>
+                            <div class="mb-3">
+                                <label for="recipient_name" class="form-label">收件人姓名</label>
+                                <input type="text" class="form-control" id="recipient_name" name="recipient_name">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient_mobile" class="form-label">收件人手機號碼</label>
+                                <input type="text" class="form-control" id="recipient_mobile" name="recipient_mobile">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3 list-title">送貨方式</div>
+                            <div class="radio">
+                                <label for="shipping_method1" class="form-label shipping_method">超取</label>
+                                <input type="radio" class="" id="shipping_method1" name="shipping_method" value="超取">
+                                <div class="form-text"></div>
+                                <label for="shipping_method2" class="form-label shipping_method">中華郵政</label>
+                                <input type="radio" class="" id="shipping_method2" name="shipping_method" value="中華郵政">
+                                <div class="form-text"></div>
+                                <label for="shipping_method3" class="form-label shipping_method">宅配</label>
+                                <input type="radio" class="" id="shipping_method3" name="shipping_method" value="宅配">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3 address">
+                                <select id="county" name="county" class="form-control mb-3">
+                                    <option value="請選擇縣市">請選擇縣市</option>
+                                    <option value="台北市">台北市</option>
+                                    <option value="新北市">新北市</option>
+                                    <option value="新北市">桃園市</option>
+                                    <option value="台中市">台中市</option>
+                                    <option value="台南市">台南市</option>
+                                    <option value="高雄市">高雄市</option>
+                                    <option value="基隆市">基隆市</option>
+                                    <option value="新竹市">新竹市</option>
+                                    <option value="嘉義市">嘉義市</option>
+                                    <option value="新竹縣">新竹縣</option>
+                                    <option value="苗栗縣">苗栗縣</option>
+                                    <option value="彰化縣">彰化縣</option>
+                                    <option value="南投縣">南投縣</option>
+                                    <option value="雲林縣">雲林縣</option>
+                                    <option value="嘉義縣">嘉義縣</option>
+                                    <option value="屏東縣">屏東縣</option>
+                                    <option value="宜蘭縣">宜蘭縣</option>
+                                    <option value="花蓮縣">花蓮縣</option>
+                                    <option value="台東縣">台東縣</option>
+                                    <option value="澎湖縣">澎湖縣</option>
+                                </select>
+                                <select id="district" name="district" class="form-control mb-3">
+                                    <option value="">請先選擇縣市</option>
+                                </select>
+                                    <input type="text" id="address" name="address" placeholder="輸入詳細地址" class="form-control mb-3">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3 list-title">付費方式</div>
+                            <div class="radio">
+                                <label for="payment_method1" class="form-label payment_method">ATM轉帳</label>
+                                <input type="radio" class="" id="payment_method1" name="payment_method" value="ATM轉帳">
+                                <div class="form-text"></div>
+                                <label for="payment_method3" class="form-label payment_method">LINE PAY</label>
+                                <input type="radio" class="" id="payment_method3" name="payment_method" value="LINE PAY">
+                                <div class="form-text"></div>
+                                <label for="payment_method4" class="form-label payment_method">貨到付款</label>
+                                <input type="radio" class="" id="payment_method4" name="payment_method" value="貨到付款">
+                                <div class="form-text"></div>
+                            </div>
+                            <div class="mb-3 list-title">發票類型</div>
+                            <div class="radio">
+                                <label for="uniform_invoiceEletric" class="form-label invioce">手機條碼</label>
+                                <input type="radio" class="" id="uniform_invoiceEletric" name="invoice_type" value="二聯電子發票">
+                                <div class="form-text"></div>
+                                <label for="uniform_invoiceTri" class="form-label invioce">三聯發票</label>
+                                <input type="radio" class="" id="uniform_invoiceTri" name="invoice_type" value="三聯發票">
+                                <div class="form-text"></div>
+                            </div>
+                            <!-- 二聯電子發票對應的輸入框 -->
+                            <div id="eletricInvoiceInput" style="display: none;">
+                                <input type="text" id="eletricInvoiceInputField" placeholder="請輸入手機條碼" class="form-control">
+                                <div class="form-text"></div>
+                            </div>
+                            <!-- 三聯發票對應的輸入框 -->
+                            <div id="triInvoiceInput" style="display: none;">
+                                <input type="text" id="triInvoiceInputField" placeholder="請輸入三聯發票號碼" class="form-control">
+                                <div class="form-text"></div>
+                            </div>                     
+                        </div>
+                    </div>
+                </div>
+                <div class="side-checkout">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h6>費用明細</h6></li>
+                        <div class="list-group-item">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">使用折扣點數</label>
+                            <!-- 折扣點數 -->
+                            <div class="discount-info">
+                                目前有<span id="discountPoints">XX</span>點，可以折抵<span id="discountAmount">XX</span>元
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">使用優惠券</label>
+                            <!-- 優惠券 -->
+                            <div class="coupon-input">
+                                <label for="couponCode"></label>
+                                <input type="text" id="couponCode" class="form-control form-check-input" placeholder="輸入優惠券號碼">
+                            </div>
+                        </div> 
+                        <li class="list-group-item">
+                            <div class="shopping-item">
+                                <span class="text">追夢到秘魯：探索失落文明，尋覓古都風華</span>
+                                <span>X1</span>
+                                <span>$400</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">小計<span class="order-cost">$400</span></li>
+                        <li class="list-group-item">總額<span class="total-cost">$400</span></li>
+                        <li class="list-group-item">
+                            <button type="submit" class="btn btn-primary">確認付款</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-text">
+            <div class="">
+                <p>聯繫我們</p>
+                <p>地址:XX市XX區XX路XXX號</p>
+                <p>電話：+886-XXXXXXX</p>
+                <p>電子郵件：info@example.com</p>
+            </div>
+            <div class="social-media">
+                <p>關注我們</p>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+            <!-- jQuery (Necessary for All JavaScript Plugins) -->
+            <script src="js/jquery/jquery-2.2.4.min.js"></script>
+            <!-- Popper js -->
+            <script src="js/popper.min.js"></script>
+            <!-- Bootstrap js -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Plugins js -->
+            <script src="js/plugins.js"></script>
+            <!-- Active js -->
+            <script src="js/active.js"></script>
+    <script>
+        document.querySelector('#same').addEventListener('click', () => {
+            let name_value = document.querySelector('#purchaser_name').value;
+            let mobile_value = document.querySelector('#purchaser_mobile').value;
+            document.querySelector('#recipient_name').value = name_value;
+            document.querySelector('#recipient_mobile').value = mobile_value;
+        });
+        const eletricInvoiceInput = document.getElementById('eletricInvoiceInput');
+        const triInvoiceInput = document.getElementById('triInvoiceInput');
+        const eletricRadio = document.getElementById('uniform_invoiceEletric');
+        const triRadio = document.getElementById('uniform_invoiceTri');
+
+        // 監聽二聯電子發票單選按鈕的點擊事件
+        eletricRadio.addEventListener('click', function() {
+            eletricInvoiceInput.style.display = 'block';
+            triInvoiceInput.style.display = 'none';
+        });
+
+        // 監聽三聯發票單選按鈕的點擊事件
+        triRadio.addEventListener('click', function() {
+            eletricInvoiceInput.style.display = 'none';
+            triInvoiceInput.style.display = 'block';
+        });
+    const discountInfo = document.querySelector('.discount-info');
+        const couponInput = document.querySelector('.coupon-input');
+        const radio1 = document.getElementById('flexRadioDefault1');
+        const radio2 = document.getElementById('flexRadioDefault2');
+
+        // 显示折扣點數
+        radio1.addEventListener('click', function() {
+            discountInfo.style.display = 'block';
+            couponInput.style.display = 'none';
+        });
+
+        // 显示優惠券
+        radio2.addEventListener('click', function() {
+            discountInfo.style.display = 'none';
+            couponInput.style.display = 'block';
+        });
+                // 獲取縣市下拉選單
+                let countySelect = document.getElementById("county");
+        // 獲取行政區下拉選單
+        let districtSelect = document.getElementById("district");
+
+        // 定義各縣市對應的行政區
+        let districtOptions = {
+            "台北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
+            "新北市": ["板橋區", "新莊區", "中和區", "永和區", "土城區", "樹林區", "三峽區", "鶯歌區", "三重區", "蘆洲區", "五股區", "泰山區", "林口區", "八里區", "淡水區", "三芝區", "石門區", "金山區", "萬里區", "汐止區", "平溪區", "貢寮區", "雙溪區", "深坑區", "瑞芳區", "石碇區", "新店區", "坪林區", "烏來區"],
+            "桃園市": ["桃園區", "中壢區", "平鎮區", "八德區", "楊梅區", "蘆竹區", "大溪區", "龍潭區", "龜山區", "大園區", "觀音區", "新屋區", "復興區"],
+            "台中市": ["中區", "東區", "南區", "西區", "北區", "北屯區", "西屯區", "南屯區", "太平區", "大里區", "霧峰區", "烏日區", "豐原區", "后里區", "石岡區", "東勢區", "和平區", "新社區", "潭子區", "大雅區", "神岡區", "大肚區", "沙鹿區", "龍井區", "梧棲區", "清水區", "大甲區", "外埔區", "大安區"],
+            "台南市": ["中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "歸仁區", "新化區", "左鎮區", "玉井區", "楠西區", "南化區", "仁德區", "關廟區", "龍崎區", "官田區", "麻豆區", "佳里區", "西港區", "七股區", "將軍區", "學甲區", "北門區", "新營區", "後壁區", "白河區", "東山區", "六甲區", "下營區", "柳營區", "鹽水區", "善化區", "大內區", "山上區", "新市區", "安定區"],
+            "高雄市": ["新興區", "前金區", "苓雅區", "鹽埕區", "鼓山區", "旗津區", "前鎮區", "三民區", "楠梓區", "小港區", "左營區", "仁武區", "大社區", "岡山區", "路竹區", "阿蓮區", "田寮區", "燕巢區", "橋頭區", "梓官區", "彌陀區", "永安區", "湖內區", "鳳山區", "大寮區", "林園區", "鳥松區", "大樹區", "旗山區", "美濃區", "六龜區", "內門區", "杉林區", "甲仙區", "桃源區", "那瑪夏區", "茂林區", "茄萣區"],
+            "基隆市": ["中正區", "七堵區", "暖暖區", "仁愛區", "中山區", "安樂區"],
+            "新竹市": ["東區", "北區", "香山區"],
+            "嘉義市": ["東區", "西區"],
+            "新竹縣": ["竹北市", "竹東鎮", "新埔鎮", "關西鎮", "湖口鄉", "新豐鄉", "峨眉鄉", "寶山鄉", "北埔鄉", "芎林鄉", "橫山鄉", "尖石鄉", "五峰鄉"],
+            "苗栗縣": ["苗栗市", "頭份市", "苑裡鎮", "通霄鎮", "竹南鎮", "後龍鎮", "卓蘭鎮", "大湖鄉", "公館鄉", "銅鑼鄉", "南庄鄉", "頭屋鄉", "三義鄉", "西湖鄉", "造橋鄉", "三灣鄉", "獅潭鄉", "泰安鄉"],
+            "彰化縣": ["彰化市", "員林市", "鹿港鎮", "和美鎮", "北斗鎮", "溪湖鎮", "田中鎮", "二林鎮", "線西鄉", "伸港鄉", "福興鄉", "秀水鄉", "花壇鄉", "芬園鄉", "大村鄉", "埔鹽鄉", "埔心鄉", "永靖鄉", "社頭鄉", "二水鄉", "田尾鄉", "埤頭鄉", "芳苑鄉", "大城鄉", "竹塘鄉", "溪州鄉"],
+            "南投縣": ["南投市", "埔里鎮", "草屯鎮", "竹山鎮", "集集鎮", "名間鄉", "鹿谷鄉", "中寮鄉", "魚池鄉", "國姓鄉", "水里鄉", "信義鄉", "仁愛鄉"],
+            "雲林縣": ["斗六市", "斗南鎮", "虎尾鎮", "西螺鎮", "土庫鎮", "北港鎮", "古坑鄉", "大埤鄉", "莿桐鄉", "林內鄉", "二崙鄉", "崙背鄉", "麥寮鄉", "東勢鄉", "褒忠鄉", "臺西鄉", "元長鄉", "四湖鄉", "口湖鄉", "水林鄉"],
+            "嘉義縣": ["太保市", "朴子市", "布袋鎮", "大林鎮", "民雄鄉", "溪口鄉", "新港鄉", "六腳鄉", "東石鄉", "義竹鄉", "鹿草鄉", "水上鄉", "中埔鄉", "竹崎鄉", "梅山鄉", "番路鄉", "大埔鄉", "阿里山鄉"],
+            "屏東縣": ["屏東市", "潮州鎮", "東港鎮", "恆春鎮", "萬丹鄉", "長治鄉", "麟洛鄉", "九如鄉", "里港鄉", "鹽埔鄉", "高樹鄉", "萬巒鄉", "內埔鄉", "竹田鄉", "新埤鄉", "枋寮鄉", "新園鄉", "崁頂鄉", "林邊鄉", "南州鄉", "佳冬鄉", "琉球鄉", "車城鄉", "滿州鄉", "枋山鄉", "霧臺鄉", "瑪家鄉", "泰武鄉", "來義鄉", "春日鄉", "獅子鄉", "牡丹鄉"],
+            "宜蘭縣": ["宜蘭市", "羅東鎮", "蘇澳鎮", "頭城鎮", "礁溪鄉", "壯圍鄉", "員山鄉", "冬山鄉", "五結鄉", "三星鄉", "大同鄉", "南澳鄉"],
+            "花蓮縣": ["花蓮市", "鳳林鎮", "玉里鎮", "新城鄉", "吉安鄉", "壽豐鄉", "光復鄉", "豐濱鄉", "瑞穗鄉", "富里鄉", "秀林鄉", "萬榮鄉", "卓溪鄉"],
+            "台東縣": ["台東市", "成功鎮", "關山鎮", "長濱鄉", "海端鄉", "池上鄉", "東河鄉", "鹿野鄉", "延平鄉", "卑南鄉", "金峰鄉", "大武鄉", "達仁鄉", "太麻里鄉"],
+            "澎湖縣": ["馬公市", "湖西鄉", "白沙鄉", "西嶼鄉", "望安鄉", "七美鄉"],
+            "金門縣": ["金城鎮", "金湖鎮", "金沙鎮", "金寧鄉", "烈嶼鄉", "烏坵鄉"],
+            "連江縣": ["南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"]
+        };
+        // 當縣市選項改變時觸發事件
+        countySelect.addEventListener("change", function() {
+            // 清空行政區下拉選單中的選項
+            districtSelect.innerHTML = "";
+            // 獲取選擇的縣市
+            let selectedCounty = countySelect.value;
+            // 獲取選擇縣市對應的行政區
+            let districts = districtOptions[selectedCounty];
+            // 添加行政區選項到下拉選單中
+            districts.forEach(function(district) {
+                let option = document.createElement("option");
+                option.text = district;
+                option.value = district;
+                districtSelect.add(option);
+            });
+        });
+    </script>
+</body>
+</html>
