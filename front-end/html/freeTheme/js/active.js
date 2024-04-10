@@ -153,7 +153,7 @@
 
     // :: Masonary Gallery Active Code
     if ($.fn.imagesLoaded) {
-        $('.sonar-portfolio').imagesLoaded(function () {
+        $('.lectureList').imagesLoaded(function () {
             // filter items on button click
             $('.portfolio-menu').on('click', 'button', function () {
                 var filterValue = $(this).attr('data-filter');
@@ -162,7 +162,7 @@
                 });
             });
             // init Isotope
-            var $grid = $('.sonar-portfolio').isotope({
+            var $grid = $('.lectureList').isotope({
                 itemSelector: '.single_gallery_item',
                 percentPosition: true,
                 masonry: {

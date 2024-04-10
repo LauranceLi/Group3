@@ -1267,15 +1267,13 @@ img {
 
 /* :: Portfolio Area CSS */
 .sonar-projects-area {
-  position: relative;
+
   z-index: 1;
   padding: 100px 35px 50px;
 }
 
 
-.gallery-content {
-  background-color: #FFB534;
-}
+
 
 
 .sonar-projects-area .single_gallery_item {
@@ -1298,14 +1296,14 @@ img {
   margin-bottom: 0;
 }
 
-.sonar-portfolio-menu {
+.lectureList-menu {
   position: absolute;
   bottom: 40px;
   right: 0;
   width: 50%;
   z-index: 100;
 }
-.sonar-portfolio-menu .btn {
+.lectureList-menu .btn {
   padding: 5px 0;
   border: none;
   border-bottom: 2px solid;
@@ -1315,31 +1313,31 @@ img {
   border-radius: 0;
   margin: 0 20px;
 }
-.sonar-portfolio-menu .btn.active {
+.lectureList-menu .btn.active {
   border-color: #ffffff;
 }
-.sonar-portfolio-menu .btn:hover, .sonar-portfolio-menu .btn:focus {
+.lectureList-menu .btn:hover, .lectureList-menu .btn:focus {
   box-shadow: none;
 }
 @media only screen and (min-width:992px) and (max-width:1199px) {
-  .sonar-portfolio-menu .btn {
+  .lectureList-menu .btn {
     margin: 0 10px;
   }
 }
 @media only screen and (min-width:768px) and (max-width:991px) {
-  .sonar-portfolio-menu .btn {
+  .lectureList-menu .btn {
     margin: 0 5px;
     font-size: 14px;
   }
 }
 @media only screen and (max-width:767px) {
-  .sonar-portfolio-menu .btn {
+  .lectureList-menu .btn {
     margin: 0 5px;
     font-size: 14px;
   }
 }
 @media only screen and (max-width:767px) {
-  .sonar-portfolio-menu {
+  .lectureList-menu {
     width: 100%;
     bottom: 20px;
   }
