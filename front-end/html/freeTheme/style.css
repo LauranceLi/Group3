@@ -377,6 +377,7 @@ img {
 }
 
 .sonar-btn {
+
   position: relative;
   z-index: 1;
   min-width: 180px;
@@ -391,6 +392,7 @@ img {
   line-height: 64px;
   padding: 0;
   background-color: #ffffff;
+  
 }
 .sonar-btn:hover, .sonar-btn:focus {
   background-color: #2f2f2f;
@@ -410,6 +412,7 @@ img {
   background-color: #2f2f2f;
   font-size: 12px;
   color: #ffffff;
+  
 }
 .sonar-btn.btn-3 {
   background-color: #FFB534;
@@ -559,7 +562,7 @@ img {
   }
 }
 .header-area.sticky {
-  background-color: #FFB534;
+  background-color: #ffb534cb;
 }
 @media only screen and (max-width:767px) {
   .header-area {
@@ -1268,6 +1271,13 @@ img {
   z-index: 1;
   padding: 100px 35px 50px;
 }
+
+
+.gallery-content {
+  background-color: #FFB534;
+}
+
+
 .sonar-projects-area .single_gallery_item {
   position: relative;
   z-index: 1;
