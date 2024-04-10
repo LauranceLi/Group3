@@ -40,7 +40,7 @@
     });
 
     // :: Tooltip Active Code
-    $('[data-toggle="tooltip"]').tooltip()
+    // $('[data-toggle="tooltip"]').tooltip();
 
     // :: Nicescroll Active Code
     if ($.fn.niceScroll) {
