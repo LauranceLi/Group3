@@ -570,10 +570,59 @@ img {
   }
 }
 
+.rowNav-area {
+  height: 100%;
+}
+
+.rowNav {
+  display: flex;
+  align-items: center;
+  color: white;
+  width: 60%;
+  height: 100%;
+}
+.rowNav nav {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+@media only screen and (max-width:992px) {
+  .rowNav{
+    display: none;
+  }
+}
+
+
+.rowNavUl {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+}
+
+.rowNavUl li {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   cursor: pointer;
 }
+
+@media only screen and (min-width:993px) {
+  .navbar-toggler-icon{
+    display: none;
+  }
+}
+
 
 .mainMenu {
   position: fixed;
@@ -1068,6 +1117,41 @@ img {
   }
 }
 
+
+/* footer */
+footer {
+  background-color: rgb(28, 84, 136);
+  padding: 2rem;
+}
+
+footer h4 {
+  color: #FFB534;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer a, footer li {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+}
+@media only screen and (min-width:992px) and (max-width:1199px) {
+  .footer{
+    
+  }
+}
+
+.footerItem {
+  width: 30%;
+}
+
 /* :: Hero Area CSS */
 .hero-area {
   background-color: #FFB534;
@@ -1276,23 +1360,23 @@ img {
 
 
 
-.sonar-projects-area .single_gallery_item {
+.sonar-projects-area .lecture_item {
   position: relative;
   z-index: 1;
   margin-bottom: 50px;
 }
-.sonar-projects-area .single_gallery_item .gallery-content {
+.sonar-projects-area .lecture_item .gallery-content {
   padding-top: 30px;
 }
-.sonar-projects-area .single_gallery_item .gallery-content h4 {
+.sonar-projects-area .lecture_item .gallery-content h4 {
   margin-bottom: 10px;
 }
 @media only screen and (max-width:767px) {
-  .sonar-projects-area .single_gallery_item .gallery-content h4 {
+  .sonar-projects-area .lecture_item .gallery-content h4 {
     font-size: 20px;
   }
 }
-.sonar-projects-area .single_gallery_item .gallery-content p {
+.sonar-projects-area .lecture_item .gallery-content p {
   margin-bottom: 0;
 }
 

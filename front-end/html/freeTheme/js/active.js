@@ -24,6 +24,7 @@
 
     // :: Sticky Active Code
     $window.on('scroll', function () {
+        
         if ($window.scrollTop() > 0) {
             $('.header-area').addClass('sticky');
         } else {
@@ -163,10 +164,10 @@
             });
             // init Isotope
             var $grid = $('.lectureList').isotope({
-                itemSelector: '.single_gallery_item',
+                itemSelector: '.lecture_item',
                 percentPosition: true,
                 masonry: {
-                    columnWidth: '.single_gallery_item'
+                    columnWidth: '.lecture_item'
                 }
             });
         });

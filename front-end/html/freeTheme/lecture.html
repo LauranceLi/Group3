@@ -32,7 +32,7 @@
     <!-- Preloader End -->
 
     <!-- Grids -->
-    <div class="grids d-flex justify-content-between">
+    <!-- <div class="grids d-flex justify-content-between">
       <div class="grid1"></div>
       <div class="grid2"></div>
       <div class="grid3"></div>
@@ -42,7 +42,7 @@
       <div class="grid7"></div>
       <div class="grid8"></div>
       <div class="grid9"></div>
-    </div>
+    </div> -->
 
     <!-- ***** Main Menu Area Start ***** -->
     <div class="mainMenu d-flex align-items-center justify-content-between">
@@ -58,26 +58,26 @@
       <div class="sonarNav">
         <nav>
           <ul>
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+            <li class="nav-item ">
+              <a   class="nav-link" href="index.html">關於締杉</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about-me.html">About Me</a>
+              <a class="nav-link" href="about-me.html">各國行程</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="services.html">旅遊講座</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="portfolio.html">Portfolio</a>
+              <a class="nav-link" href="portfolio.html">量身訂製</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">Blog</a>
+              <a class="nav-link" href="blog.html">締杉商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html">優惠活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="elements.html">Elements</a>
+              <a class="nav-link" href="elements.html">締杉會員</a>
             </li>
           </ul>
         </nav>
@@ -104,12 +104,39 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="menu-area d-flex justify-content-between">
+            <div class="rowNav-area d-flex justify-content-between">
               <!-- Logo Area  -->
               <div class="logo-area">
                 <a href="index.html">締杉旅遊</a>
               </div>
-
+              <!-- Nav -->
+              <div class="rowNav">
+                <nav>
+                  <ul class="rowNavUl">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">關於締杉</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="about-me.html">各國行程</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="services.html">旅遊講座</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="portfolio.html">量身訂製</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="blog.html">締杉商城</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">優惠活動</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="elements.html">締杉會員</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
               <div class="menu-content-area d-flex align-items-center">
                 <!-- Header Social Area -->
                 <div class="header-social-area d-flex align-items-center">
@@ -117,15 +144,8 @@
                     href="#"
                     data-toggle="tooltip"
                     data-placement="bottom"
-                    title="Pinterest"
-                    ><i class="fa fa-pinterest" aria-hidden="true"></i
-                  ></a>
-                  <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Linkedin"
-                    ><i class="fa fa-linkedin" aria-hidden="true"></i
+                    title="Twitter"
+                    ><i class="fa-solid fa-cart-shopping"></i
                   ></a>
                   <a
                     href="#"
@@ -140,13 +160,6 @@
                     data-placement="bottom"
                     title="Facebook"
                     ><i class="fa fa-facebook" aria-hidden="true"></i
-                  ></a>
-                  <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Twitter"
-                    ><i class="fa fa-twitter" aria-hidden="true"></i
                   ></a>
                 </div>
                 <!-- Menu Icon -->
@@ -177,7 +190,7 @@
               <p>
                 在這廣袤的世界上，我心懷探索之志，欲遨遊四方！然而，旅程的起始點何在？終點又在何方？旅行背後的真諦又是何許人也？讓我們邀請智者、導師、探險家，解開這旅途之謎，揭開史詩般的旅程奧秘！
               </p>
-              <a href="#" class="btn sonar-btn white-btn">contact me</a>
+              <a href="#" class="btn sonar-btn white-btn">講師介紹</a>
             </div>
           </div>
         </div>
@@ -190,338 +203,361 @@
           <button class="btn" data-filter=".southAmerica">中南美洲</button>
           <button class="btn" data-filter=".europe">歐洲</button>
           <button class="btn" data-filter=".japan">日本</button>
-
         </div>
       </div>
     </div>
     <!-- ***** Hero Area End ***** -->
 
     <!-- ****** Gallery Area Start ****** -->
-    <section class="sonar-projects-area " id="projects">
-      <div class="container-fluid ">
+    <section class="sonar-projects-area" id="projects">
+      <div class="container-fluid">
         <div class="row lectureList">
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item southAmerica  wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item southAmerica wow fadeInUpBig"
             data-wow-delay="300ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/1.jpg"
-              ><img src="./img/portfolio-img/1.jpg" alt=""
-            /></a>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/1.jpg"
+                ><img src="./img/portfolio-img/1.jpg" alt=""
+              /></a>
 
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟巴西交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟巴西交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="500ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/2.jpg"
-              ><img src="img/portfolio-img/2.jpg" alt=""
-            /></a>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/2.jpg"
+                ><img src="img/portfolio-img/2.jpg" alt=""
+              /></a>
 
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟西班牙交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟西班牙交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item southAmerica  wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item southAmerica wow fadeInUpBig"
             data-wow-delay="300ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/1.jpg"
-              ><img src="./img/portfolio-img/3.jpg" alt=""
-            /></a>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/1.jpg"
+                ><img src="./img/portfolio-img/3.jpg" alt=""
+              /></a>
 
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟秘鲁交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟秘鲁交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe  wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="900ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/4.jpg"
-              ><img src="img/portfolio-img/4.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟挪威交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/4.jpg"
+                ><img src="img/portfolio-img/4.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟挪威交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item japan wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item japan wow fadeInUpBig"
             data-wow-delay="300ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/5.jpg"
-              ><img src="img/portfolio-img/5.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟京都交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/5.jpg"
+                ><img src="img/portfolio-img/5.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟京都交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="500ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/6.jpg"
-              ><img src="img/portfolio-img/6.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟英國交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/6.jpg"
+                ><img src="img/portfolio-img/6.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟英國交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item southAmerica wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item southAmerica wow fadeInUpBig"
             data-wow-delay="700ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/7.jpg"
-              ><img src="img/portfolio-img/7.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟智利交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/7.jpg"
+                ><img src="img/portfolio-img/7.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟智利交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe  wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="900ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/8.jpg"
-              ><img src="img/portfolio-img/8.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟德國交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/8.jpg"
+                ><img src="img/portfolio-img/8.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟德國交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item japan  wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item japan wow fadeInUpBig"
             data-wow-delay="300ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/9.jpg"
-              ><img src="img/portfolio-img/9.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟北海道交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/9.jpg"
+                ><img src="img/portfolio-img/9.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟北海道交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="500ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/10.jpg"
-              ><img src="img/portfolio-img/10.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟法國交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/10.jpg"
+                ><img src="img/portfolio-img/10.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟法國交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item japan wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item japan wow fadeInUpBig"
             data-wow-delay="700ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/11.jpg"
-              ><img src="img/portfolio-img/11.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟冲绳交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/11.jpg"
+                ><img src="img/portfolio-img/11.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟冲绳交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Single gallery Item -->
           <div
-            class="col-12 col-sm-6 col-lg-3 single_gallery_item europe wow fadeInUpBig"
+            class="col-12 col-sm-6 col-lg-3 lecture_item europe wow fadeInUpBig"
             data-wow-delay="900ms"
           >
-            <a class="gallery-img" href="img/portfolio-img/12.jpg"
-              ><img src="img/portfolio-img/12.jpg" alt=""
-            /></a>
-            <!-- Gallery Content -->
-            <div class="gallery-content p-3 ">
-              <h4>04/12（五）台北</h4>
-              <h3>來跟瑞士交個朋友吧！</h3>
-              <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
-            </div>
-            <div class="signUpBox">
-              <div class="signUpStatus">免費報名中</div>
-              <button
-                type="button"
-                class="signUpBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#signUpdrop"
-              >
-                點此報名
-              </button>
+            <div class="lectureContent">
+              <a class="gallery-img" href="img/portfolio-img/12.jpg"
+                ><img src="img/portfolio-img/12.jpg" alt=""
+              /></a>
+              <!-- Gallery Content -->
+              <div class="gallery-content p-3">
+                <h4>04/12（五）台北</h4>
+                <h3>來跟瑞士交個朋友吧！</h3>
+                <h5><i class="fa-regular fa-clock me-2"></i>19:00-20:30</h5>
+              </div>
+              <div class="signUpBox">
+                <div class="signUpStatus">免費報名中</div>
+                <button
+                  type="button"
+                  class="signUpBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUpdrop"
+                >
+                  點此報名
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -587,34 +623,46 @@
     <!-- ****** Gallery Area End ****** -->
 
     <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-area">
-      <!-- back end content -->
-      <div class="backEnd-content">
-        <img class="dots" src="img/core-img/dots.png" alt="" />
-        <h2>Dream</h2>
+    <footer>
+      <div class="container footer">
+        <div class="footerItem">
+          <h4>公司信息</h4>
+          <ul>
+            <li>企業名稱：ABC有限公司</li>
+            <li>地址：台北市中山區林森北路100號1樓</li>
+            <li>電話：02-1234-5678</li>
+            <li>郵箱：info@example.com</li>
+          </ul>
+        </div>
+        <div class="footerItem">
+          <h4>快速鏈接</h4>
+          <ul>
+            <li><a href="#">關於我們</a></li>
+            <li><a href="#">產品</a></li>
+            <li><a href="#">服務</a></li>
+            <li><a href="#">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footerItem">
+          <h4>追蹤我們</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Line@</a></li>
+          </ul>
+        </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <!-- Copywrite Text -->
-            <div class="copywrite-text">
-              <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                All rights reserved | This template is made with
-                <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p>版權所有 &copy; 2024 締杉旅遊</p>
             </div>
           </div>
         </div>
       </div>
     </footer>
+
     <!-- ***** Footer Area End ***** -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
@@ -628,6 +676,9 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    <script src="https://kit.fontawesome.com/e7d99d775c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/e7d99d775c.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
