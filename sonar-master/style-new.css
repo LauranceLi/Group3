@@ -34,22 +34,22 @@ h3,
 h4,
 h5,
 h6 {
-  color: #2f2f2f;
-  font-weight: 300;
+  color: #202020;
+  font-weight: 600;
 }
 
 p {
-  color: #565656;
-  font-size: 15px;
+  color: #2f2f2f;
+  font-size: 1rem;
   line-height: 2;
-  font-weight: 100;
+  font-weight:400;
 }
 
 a {
   transition-duration: 500ms;
   text-decoration: none;
   outline: none;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 700;
 }
 a:hover, a:focus {
@@ -1143,7 +1143,7 @@ img {
     height: auto;
   }
 }
-.hero-area .hero-thumbnail.aboutUs::before {
+/* .hero-area .hero-thumbnail.aboutUs::before {
   position: absolute;
   width: 100%;
   height: 100px;
@@ -1152,7 +1152,7 @@ img {
   background-color: #ffffff;
   content: "";
   z-index: 1;
-}
+} */
 @media only screen and (max-width:767px) {
   .hero-area .hero-thumbnail.aboutUs::before {
     display: none;
@@ -1667,7 +1667,7 @@ img {
 .elements-title h2 {
   text-transform: capitalize;
   font-size: 48px;
-  margin-bottom: 100px;
+  margin-bottom: .625rem;
 }
 @media only screen and (min-width:768px) and (max-width:991px) {
   .elements-title h2 {
@@ -1821,11 +1821,8 @@ img {
 
 /* The end *//*# sourceMappingURL=style.css.map */
 
+/* start  */
 *{
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
   box-sizing: border-box;
 }
 .logo a ,.logo h6{
@@ -1855,10 +1852,12 @@ header i ,footer i {
   color: #FFFFFF;
   margin: 0.625rem;
 }
+.flex{
+  display: flex;
+}
 .container{
   width: 80%;
   height: 100%;
-  display: flex;
   margin-top: 3.125rem;
   justify-content: center;
 }
@@ -1888,7 +1887,6 @@ header{
   height: 31.25rem;
 }
 .info{
-  background-color: #00A1B4;
   text-align: center;
   color: #FFFFFF;
   padding-top:1.25rem ;
@@ -1904,15 +1902,13 @@ form{
   height: 100%;
   display: flex;
 }
-img{
-  width: 100px;
-}
 .text{
   width: 70%;
 }
 .number-input{
   width: 2.5rem;
 }
+/* cart */
 .main{
   width: 65%;
   margin: 0.625rem;
@@ -1921,8 +1917,11 @@ img{
   width: 50%;
   margin: 0.625rem;
 }
+.cart img{ 
+  width:6.25rem;
+}
 .cart-section{
-  margin-top: 18.75rem;
+  margin-top:12.5rem;
   margin-bottom: 18.75rem;
 }
 .side-checkout{
@@ -1979,7 +1978,12 @@ footer{
   color: #FFFFFF;
   margin: 1.25rem;
 }
-
+.footer-text p{
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* cart */
 .discount-info,
 .coupon-input {
   display: none; 
@@ -2012,12 +2016,10 @@ footer{
   font-weight: 600;
   font-size:1.25rem;
 }
-.lecture-body{
-  background-color: #00A1B4;
-}
+/* lecture */
 .lecture{
   flex-wrap: wrap;
-  margin-bottom:0.625rem;
+  margin-bottom:6.25rem;
 }
 .lecture-item{
   width: 23%;
@@ -2025,10 +2027,16 @@ footer{
   color: #FFFFFF;
   flex-direction: column;
   margin: .3125rem;
-  border: #00cfe6 solid .0313rem;
+  border: #8d5c00 solid .0313rem;
+  background-color: #ffecc8;
+}
+.lecture-item p{
+  font-size: 1rem;
+  font-weight: 600;
 }
 .lecture-item-text{
   height:12.5rem;
+  color: #000;
 }
 .lecture-item-text p{
   height: 3.125rem;
@@ -2083,6 +2091,7 @@ footer{
   height: 30px;
   margin-left: .625rem;
 }
+/* checkout */
 .circle{
   background-color: #00A1B4;
   border-radius: 50%;
@@ -2114,8 +2123,18 @@ footer{
 .border{
   border-bottom: #b4b4b4 1px solid;
 }
+/* service頁面 */
 .stars{
   color: #FFB534;
+}
+.comment-btn{
+  width: 42%;
+  height:3.125rem;
+  position: relative;
+}
+.comment-text{
+  width: 100%;
+  height:12.5rem;
 }
 .leaders{
   display: flex;
@@ -2149,4 +2168,159 @@ footer{
   color: #2f2f2f;
   font-size: 1.25rem;
   font-weight: 500;
+}
+
+/* recommend */
+.recommend{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3.125rem;
+
+}
+.recommend-item{
+  max-width: 25%;
+  height: 100%;
+  padding: .625rem;
+  margin: .625rem;
+  border:1px solid #b8b8b8;
+  border-radius: 1.25rem;
+}
+.recommend-item:hover{
+  transform: scale(1.05);
+}
+.recommend-item-pic{
+  width: 100%;
+}
+.recommend-item-text{
+  margin-top: 1.25rem;
+}
+.recommend-item-text h4{
+  margin-top: .625rem;
+  font-weight: 600;
+}
+.elements-title{
+  padding: .9375rem;
+}
+/* 購物車 */
+.order-title{
+  background-color: #c0c0c0;
+  padding: .625rem;
+}
+.order-title h4{
+  margin: 0;
+}
+.travel-form{
+  width: 100%;
+}
+.first{
+  margin: .9375rem;
+  height: 3.125rem;
+  align-content: center;
+  border: .0938rem solid #c0c0c0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.active-carttitle{
+  background-color: #FFB534;
+  color: #ffffff;
+  border: none;
+}
+.pass{
+  background-color: #c0c0c0;
+  color: #7e7e7e;
+}
+.second{
+  width: 100%;
+  border: .0938rem solid #c0c0c0;
+}
+.travel-info{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  border-bottom: .0938rem solid  #c0c0c0;
+  padding: .3125rem;
+  height: 12.5rem;
+}
+.travel-info2{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  border-bottom: .0938rem solid  #c0c0c0;
+  padding: .3125rem;
+}
+.unit-price{
+  width: 12.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.travel-saleitem{
+  width: 100%;
+  font-size: 1.25rem;
+  line-height: 2.6875rem;
+  margin-bottom: 0px;
+}
+.travel-saleitem img{
+  width: 6.25rem;
+  margin-left: 6.25rem;
+
+}
+.quantity{
+  width:3.125rem;
+}
+.total-amount{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.contract-view{
+  width: 100%;
+  height: 12.5rem;
+}
+.view-text-scroll{
+  height: 12.5rem;
+  overflow: auto;
+}
+
+.agreement-btn{
+  display: flex;
+  justify-content: center;
+}
+.aaa{
+  width: 18.75rem;
+  margin: auto;
+}
+.cart-img{
+  width: 1.25rem;
+  margin: auto;
+}
+.form-check-label{
+  margin-left: 0%;
+}
+/* comment */
+.comment{
+  /* background-color: #FFB534; */
+  height: 100%;
+  padding: .625rem;
+  border: .0625rem solid #7e7e7e;
+}
+.comment-area{
+  display: flex;
+  justify-content: end;
+}
+.comment-area-item{
+  background-color: #7e7e7e;
+  margin-left: .625rem;
+  width: 12.5rem;
+  text-align: center;
+  border-top-left-radius: .625rem;
+  border-top-right-radius: .625rem;
+}
+.comment-area-item-active{
+  background-color: #FFB534;
+  margin-left: .625rem;
+  width: 12.5rem;
+  text-align: center;
+  border-top-left-radius: .625rem;
+  border-top-right-radius: .625rem;
 }

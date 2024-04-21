@@ -76,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="elements.html">Elements</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lecture.html">Lecture</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -130,9 +133,9 @@
                 <div class="row h-100 align-items-center justify-content-center">
                     <div class="col-12 col-md-8">
                         <div class="line"></div>
-                        <h2>Contact me</h2>
+                        <h2>聯絡我們</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
-                        <a href="#" class="btn sonar-btn white-btn">contact me</a>
+                        <!-- <a href="#contactUs" class="btn sonar-btn white-btn">contact me</a> -->
                     </div>
                 </div>
             </div>
@@ -145,40 +148,97 @@
         <div class="backEnd-content">
             <!-- <img class="dots" src="img/core-img/dots.png" alt=""> -->
         </div>
-        
         <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="elements-title">
+                        <h2>常見問題</h2>
+                    </div>
+                        <div class="col-12">
+                            <div class="accordions mb-100" id="accordion" role="tablist" aria-multiselectable="true">
+                                <!-- single accordian area -->
+                                <div class="panel single-accordion">
+                                    <h6><a role="button" class="" aria-expanded="true" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">註冊會員時，系統告知「此帳號已被註冊過」
+                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                    </a></h6>
+                                    <div id="collapseOne" class="accordion-content collapse show">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
+                                    </div>
+                                </div>
+                                <!-- single accordian area -->
+                                <div class="panel single-accordion">
+                                    <h6>
+                                        <a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">報名國外團體旅遊還需要注意什麼
+                                        <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                        </a>
+                                    </h6>
+                                    <div id="collapseTwo" class="accordion-content collapse">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
+                                    </div>
+                                </div>
+                                <!-- single accordian area -->
+                                <div class="panel single-accordion">
+                                    <h6>
+                                        <a role="button" aria-expanded="true" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">折扣碼使用說明
+                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                    </a>
+                                    </h6>
+                                    <div id="collapseThree" class="accordion-content collapse">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>意見回饋 / 其他問題</h2>
+            </div>
             <div class="row">
                 <!-- Contact Form Area -->
                 <div class="col-12">
                     <div class="contact-form text-center">
-
                         <!-- <h2>I am an experienced photographer</h2> -->
                         <!-- <h4>Let’s talk</h4> -->
-
-                        <form action="#" method="post">
+                        <form action="#" method="post" id="contactUs">
                             <div class="row">
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="contact-name" placeholder="姓名">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="contact-email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="contact-email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-email" placeholder="Subject">
+                                        <input type="email" class="form-control" id="contact-mobile" placeholder="手機號碼">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <select class="form-control" name="subject" id="subject">
+                                            <option>主題</option>
+                                            <option>團體行程</option>
+                                            <option>客製化行程</option>
+                                            <option>其他</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="詢問內容與需求"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn sonar-btn">Contact Me</button>
+                                    <button type="submit" class="btn sonar-btn">送出表單</button>
                                 </div>
                             </div>
                         </form>
@@ -194,23 +254,19 @@
     </div> -->
 
     <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-area">
-        <!-- back end content -->
-        <div class="backEnd-content">
-            <!-- <img class="dots" src="img/core-img/dots.png" alt=""> -->
-            <h2>Dream</h2>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Copywrite Text -->
-                    <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                    </div>
-                </div>
+    <footer>
+        <div class="footer-text">
+            <div class="">
+                <p>聯繫我們</p>
+                <p>地址:XX市XX區XX路XXX號</p>
+                <p>電話：+886-XXXXXXX</p>
+                <p>電子郵件：info@example.com</p>
+            </div>
+            <div class="social-media">
+                <p>關注我們</p>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>

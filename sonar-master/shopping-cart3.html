@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShoppingCart3</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.ico" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./style-new.css" />
+  </head>
+  <body>
+    <div class="mainMenu d-flex align-items-center justify-content-between">
+      <!-- Close Icon -->
+      <div class="closeIcon">
+        <i class="ti-close" aria-hidden="true"></i>
+      </div>
+      <!-- Logo Area -->
+      <div class="logo-area">
+        <a href="index.html">Sonar</a>
+      </div>
+      <!-- Nav -->
+      <div class="sonarNav wow fadeInUp" data-wow-delay="1s">
+        <nav>
+          <ul>
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about-me.html">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="elements.html">Elements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lecture.html">Lecture</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <header class="header-area">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="menu-area d-flex justify-content-between">
+              <!-- Logo Area  -->
+              <div class="logo-area">
+                <a href="index.html">Sonar</a>
+              </div>
+              <div class="menu-content-area d-flex align-items-center">
+                <!-- Header Social Area -->
+                <div class="header-social-area d-flex align-items-center">
+                  <a
+                    href="./cart.html"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Cart"
+                    ><i class="fa-solid fa-cart-shopping"></i
+                  ></a>
+                </div>
+                <!-- Menu Icon -->
+                <span class="navbar-toggler-icon" id="menuIcon"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="">
+      <div class="container">
+        <form action="#">
+          <div class="travel-form mb-3">
+            <div
+              class="row align-items-start justify-content-center text-center"
+            >
+              <div class="col first pass">1 選購商品</div>
+              <div class="col first pass">2 填寫訂單資訊</div>
+              <div class="col first  active-carttitle">3 完成付款</div>
+            </div>
+            <div class="second">
+              <div class="order-title">
+                <h4>訂單詳細內容</h4>
+              </div>
+              <div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">訂單編號</h6>
+                  <div class="unit-price text-center">2024041500001</div>
+                  <div class="unit-price text-center"></div>
+                </div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">商品明細</h6>
+                  <div class="unit-price text-center">單價</div>
+                  <div class="unit-price text-center">數量</div>
+                </div>
+              </div>
+              <div class="travel-info">
+                <div class="travel-saleitem">
+                  <h6 class="travel-saleitem">追夢到秘魯：探索失落文明，尋覓古都風華</h6>
+                  <img src="./img/cart-img/20231109171402820_I00000015_001.jpg" alt="">
+                </div>
+                <div class="unit-price text-center">NT$400</div>
+                <div class="unit-price text-center">
+                  <input
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    class="form-control quantity"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="travel-info">
+                <div class="travel-saleitem">
+                  <h6 class="travel-saleitem">追夢到秘魯：探索失落文明，尋覓古都風華</h6>
+                  <img src="./img/cart-img/20231109171402820_I00000015_001.jpg" alt="">
+                </div>
+                <div class="unit-price text-center">NT$400</div>
+                <div class="unit-price text-center">
+                  <input
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    class="form-control quantity"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="travel-info">
+                <div class="travel-saleitem">
+                  <h6 class="travel-saleitem">追夢到秘魯：探索失落文明，尋覓古都風華</h6>
+                  <img src="./img/cart-img/20231109171402820_I00000015_001.jpg" alt="">
+                </div>
+                <div class="unit-price text-center">NT$24,000</div>
+                <div class="unit-price text-center">
+                  <input
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    class="form-control quantity"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="row mt-3 p-2">
+                <div class="col total-amount">
+                  <h4>小計</h4>
+                  <h4>NT$ 1,200</h4>
+                </div>
+              </div>
+            </div>
+            <div class="second">
+              <div class="order-title">
+                <h4>訂購人資訊</h4>
+              </div>
+              <div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">訂購人姓名</h6>
+                  <div class="unit-price text-center">地山流</div>
+                  <div class="unit-price text-center"></div>
+                </div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">訂購人Email</h6>
+                  <div class="unit-price text-center">LandMoutain@gmail.com</div>
+                  <div class="unit-price text-center"></div>
+                </div>
+              </div>
+              <div class="travel-info2">
+                <h6 class="travel-saleitem">訂購人手機號碼</h6>
+                <div class="unit-price text-center">0910123123</div>
+                <div class="unit-price text-center">
+                </div>
+              </div>
+              <div class="travel-info2">
+                <h6 class="travel-saleitem">收件人姓名</h6>
+                <div class="unit-price text-center">地山流</div>
+                <div class="unit-price text-center">
+                </div>
+              </div>
+              <div class="travel-info2">
+                <h6 class="travel-saleitem">收件人手機號碼</h6>
+                <div class="unit-price text-center">0910123123</div>
+                <div class="unit-price text-center">
+                </div>
+              </div>
+            </div>
+            <div class="second">
+              <div class="order-title">
+                <h4>其他</h4>
+              </div>
+              <div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">優惠券折扣碼</h6>
+                  <div class="unit-price text-center">無</div>
+                  <div class="unit-price text-center">
+                  </div>
+                </div>  
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">送貨方式</h6>
+                  <div class="unit-price text-center">超取</div>
+                  <div class="unit-price text-center"></div>
+                </div>
+                <div class="travel-info2">
+                  <h6 class="travel-saleitem">付款方式</h6>
+                  <div class="unit-price text-center">貨到付款</div>
+                  <div class="unit-price text-center"></div>
+                </div>
+              </div>
+              <div class="travel-info2">
+                <h6 class="travel-saleitem">發票類型</h6>
+                <div class="unit-price text-center">電子載具</div>
+                <div class="unit-price text-center">/DSKD545</div>
+              </div>
+              <div class="travel-info2">
+                <h6 class="travel-saleitem">下單時間</h6>
+                <div class="unit-price text-center">2024/04/15 14:55</div>
+                <div class="unit-price text-center">
+                </div>
+              </div>
+            </div>
+            <div class="second mb-3">
+              <div class="order-title">
+                <div class="row">
+                  <div class="col total-amount">
+                    <h4>訂單總金額</h4>
+                    <h4>NT$ 1,200</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="agreement-btn">
+                <div class="m-1">
+                  <a href="./index.html">
+                    <button type="button" class="text-center btn btn-primary aaa">
+                      返回商城
+                    </button>
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-text">
+        <div class="">
+          <p>聯繫我們</p>
+          <p>地址:XX市XX區XX路XXX號</p>
+          <p>電話：+886-XXXXXXX</p>
+          <p>電子郵件：info@example.com</p>
+        </div>
+        <div class="social-media">
+          <p>關注我們</p>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+  </body>
+</html>
