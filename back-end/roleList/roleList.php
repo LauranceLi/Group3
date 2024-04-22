@@ -273,6 +273,8 @@ function isEdit($item)
         <div class="descript">
           <p>說明：<i class="fa-solid fa-pen-to-square me-1"></i>可供編輯、<i class="fa-solid fa-eye me-1"></i>僅供檢視、<i class="fa-solid fa-square-xmark me-1"></i>無任何權限</p>
         </div>
+
+
         <!-- Role List Start -->
         <table class="table table-bordered">
           <thead>

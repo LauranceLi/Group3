@@ -6,7 +6,7 @@ if ($_SESSION['permission']['form']=='noAuthority'){
     header('Location: ../index.php');
     exit;
 }
-$title = "講座表單";
+$title = "講座管理";
 $pageName = 'speechForm';
 
 ?>

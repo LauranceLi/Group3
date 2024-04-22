@@ -2,12 +2,12 @@
   require '../parts/pdo_connect.php';
 session_start();
 // print_r($_POST);
-$role_id = $_GET['role_id'];
+$role_id = $_GET['employees_id'];
 if (!empty($_POST)){
 $edit_sql = "SELECT *
 FROM permission
-INNER JOIN role_set
-ON role_set.role_id = permission.permission_role_id
+INNER JOIN employees
+ON employees.role_id = permission.permission_role_id
 WHERE role_id = $role_id ";
 $edit_sql_result = $conn->query($edit_sql)->fetch_assoc();
 
@@ -41,7 +41,7 @@ function editAuthorized($sql) {
 $editAuthority_sql = 
 "UPDATE `permission` 
 SET 
-`role_set`='$roleSetAuthorized',
+`employees`='$roleSetAuthorized',
 `employees`='$employeesAuthorized', 
 `members`='$membersAuthorized',
 `points`='$pointsAuthorized',
@@ -51,7 +51,7 @@ SET
 `form`='$formAuthorized'
 WHERE permission_role_id = $role_id";
 
-$update_role_desc_sql = "UPDATE `role_set` SET `description`='$edit_role_desc' WHERE role_id = $role_id"; 
+$update_role_desc_sql = "UPDATE `employees` SET `description`='$edit_role_desc' WHERE role_id = $role_id"; 
 
 $editAuthority_sql_result = $conn->query($editAuthority_sql);
 $update_role_desc_result = $conn->query($update_role_desc_sql);
