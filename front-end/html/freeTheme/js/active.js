@@ -24,7 +24,6 @@
 
     // :: Sticky Active Code
     $window.on('scroll', function () {
-        
         if ($window.scrollTop() > 0) {
             $('.header-area').addClass('sticky');
         } else {
@@ -41,7 +40,7 @@
     });
 
     // :: Tooltip Active Code
-    // $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip()
 
     // :: Nicescroll Active Code
     if ($.fn.niceScroll) {
@@ -154,7 +153,7 @@
 
     // :: Masonary Gallery Active Code
     if ($.fn.imagesLoaded) {
-        $('.lectureList').imagesLoaded(function () {
+        $('.sonar-portfolio').imagesLoaded(function () {
             // filter items on button click
             $('.portfolio-menu').on('click', 'button', function () {
                 var filterValue = $(this).attr('data-filter');
@@ -163,11 +162,11 @@
                 });
             });
             // init Isotope
-            var $grid = $('.lectureList').isotope({
-                itemSelector: '.lecture_item',
+            var $grid = $('.sonar-portfolio').isotope({
+                itemSelector: '.single_gallery_item',
                 percentPosition: true,
                 masonry: {
-                    columnWidth: '.lecture_item'
+                    columnWidth: '.single_gallery_item'
                 }
             });
         });
