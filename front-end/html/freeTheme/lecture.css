@@ -1,0 +1,95 @@
+.btn-1 {
+  background-color: #ffb534;
+}
+
+.btn-1:hover {
+  background-color: white;
+  color: #ffb534;
+  border-color: #ffb534;
+}
+
+.signUpform h3 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid #ffb534;
+}
+
+.signUpformBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.signUpInput {
+  margin: 1rem;
+}
+.signUpInput input:focus {
+  border-color: #ffb534;
+}
+
+.gallery-content {
+  background-color: #f5ab2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.sonar-projects-area {
+margin: auto;
+}
+
+.gallery-content h4,.gallery-content h5,.gallery-content h3 {
+  color: white;
+}
+
+.lectureContent {
+  border: 2px solid #e2c28e6b;
+  background-color: #e2c28e11;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.lectureContent:hover {
+  transition: 1s ease;
+  background-color: #e2c28e2c;
+  border: 2px solid #e2c28e;
+}
+
+
+
+.signUpBox {
+  background-color: #ffb534;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3rem;
+}
+
+.signUpStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 60%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.068);
+}
+
+.signUpBtn {
+  width: 40%;
+  height: 100%;
+
+  background-color: rgb(255, 255, 255);
+  color: #ffb534;
+  border: 2px solid #ffb534;
+  transition: 0.3s;
+}
+
+.signUpBtn:hover {
+  background-color: rgb(28, 84, 136);
+  color: white;
+  border: 2px solid #00000000;
+}
