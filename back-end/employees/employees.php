@@ -50,7 +50,6 @@ $employees_result = $conn->query($employees_sql);
 <div class="container-fluid pt-4 px-4" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
     <div class="bg-secondary rounded h-100 p-4 ">
-      <!-- 下方欄位區塊 -->
       <h3 class="pb-3">員工管理</h3>
       <!-- add form start -->
       <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#addBackdrop" <?= $isAbled ?>>新增</button>
