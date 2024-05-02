@@ -13,20 +13,7 @@ if ($page < 1) {
 # 每一頁有幾筆
 $per_page = 10;
 
-# 計算總筆數
-$pages_sql = "SELECT COUNT(1) FROM role_set";
-$pages_result = $conn->query($pages_sql)->fetch_assoc();
-$total_rows = $pages_result['COUNT(1)'];
 
-
-$total_pages = ceil($total_rows / $per_page); # 總頁數
-$per_page_row = [];
-if ($total_rows > 0) {
-  if ($page > $total_pages) {
-    header('Location: ?page=' . $total_pages);
-    exit;
-  }
-}
 
 
 
@@ -251,7 +238,7 @@ function isEdit($item)
                           </div>
                         </div>
                       </div>
-                      <div class="form-floating m-3">
+                      <div class="permissionItem m-3" >
                         <h6>相關描述</h6>
                         <textarea class="form-control p-2" name="new_role_desc" id="new_role_desc" style="min-height: 91%"></textarea>
                         <label for="new_role_desc"></label>
@@ -515,38 +502,7 @@ function isEdit($item)
         </table>
         <!-- Role List end -->
         <!-- 頁碼條 Start -->
-        <nav aria-label="First group">
-          <ul class="pagination justify-content-center ">
-            <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
-              <a class="page-link bg-secondary border-light" href="?page=<?= 1 ?>">
-                <i class="fa-solid fa-angles-left"></i>
-              </a>
-            </li>
-            <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-              <a class="page-link bg-secondary border-light" href="?page=<?= $page - 1 ?>">
-                <i class="fa-solid fa-angle-left"></i>
-              </a>
-            </li>
-            <!-- 限制頁碼條 -->
-            <?php for ($i = $page - 5; $i <= $page + 5; $i++) : ?>
-              <?php if ($i >= 1 and $i <= $total_pages) : ?>
-                <li class="page-item <?= $i != $page ?: 'active' ?>">
-                  <a class="page-link <?= $i != $page ? 'bg-secondary border-light' : 'active' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
-                </li>
-              <?php endif ?>
-            <?php endfor ?>
-            <li class="page-item <?= $page == $total_pages ? 'disabled' : '' ?>">
-              <a class="page-link bg-secondary border-light" href="?page=<?= $page + 1 ?>">
-                <i class="fa-solid fa-angle-right"></i>
-              </a>
-            </li>
-            <li class="page-item <?= $page == $total_pages ? 'disabled' : '' ?>">
-              <a class="page-link bg-secondary border-light" href="?page=<?= $total_pages ?>">
-                <i class="fa-solid fa-angles-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <?php include '../parts/pagination.php' ?>
         <!-- 頁碼條 end -->
       </div>
     </div>
@@ -556,34 +512,8 @@ function isEdit($item)
 
 <?php include '../parts/footer.php' ?>
 <?php include '../parts/scripts.php' ?>
-<script>
-  const checkAll = (CheckAll, setGroupName) => {
-    let checkboxs = document.getElementsByName(setGroupName);
-    for (let i = 0; i < checkboxs.length; i++) {
-      checkboxs[i].checked = CheckAll.checked;
-    }
-  }
+<script src="./js/checkAll.js"></script>
+<script src="./js/deleteOne.js"></script>
 
-  const allCheck = (checkAll, setGroup) => {
-    let checkboxs = document.getElementsByName(setGroup);
-    let checkswitch = document.getElementById(checkAll);
-    if (checkboxs[1].checked) {
-      checkboxs[0].checked = true;
-    }
-    if (checkboxs[0].checked && checkboxs[1].checked) {
-      return checkswitch.checked = true;
-    } else {
-      return checkswitch.checked = false;
-    }
-  }
-
-  const deleteOne = (role_id) => {
-    if (confirm(`是否要刪除編號為${role_id}的項目`)) {
-      location.href = `roleList-delete.php?role_id=${role_id}`;
-    } else {
-      return
-    }
-  }
-</script>
 
 <?php include '../parts/html-foot.php' ?>

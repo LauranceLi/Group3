@@ -70,4 +70,6 @@ if (!isset($_SESSION)) {
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
         }
+
+
     </style>
