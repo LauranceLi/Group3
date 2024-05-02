@@ -15,6 +15,11 @@ if ($page < 1) {
 ?>
 
 <?php include '../parts/html-head.php' ?>
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 <?php include '../parts/spinner.php' ?>
 <?php include '../parts/slidebar.php' ?>
 <?php include '../parts/navbar.php' ?>
@@ -175,18 +180,15 @@ $employees_result = $conn->query($employees_sql);
         <tbody>
           <?php foreach ($employees_result as $r) : ?>
             <tr>
-
               <td class="text-center"><?= $r['employee_id'] ?></td>
               <td class="text-center"><?= $r['employee_name'] ?></td>
-              <!-- <td class="text-center"><?= $r['email'] ?></td> -->
               <td class="text-center"><?= $r['department_ch'] ?></td>
               <td class="text-center"><?= $r['title_ch'] ?></td>
               <td class="text-center">
-
-
-                <button class="btn btn-outline-warning " type="button" data-bs-toggle="collapse" data-bs-target="#employeeInfo<?= $r['employee_id'] ?>" aria-expanded="false" aria-controls="employeeInfo<?= $r['employee_id'] ?>">
+                <button class="btn btn-outline-warning " type="button" data-bs-toggle="collapse" data-bs-target="#employeeInfo<?= $r['employee_id'] ?>" aria-expanded="false" aria-controls="employeeInfo<?= $r['employee_id'] ?>" >
                   詳細資訊
                 </button>
+                
               </td>
               <td class="text-center"><?= $r['status'] == 1 ? "啟用" : "禁用" ?></td>
               <td class="text-center"><a href="" class="<?= $isAbled ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
@@ -196,10 +198,10 @@ $employees_result = $conn->query($employees_sql);
                 </a>
               </td>
             </tr>
+            <!-- 員工詳細資料 Start -->
             <tr class="collapse" id="employeeInfo<?= $r['employee_id'] ?>">
-              <td colspan="8">
-
-                <div class="employeeInfo<?= $r['employee_id'] ?>">
+              <td colspan="8" >
+                <div  class="collapse" id="employeeInfo<?= $r['employee_id'] ?>">
                   <div class="employeeInfoBox d-flex w-100">
 
                     <div class="employeeInfoLeft m-3 w-50">
@@ -223,6 +225,7 @@ $employees_result = $conn->query($employees_sql);
                 </div>
               </td>
             </tr>
+            <!-- 員工詳細資料 End -->
 
           <?php endforeach ?>
         </tbody>
@@ -246,8 +249,10 @@ $employees_result = $conn->query($employees_sql);
 <script src="./js/address.js"></script>
 
 <script src="./js/nowDate.js"></script>
-<script src="./js/employeesinfo.js"></script>
+<script src="./js/employeesInfo.js"></script>
+
+<script>
 
 
-
+</script>
 <?php include '../parts/html-foot.php' ?>
