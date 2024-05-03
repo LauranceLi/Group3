@@ -8,16 +8,46 @@
 
             <div class="ms-3">
                 <h4 class="mb-0"><?= $_SESSION['admin']['employee_nickname'] ?></h4>
-                <span><?= $_SESSION['admin']['role_name'] ?></span>
+                <p><?= $_SESSION['admin']['department_ch'] ?> <?= $_SESSION['admin']['title_ch'] ?></p>
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="../homepage/homepage.php" class="nav-item nav-link <?= $pageName == 'homepage' ? 'active' : '' ?> "><i class="fa-solid fa-house-user me-2"></i>歡迎回来</a>
-            <a href="../roleList/roleList.php" class="nav-item nav-link <?= $pageName == 'roleList' ? 'active' : '' ?> <?= $_SESSION['permission']['role_set'] ?>"><i class="fa-solid fa-shield-halved me-2"></i>角色權限管理</a>
-            <a href="../employees/employees.php" class="nav-item nav-link <?= $pageName == 'employees' ? 'active' : '' ?> <?= $_SESSION['permission']['employees'] ?>"><i class="fa-solid fa-circle-user me-2"></i>員工管理</a>
-            <a href="../members/members.php" class="nav-item nav-link <?= $pageName == 'members' ? 'active' : '' ?> <?= $_SESSION['permission']['members'] ?>"><i class="fa-solid fa-users me-2"></i>會員管理</a>
+        <?php
+                class Page {
+                    public $pageId;
+                    public $pageIcon;
+                    public $pageCh;
+                
+                    public function __construct($pageId, $pageIcon, $pageCh) {
+                        $this->pageIcon = $pageIcon;
+                        $this->pageId = $pageId;
+                        $this->pageCh = $pageCh;
+                    }
+                }
+                
+                $pages = [
+                    new Page('homepage', '<i class="fa-solid fa-house-user me-2"></i>', '歡迎回來'),
+                    new Page('roleList', '<i class="fa-solid fa-shield-halved me-2"></i>', '角色權限管理'),
+                    new Page('employees', '<i class="fa-solid fa-circle-user me-2"></i>', '員工管理'),
+                    new Page('members', '<i class="fa-solid fa-users me-2"></i>', '會員管理'),
+                    new Page('orderList', '<i class="fa-solid fa-sack-dollar me-2"></i>', '訂單管理'),
+                    new Page('products', '<i class="fa-solid fa-shopping-bag me-2"></i>', '商品上架管理'),
+                    new Page('lectureList', '<i class="fa-solid fa-rectangle-list me-2"></i>', '講座管理'),
+                ];
+                
+                foreach ($pages as $page) {
+                    $address = '../' . $page->pageId . '/'. $page->pageId . '.php';
+                    $icon = $page->pageIcon;
+                    $name = $page->pageCh;
+                    $pageStatus = ($page->pageId == $pageName) ? 'active' : '';
+                    echo "<a href='$address' class='nav-item nav-link $pageStatus'>$icon $name</a>";
+                }
+                ?>
+
+
+
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle <?= $_SESSION['permission']['points'] ?>" data-bs-toggle="dropdown"><i class="fa-solid fa-star-half-stroke me-2"></i>積分管理</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-star-half-stroke me-2"></i>積分管理</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="points_details.php" class="dropdown-item">積分明細</a>
                     <a href="points_changes.php" class="dropdown-item">積分操作</a>
@@ -25,18 +55,7 @@
             </div>
 
             <div class="nav-item dropdown">
-                <?php if ($pageName == 'itinerary' || $pageName == 'itinerary_order') {
-                    $isItineraryActive = 'active';
-                    $isItineraryExpand = 'true';
-                    $isItineraryProper = 'none';
-                    $isItineraryShow = 'show';
-                } else {
-                    $isItineraryActive = '';
-                    $isItineraryExpand = 'false';
-                    $isItineraryProper = '';
-                }
-                ?>
-                <a href="#" class="nav-link dropdown-toggle <?= $isItineraryActive ?> <?= $_SESSION['permission']['itinerary'] ?>" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
+                <a href="#" class="nav-link dropdown-toggle <?= $isItineraryActive ?>" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
 
                 <div class="dropdown-menu bg-transparent border-0 <?= $isItineraryShow ?>">
                     <a href="../itinerary/itinerary.php" class="dropdown-item <?= $pageName == 'itinerary' ? 'active show' : '' ?>" aria-expanded="<?= $isItineraryExpand ?>" data-bs-popper="<?= $isItineraryProper ?>">套裝行程</a>
@@ -45,12 +64,6 @@
                 </div>
             </div>
 
-
-            <a href="../order/orderList.php" class="nav-item nav-link <?= $pageName == 'orderList' ? 'active' : '' ?> <?= $_SESSION['permission']['orders'] ?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
-
-            <a href="../products/products.php" class="nav-item nav-link <?= $pageName == 'products' ? 'active' : '' ?> <?= $_SESSION['permission']['products'] ?>"><i class="fa-solid fa-bag-shopping me-2"></i>商品上架管理</a>
-
-            <a href="../speech_form/speech_list.php" class="nav-item nav-link <?= $pageName == 'products' ? 'active' : '' ?> <?= $_SESSION['permission']['form'] ?>"><i class="fa-solid fa-rectangle-list me-2"></i>講座管理</a>
 
 
         </div>

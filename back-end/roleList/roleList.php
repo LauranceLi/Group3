@@ -4,7 +4,7 @@ session_start();
 $title = "Role List";
 $pageName = 'roleList';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$isAbled = $_SESSION['permission']['role_set'] == 'view' ? 'disabled' : '';
+// $isAbled = $_SESSION['permission']['role_set'] == 'view' ? 'disabled' : '';
 if ($page < 1) {
   header('Location: ?page=1');
   exit;
@@ -22,7 +22,7 @@ $permission_sql =
     "SELECT *
   FROM permission
   INNER JOIN role_set
-  ON role_set.role_id = permission.permission_role_id
+  ON role_set.role_id = permission.role_id
   ORDER BY role_id ASC LIMIT %s, %s",
     ($page - 1) * $per_page,
     $per_page
