@@ -17,29 +17,29 @@ $per_page = 10;
 
 
 
-$permission_sql =
-  sprintf(
-    "SELECT *
-  FROM permission
-  INNER JOIN role_set
-  ON role_set.role_id = permission.role_id
-  ORDER BY role_id ASC LIMIT %s, %s",
-    ($page - 1) * $per_page,
-    $per_page
-  );
+// $permission_sql =
+//   sprintf(
+//     "SELECT *
+//   FROM permission
+//   INNER JOIN role_set
+//   ON role_set.role_id = permission.role_id
+//   ORDER BY role_id ASC LIMIT %s, %s",
+//     ($page - 1) * $per_page,
+//     $per_page
+//   );
 
-$permission_result = $conn->query($permission_sql);
+// $permission_result = $conn->query($permission_sql);
 
-function permission_icon($permission_r)
-{
-  if ($permission_r == 'edit') {
-    echo '<i class="fa-solid fa-pen-to-square"></i>';
-  } else if ($permission_r == 'view') {
-    echo '<i class="fa-solid fa-eye"></i>';
-  } else {
-    echo '<i class="fa-solid fa-square-xmark"></i>';
-  }
-};
+// function permission_icon($permission_r)
+// {
+//   if ($permission_r == 'edit') {
+//     echo '<i class="fa-solid fa-pen-to-square"></i>';
+//   } else if ($permission_r == 'view') {
+//     echo '<i class="fa-solid fa-eye"></i>';
+//   } else {
+//     echo '<i class="fa-solid fa-square-xmark"></i>';
+//   }
+// };
 
 
 function isView($item)
@@ -98,151 +98,60 @@ function isEdit($item)
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1" name="new_role_name" required>
                     </div>
+                    <div class="permissionBox d-flex flex-wrap justify-content-between" >
+                      <?php
+                      class RoleSetInput
+                      {
+                        public $roleSetCh;
+                        public $roleSetEn;
 
-                    <div class="permissionBox d-flex justify-content-between">
-                      <div class="permissionBoxLeft">
-                        <div class="permissionItem m-3 ">
-                          <h6>角色設置</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="1" type="checkbox" role="switch" id="roleSetCheckAll" onclick="checkAll(this,'roleSet[]')">
-                              <label class="form-check-label " for="roleSetCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="roleSet[]" type="checkbox" class="btn-check" id="viewRoleSet" autocomplete="off" checked="true" onclick="allCheck('roleSetCheckAll','roleSet[]') " value="view">
-                              <label class="btn btn-outline-info" for="viewRoleSet">檢視</label>
+                        public function __construct($roleSetCh, $roleSetEn)
+                        {
+                          $this->roleSetCh = $roleSetCh;
+                          $this->roleSetEn = $roleSetEn;
+                        }
+                      }
 
-                              <input name="roleSet[]" type="checkbox" class="btn-check" id="editRoleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editRoleSet">編輯</label>
+                      $roleSetInputs = [
+                        new RoleSetInput('角色設置', 'roleSet'),
+                        new RoleSetInput('員工管理', 'employees'),
+                        new RoleSetInput('會員管理', 'members'),
+                        new RoleSetInput('訂單管理', 'orders'),
+                        new RoleSetInput('商品上架管理', 'products'),
+                        new RoleSetInput('講座管理', 'lectures'),
+                        new RoleSetInput('行程管理', 'itinerary'),
+                        new RoleSetInput('積分管理', 'points'),
+                      ];
 
+                      foreach ($roleSetInputs as $roleSetInput) {
+                        $roleSetTitle = $roleSetInput->roleSetCh;
+                        $roleSetEn = $roleSetInput->roleSetEn;
 
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3 ">
-                          <h6>員工管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="view" type="checkbox" role="switch" id="employeesCheckAll" onclick="checkAll(this,'employee[]')">
-                              <label class="form-check-label " for="employeesCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="employee[]" type="checkbox" class="btn-check" id="viewEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee[]')" checked="true" value="view">
-                              <label class="btn btn-outline-info" for="viewEmployee">檢視</label>
+                        echo '<div class="permissionItem m-3 ">';
+                        echo "<h6>$roleSetTitle</h6>";
+                        echo '<div class="bg-secondary rounded h-75 p-1 d-flex">';
+                        echo '<div class="form-check form-switch me-4 d-flex align-items-center">';
+                        echo '<input class="form-check-input me-2" name="isAuthorized[]" type="checkbox" role="switch" id=' . $roleSetEn . 'CheckAll" onclick="checkAll(this,' . $roleSetEn . '[])">';
+                        echo '<label class="form-check-label " for=' . $roleSetEn . 'CheckAll">全選</label>';
+                        echo '</div>';
+                        echo '<div class="btn-group" role="group">';
+                        echo '<input name="' . $roleSetEn . '[]"  type="checkbox" class="btn-check" id="' . $roleSetEn . 'Create" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
+                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Create">新增</label>';
+                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Read" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
+                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Read">檢視</label>';
+                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Update" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
+                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Update">編輯</label>';
+                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Delete" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
+                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Delete">刪除</label>';
+                        echo '</div></div></div>';
+                      }
+                      ?>
 
-                              <input name="employee[]" type="checkbox" class="btn-check" id="editEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editEmployee">編輯</label>
-
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3 ">
-                          <h6>會員管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="3" type="checkbox" role="switch" id="membersCheckAll" onclick="checkAll(this,'member[]')">
-                              <label class="form-check-label " for="membersCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="member[]" type="checkbox" class="btn-check" id="viewMember" autocomplete="off" onclick="allCheck('membersCheckAll','member[]')" checked="true" value="view">
-                              <label class="btn btn-outline-info" for="viewMember">檢視</label>
-
-                              <input name="member[]" type="checkbox" class="btn-check" id="editMember" autocomplete="off" onclick="allCheck('membersCheckAll','member[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editMember">編輯</label>
-
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3 ">
-                          <h6>積分管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="4" type="checkbox" role="switch" id="pointsCheckAll" onclick="checkAll(this,'point[]')">
-                              <label class="form-check-label " for="pointsCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="point[]" type="checkbox" class="btn-check" id="viewPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point[]')" checked="true" value="view">
-                              <label class="btn btn-outline-info" for="viewPoint">檢視</label>
-
-                              <input name="point[]" type="checkbox" class="btn-check" id="editPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editPoint">編輯</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="permissionBoxRight">
-                        <div class="permissionItem m-3 ">
-
-                          <h6>套裝行程管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="5" type="checkbox" role="switch" id="itineraryCheckAll" onclick="checkAll(this,'itinerary[]')">
-                              <label class="form-check-label " for="itineraryCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="itinerary[]" type="checkbox" class="btn-check" id="viewItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary[]')" checked="true" value="view">
-                              <label class="btn btn-outline-info" for="viewItinerary">檢視</label>
-
-                              <input name="itinerary[]" type="checkbox" class="btn-check" id="editItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editItinerary">編輯</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3">
-                          <h6>訂單管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="6" type="checkbox" role="switch" id="ordersCheckAll" onclick="checkAll(this,'order[]')">
-                              <label class="form-check-label " for="ordersCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="order[]" type="checkbox" class="btn-check" id="viewOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order[]')" checked="true" value="view">
-                              <label class="btn btn-outline-info" for="viewOrder">檢視</label>
-
-                              <input name="order[]" type="checkbox" class="btn-check" id="editOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editOrder">編輯</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3">
-                          <h6>商品上架管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="7" type="checkbox" role="switch" id="productsCheckAll" onclick="checkAll(this,'product[]')">
-                              <label class="form-check-label " for="productsCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="product[]" type="checkbox" class="btn-check" id="viewProduct" autocomplete="off" checked="true" onclick="allCheck('productsCheckAll','product[]')">
-                              <label class="btn btn-outline-info" for="viewProduct" value="view">檢視</label>
-
-                              <input name="product[]" type="checkbox" class="btn-check" id="editProduct" autocomplete="off" onclick="allCheck('productsCheckAll','product[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editProduct">編輯</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="permissionItem m-3">
-                          <h6>表單管理</h6>
-                          <div class="bg-secondary rounded h-100 p-1 d-flex">
-                            <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="8" type="checkbox" role="switch" id="formCheckAll" onclick="checkAll(this,'form[]')">
-                              <label class="form-check-label " for="formCheckAll">全選</label>
-                            </div>
-                            <div class="btn-group" role="group">
-                              <input name="form[]" type="checkbox" class="btn-check" id="viewForm" autocomplete="off" onclick="allCheck('formCheckAll','form[]')" checked="true">
-                              <label class="btn btn-outline-info" for="viewForm">檢視</label>
-
-                              <input name="form[]" type="checkbox" class="btn-check" id="editForm" autocomplete="off" onclick="allCheck('formCheckAll','form[]')" value="edit">
-                              <label class="btn btn-outline-info" for="editForm">編輯</label>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="permissionItem m-3" >
-                        <h6>相關描述</h6>
-                        <textarea class="form-control p-2" name="new_role_desc" id="new_role_desc" style="min-height: 91%"></textarea>
-                        <label for="new_role_desc"></label>
-                      </div>
+                    </div>
+                    <div class="permissionItem m-3">
+                      <h6>相關描述</h6>
+                      <textarea class="form-control p-2" name="new_role_desc" id="new_role_desc" style="min-height: 91%"></textarea>
+                      <label for="new_role_desc"></label>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -275,8 +184,7 @@ function isEdit($item)
               <th scope="col" class="text-center">訂單管理</th>
               <th scope="col" class="text-center">商品上架管理</th>
               <th scope="col" class="text-center">表單管理</th>
-              <th scope="col" class="text-center">編輯
-              </th>
+              <th scope="col" class="text-center">編輯</th>
               <th scope="col" class="text-center">刪除</th>
             </tr>
           </thead>
@@ -284,7 +192,7 @@ function isEdit($item)
             <?php foreach ($permission_result as $r) : ?>
               <tr>
                 <td class="text-center"><?= $r['role_name'] ?></td>
-                <td class="text-center">
+                <!-- <td class="text-center">
                   <?php permission_icon($r['role_set']); ?>
                 </td>
                 <td class="text-center">
@@ -307,7 +215,7 @@ function isEdit($item)
                 </td>
                 <td class="text-center">
                   <?php permission_icon($r['form']); ?>
-                </td>
+                </td> -->
                 <td class="text-center">
                   <a href="#" class="vstack <?= $isAbled ?>" data-bs-toggle="modal" data-bs-target="#editBackdrop<?= $r['role_id'] ?>">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -319,7 +227,7 @@ function isEdit($item)
                 $edit_sql = "SELECT *
                             FROM permission
                             INNER JOIN role_set
-                            ON role_set.role_id = permission.permission_role_id
+                            ON role_set.role_id = permission.role_id
                             WHERE role_id = $role_id ";
                 $edit_sql_result = $conn->query($edit_sql)->fetch_assoc();
                 $edit_name = $edit_sql_result['role_name'];
