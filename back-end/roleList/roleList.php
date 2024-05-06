@@ -22,24 +22,80 @@ $per_page = 10;
 //     "SELECT *
 //   FROM permission
 //   INNER JOIN role_set
-//   ON role_set.role_id = permission.role_id
-//   ORDER BY role_id ASC LIMIT %s, %s",
-//     ($page - 1) * $per_page,
-//     $per_page
-//   );
+//   ON role_set.role_id = permission.role_id",
 
-// $permission_result = $conn->query($permission_sql);
+//   );
+$permission_sql =
+  sprintf(
+    "SELECT *
+  FROM permission
+  INNER JOIN role_set
+  ON role_set.role_id = permission.role_id
+  ORDER BY permission.role_id ASC LIMIT %s, %s",
+    ($page - 1) * $per_page,
+    $per_page
+  );
+
+$permission_result = $conn->query($permission_sql);
 
 // function permission_icon($permission_r)
 // {
-//   if ($permission_r == 'edit') {
-//     echo '<i class="fa-solid fa-pen-to-square"></i>';
-//   } else if ($permission_r == 'view') {
-//     echo '<i class="fa-solid fa-eye"></i>';
-//   } else {
-//     echo '<i class="fa-solid fa-square-xmark"></i>';
+//   $icon = '<i class="fa-solid fa-square-xmark"></i>';
+//   $createIcon = '';
+//   $readIcon = '';
+//   $updateIcon = '';
+//   $deleteIcon = '';
+//   $permissions = explode(',', $permission_r);
+//   if (in_array('C', $permissions)) {
+//     $createIcon = '<i class="fa-solid fa-file-circle-plus"></i>';
 //   }
+//   if (in_array('R', $permissions)) {
+//     $readIcon = '<i class="fa-solid fa-eye"></i>';
+//   }
+//   if (in_array('U', $permissions)) {
+//     $updateIcon = '<i class="fa-solid fa-pen-to-square"></i>';
+//   }
+//   if (in_array('D', $permissions)) {
+//     $deleteIcon = '<i class="fa-solid fa-trash-can"></i>';
+//   }
+//   $icon = $createIcon . $readIcon . $updateIcon . $deleteIcon;
+//   return $icon;
 // };
+
+class Permission
+{
+  public $create;
+  public $read;
+  public $update;
+  public $delete;
+
+  public function __construct($create, $read, $update, $delete)
+  {
+    $this->create = $create;
+    $this->read = $read;
+    $this->update = $update;
+    $this->delete = $delete;
+  }
+}
+
+function permitted_icon($permission)
+{
+  $icons = array(
+    'createIcon' => '',
+    'readIcon' => '',
+    'updateIcon' => '',
+    'deleteIcon' => ''
+  );
+  $check = '<i class="fa-solid fa-circle-check"></i>';
+  $permissions = explode(',', $permission);
+  $icons['createIcon'] = in_array('C', $permissions) ? $check : '';
+  $icons['readIcon'] = in_array('R', $permissions) ? $check : '';
+  $icons['updateIcon'] = in_array('U', $permissions) ? $check : '';
+  $icons['deleteIcon'] = in_array('D', $permissions) ? $check : '';
+
+  return $icons;
+}
+
 
 
 function isView($item)
@@ -75,6 +131,11 @@ function isEdit($item)
 <?php include '../parts/spinner.php' ?>
 <?php include '../parts/slidebar.php' ?>
 <?php include '../parts/navbar.php' ?>
+
+
+
+
+
 <!-- Table Start -->
 <div class="container-fluid pt-4 px-4">
   <div class="row g-4">
@@ -83,82 +144,11 @@ function isEdit($item)
         <div class="roleListTitleBox d-flex justify-content-between">
           <h3 class="mb-3">角色權限一覽</h3>
           <!-- add form start -->
-          <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#addBackdrop" <?= $isAbled ?>>新增</button>
+          <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#addBackdrop">新增</button>
           <div class="modal fade " id="addBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content bg-secondary border-0">
-                <form action="roleList-add.php" method="post">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="addLabel">新增角色</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body ">
-                    <h6>角色名稱</h6>
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1" name="new_role_name" required>
-                    </div>
-                    <div class="permissionBox d-flex flex-wrap justify-content-between" >
-                      <?php
-                      class RoleSetInput
-                      {
-                        public $roleSetCh;
-                        public $roleSetEn;
-
-                        public function __construct($roleSetCh, $roleSetEn)
-                        {
-                          $this->roleSetCh = $roleSetCh;
-                          $this->roleSetEn = $roleSetEn;
-                        }
-                      }
-
-                      $roleSetInputs = [
-                        new RoleSetInput('角色設置', 'roleSet'),
-                        new RoleSetInput('員工管理', 'employees'),
-                        new RoleSetInput('會員管理', 'members'),
-                        new RoleSetInput('訂單管理', 'orders'),
-                        new RoleSetInput('商品上架管理', 'products'),
-                        new RoleSetInput('講座管理', 'lectures'),
-                        new RoleSetInput('行程管理', 'itinerary'),
-                        new RoleSetInput('積分管理', 'points'),
-                      ];
-
-                      foreach ($roleSetInputs as $roleSetInput) {
-                        $roleSetTitle = $roleSetInput->roleSetCh;
-                        $roleSetEn = $roleSetInput->roleSetEn;
-
-                        echo '<div class="permissionItem m-3 ">';
-                        echo "<h6>$roleSetTitle</h6>";
-                        echo '<div class="bg-secondary rounded h-75 p-1 d-flex">';
-                        echo '<div class="form-check form-switch me-4 d-flex align-items-center">';
-                        echo '<input class="form-check-input me-2" name="isAuthorized[]" type="checkbox" role="switch" id=' . $roleSetEn . 'CheckAll" onclick="checkAll(this,' . $roleSetEn . '[])">';
-                        echo '<label class="form-check-label " for=' . $roleSetEn . 'CheckAll">全選</label>';
-                        echo '</div>';
-                        echo '<div class="btn-group" role="group">';
-                        echo '<input name="' . $roleSetEn . '[]"  type="checkbox" class="btn-check" id="' . $roleSetEn . 'Create" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
-                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Create">新增</label>';
-                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Read" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
-                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Read">檢視</label>';
-                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Update" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
-                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Update">編輯</label>';
-                        echo '<input name="' . $roleSetEn . '[]" type="checkbox" class="btn-check" id="' . $roleSetEn . 'Delete" autocomplete="off" checked="true" onclick="allCheck(' . $roleSetEn . 'CheckAll,' . $roleSetEn . '[])">';
-                        echo '<label class="btn btn-outline-info d-flex align-items-center" for="' . $roleSetEn . 'Delete">刪除</label>';
-                        echo '</div></div></div>';
-                      }
-                      ?>
-
-                    </div>
-                    <div class="permissionItem m-3">
-                      <h6>相關描述</h6>
-                      <textarea class="form-control p-2" name="new_role_desc" id="new_role_desc" style="min-height: 91%"></textarea>
-                      <label for="new_role_desc"></label>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-outline-info">新增</button>
-                  </div>
-                </form>
+                <?php include './php/role-add-form.php' ?>
 
               </div>
             </div>
@@ -166,7 +156,7 @@ function isEdit($item)
           <!-- add form end -->
         </div>
 
-        <div class="descript">
+        <div class="description">
           <p>說明：<i class="fa-solid fa-pen-to-square me-1"></i>可供編輯、<i class="fa-solid fa-eye me-1"></i>僅供檢視、<i class="fa-solid fa-square-xmark me-1"></i>無任何權限</p>
         </div>
 
@@ -176,46 +166,45 @@ function isEdit($item)
           <thead>
             <tr>
               <th scope="col" class="text-center">角色名稱</th>
-              <th scope="col" class="text-center">角色權限管理</th>
-              <th scope="col" class="text-center">員工管理</th>
-              <th scope="col" class="text-center">會員管理</th>
-              <th scope="col" class="text-center">積分管理</th>
-              <th scope="col" class="text-center">套裝行程管理</th>
-              <th scope="col" class="text-center">訂單管理</th>
-              <th scope="col" class="text-center">商品上架管理</th>
-              <th scope="col" class="text-center">表單管理</th>
+              <?php
+              foreach ($roleSetInputs as $roleSetInput) {
+                $roleSetTitle = $roleSetInput->roleSetCh;
+                echo '<th scope="col" class="text-center" colspan="4">' . $roleSetTitle . '</th>';
+              }
+              ?>
               <th scope="col" class="text-center">編輯</th>
               <th scope="col" class="text-center">刪除</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td class="text-center">權限</td>
+              <?php foreach ($roleSetInputs as $roleSetInput) : ?>
+                <td class="text-center"><i class="fa-solid fa-file-circle-plus"></i></td>
+                <td class="text-center"><i class="fa-solid fa-eye"></i></td>
+                <td class="text-center"><i class="fa-solid fa-pen-to-square"></i></td>
+                <td class="text-center"><i class="fa-solid fa-trash-can"></i></td>
+              <?php endforeach ?>
+              <td class="text-center"><i class="fa-solid fa-pen-to-square"></i></td>
+              <td class="text-center"><i class="fa-solid fa-trash-can"></i></td>
+
+            </tr>
+
+
+
             <?php foreach ($permission_result as $r) : ?>
               <tr>
-                <td class="text-center"><?= $r['role_name'] ?></td>
-                <!-- <td class="text-center">
-                  <?php permission_icon($r['role_set']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['employees']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['members']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['points']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['itinerary']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['orders']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['products']); ?>
-                </td>
-                <td class="text-center">
-                  <?php permission_icon($r['form']); ?>
-                </td> -->
+                <td class="text-center"><?= $r['role_ch'] ?></td>
+                <?php 
+                $columnName = ['role_set', 'employees', 'members', 'orders', 'products','form',  'itinerary','points'];
+                foreach ($columnName as $type) : ?>
+                  <?php $permittedIcons = permitted_icon($r[$type]); ?>
+                  <td><?= $permittedIcons['createIcon'] ?></td>
+                  <td><?= $permittedIcons['readIcon'] ?></td>
+                  <td><?= $permittedIcons['updateIcon'] ?></td>
+                  <td><?= $permittedIcons['deleteIcon'] ?></td>
+                  
+                <?php endforeach ?>
                 <td class="text-center">
                   <a href="#" class="vstack <?= $isAbled ?>" data-bs-toggle="modal" data-bs-target="#editBackdrop<?= $r['role_id'] ?>">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -228,7 +217,7 @@ function isEdit($item)
                             FROM permission
                             INNER JOIN role_set
                             ON role_set.role_id = permission.role_id
-                            WHERE role_id = $role_id ";
+                            WHERE permission.role_id = $role_id ";
                 $edit_sql_result = $conn->query($edit_sql)->fetch_assoc();
                 $edit_name = $edit_sql_result['role_name'];
                 ?>
@@ -400,7 +389,7 @@ function isEdit($item)
                 </div>
                 <!-- edit form end -->
                 <td class="text-center">
-                  <a href="javascript: deleteOne(<?= $r['role_id'] ?>)" class="vstack <?= $isAbled ?>">
+                  <a href="javascript: deleteOne(<?= $r['role_id'] ?>)" class="vstack ">
                     <i class="fa-solid fa-trash text-danger"></i>
                   </a>
                 </td>
