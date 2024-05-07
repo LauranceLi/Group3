@@ -17,17 +17,10 @@ $per_page = 10;
 
 
 
-// $permission_sql =
-//   sprintf(
-//     "SELECT *
-//   FROM permission
-//   INNER JOIN role_set
-//   ON role_set.role_id = permission.role_id",
 
-//   );
 $permission_sql =
   sprintf(
-    "SELECT *
+  "SELECT *
   FROM permission
   INNER JOIN role_set
   ON role_set.role_id = permission.role_id
@@ -38,29 +31,6 @@ $permission_sql =
 
 $permission_result = $conn->query($permission_sql);
 
-// function permission_icon($permission_r)
-// {
-//   $icon = '<i class="fa-solid fa-square-xmark"></i>';
-//   $createIcon = '';
-//   $readIcon = '';
-//   $updateIcon = '';
-//   $deleteIcon = '';
-//   $permissions = explode(',', $permission_r);
-//   if (in_array('C', $permissions)) {
-//     $createIcon = '<i class="fa-solid fa-file-circle-plus"></i>';
-//   }
-//   if (in_array('R', $permissions)) {
-//     $readIcon = '<i class="fa-solid fa-eye"></i>';
-//   }
-//   if (in_array('U', $permissions)) {
-//     $updateIcon = '<i class="fa-solid fa-pen-to-square"></i>';
-//   }
-//   if (in_array('D', $permissions)) {
-//     $deleteIcon = '<i class="fa-solid fa-trash-can"></i>';
-//   }
-//   $icon = $createIcon . $readIcon . $updateIcon . $deleteIcon;
-//   return $icon;
-// };
 
 class Permission
 {
@@ -213,13 +183,14 @@ function isEdit($item)
                 <!-- edit form start -->
                 <?php
                 $role_id = $r['role_id'];
+
                 $edit_sql = "SELECT *
                             FROM permission
                             INNER JOIN role_set
                             ON role_set.role_id = permission.role_id
-                            WHERE permission.role_id = $role_id ";
+                            WHERE permission.role_id = '$role_id' ";
                 $edit_sql_result = $conn->query($edit_sql)->fetch_assoc();
-                $edit_name = $edit_sql_result['role_name'];
+                $edit_name = $edit_sql_result['role_ch'];
                 ?>
                 <div class="modal fade " id="editBackdrop<?= $r['role_id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
@@ -232,7 +203,7 @@ function isEdit($item)
                           <h6>角色名稱</h6>
                           <div class="input-group mb-3">
 
-                            <input type="text" class="form-control" name="new_role_name" value="<?= $edit_sql_result['role_name'] ?>" readonly>
+                            <input type="text" class="form-control" name="new_role_ch" value="<?= $edit_sql_result['role_ch'] ?>" readonly>
                           </div>
 
                           <div class="permissionBox d-flex justify-content-between">
