@@ -222,7 +222,7 @@ select {
   padding: 5px;
   width: 50%;
   font-size: 16px;
-  background-color: transparent;
+  background-color: var(--primary-color-55);
   border: 0;
   color: white;
 }
@@ -259,17 +259,26 @@ option {
   height: 80%;
   font-size: 0.9rem;
 }
+#checkMail{
+
+  background-color: var(--info-color-75);
+}
+
+#checkMail:hover {
+  background-color: white;
+  color: var(--info-color);
+}
 
 .registerBtn {
   color: white;
-  background-color: #192a56;
+  background-color: var(--primary-color-75);
 }
 
 .registerBtn:hover {
   font-size: 0.9rem;
   background-color: white;
   border: 0;
-  color: #192a56;
+  color: var(--primary-color);
 }
 
 .thirdPartyLogin .registerItem {
@@ -287,12 +296,14 @@ option {
   display: flex;
   width: 45%;
   height: 2.5rem;
-  padding: 0px 5%;
-  margin: 0px 0.3rem;
+  padding: 0px 1rem;
+  margin-right: 1.5rem;
   justify-content: space-around;
   align-items: center;
   border: 1px solid var(--white, #fff);
   background: rgba(0, 0, 0, 0);
+  max-width: 10rem;
+  min-width: none;
 }
 
 .thirdPartyLoginBtn i {

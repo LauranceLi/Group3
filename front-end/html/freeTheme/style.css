@@ -389,7 +389,7 @@ img {
 .sonar-btn {
   position: relative;
   z-index: 1;
-  min-width: 180px;
+  /* min-width: 180px; */
   height: 66px;
   border: 1px solid;
   border-color: #2f2f2f;
