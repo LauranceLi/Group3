@@ -2,6 +2,12 @@ body {
   height: 100vh;
 }
 
+@media only screen and  (max-width: 768px) {
+  body {
+    height: auto;
+  }
+}
+
 .loginFormContainer {
   display: flex;
   background: linear-gradient(
@@ -9,7 +15,19 @@ body {
       rgba(11, 21, 48, 0.51) 0%,
       rgba(11, 21, 48, 0.51) 100%
     ),
-    url(./img/bg-img/forest.jpg) lightgray 50% / cover no-repeat;
+    url(../img/bg-img/forest.jpg) lightgray 50% / cover no-repeat;
+}
+
+
+
+@media only screen and  (max-width: 991px) {
+  .loginFormContainer {
+    flex-direction: column-reverse;
+  }
+}
+
+.header-social-area {
+  justify-content: right;
 }
 
 /*leftBox Start*/
@@ -20,10 +38,24 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 30%;
+  width: 28%;
   background-color: var(--primary-color-75);
   box-shadow: 10px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .leftBox {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .leftBox {
+    width: 100%;
+    padding: 3%;
+  }
+}
+
 
 .groupIcon,
 .loginForm,
@@ -34,7 +66,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.2rem;
+  gap: 0.5rem;
+}
+
+@media only screen and (max-width: 991px) {
+  .loginForm,
+  .thirdPartyLogin {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .loginForm,
+  .thirdPartyLogin {
+    width: 85%;
+  }
 }
 
 .groupIcon {
@@ -48,7 +93,7 @@ body {
   display: flex;
   width: 90%;
   height: 3.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3%;
   align-items: center;
   border-bottom: 1px solid white;
 }
@@ -60,7 +105,7 @@ body {
   padding: 0;
   border: none;
   border-radius: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-style: italic;
   color: #ffffff;
   background-color: transparent;
@@ -79,6 +124,7 @@ body {
 
 .loginItem label {
   color: white;
+  margin: 0;
   display: flex;
   align-items: center;
   height: 100%;
@@ -89,7 +135,7 @@ body {
   display: flex;
   height: 100%;
   padding: 0;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
 }
 
 .loginBtn,
@@ -151,13 +197,16 @@ body {
   display: flex;
   width: 50%;
   height: 2.5rem;
-  padding: 0px 1rem;
-  margin: 0px 0.5rem;
-  justify-content: space-between;
+  padding: 0px 5%;
+  margin: 0px 0.3rem;
+  justify-content: space-around;
   align-items: center;
-
   border: 1px solid var(--white, #fff);
   background: rgba(0, 0, 0, 0);
+}
+
+.thirdPartyLoginBtn i {
+  padding-right: 0.5rem;
 }
 
 /* leftBox End */
@@ -169,6 +218,14 @@ body {
   align-items: center;
   height: 100%;
   width: 70%;
+}
+
+@media only screen and (max-width: 991px) {
+  .rightBox{
+    margin: 5%;
+    width: auto;
+    padding: 2rem;
+  }
 }
 
 .rightBox h1,
@@ -193,14 +250,37 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  gap: 62px;
+  gap: 1.5rem;
+}
+
+@media only screen and (max-width: 991px) {
+  .introduction h1{
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .introduction h1{
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 414px) {
+  .introduction h1{
+    width: 70%;
+  }
 }
 
 .contact {
   display: flex;
-  
 }
 
+@media only screen and (max-width: 991px) {
+  .introduction{
+    padding: 0;
+  }
+  .contact{
+    padding-left: 0;
+  }
+}
 
 .contactBtn {
   width: 30%;
@@ -212,20 +292,16 @@ body {
 }
 
 .contactBtn:hover {
-
-  background-color:white;
+  background-color: white;
   color: var(--info-color);
   font-size: 1.5rem;
 }
 
 .contactBtn:focus {
   border: none;
-  background-color:white;
+  background-color: white;
   color: var(--info-color);
   font-size: 1.5rem;
 }
 
-
 /* rightBox End */
-
-
