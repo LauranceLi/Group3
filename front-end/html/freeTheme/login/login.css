@@ -8,6 +8,24 @@ body {
   }
 }
 
+/* 取消自動填入預設樣式 */
+input:-webkit-autofill{
+  border: 0;
+  -webkit-text-fill-color: var(--info-color);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+  transition-delay: 50000s;
+  transition: color 50000s ease-out, background-color 50000s ease-out;
+  -webkit-transition-delay: 50000s;
+  -webkit-transition: color 50000s ease-out, background-color 50000s ease-out;
+
+
+}
+
 .loginFormContainer {
   display: flex;
   background: linear-gradient(

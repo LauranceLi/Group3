@@ -44,10 +44,10 @@ input:-webkit-autofill:active
   display: flex;
   background: linear-gradient(
       0deg,
-      rgba(11, 21, 48, 0.51) 0%,
-      rgba(11, 21, 48, 0.51) 100%
+      rgba(11, 21, 48, 0.2) 0%,
+      rgba(11, 21, 48, 0.2) 100%
     ),
-    url(../img/bg-img/lake.jpg) lightgray 50% / cover no-repeat;
+    url(../img/bg-img/lake.jpg) lightgray 30% / cover no-repeat;
 }
 
 @media only screen and (max-width: 991px) {
@@ -103,13 +103,13 @@ input:-webkit-autofill:active
 }
 
 .registerTitle {
-  background-color: var(--primary-color-50);
+  background-color: var(--primary-color-75);
   padding: 2rem 0;
 }
 
 .thirdPartyLogin,
 .registerForm {
-  background-color: rgba(0, 0, 0, 0.315);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 1.2rem 1.2rem;
 }
 
