@@ -30,8 +30,13 @@ body {
 
 :root {
   --primary-color: #FFC107;
-  --primary-color-75: hsla(45, 100%, 51%, 0.75);
-  --info-color:#192A56;
+  --primary-color-75: rgba(255, 193, 5, 0.75);
+  --primary-color-50: rgba(255, 193, 5, 0.5);
+  --primary-color-25: rgba(255, 193, 5, 0.25);
+  --info-color:rgba(25, 42, 86, 1);
+  --info-color-75:rgba(25, 42, 86, 0.75);
+  --info-color-50:rgba(25, 42, 86, 0.5);
+  --info-color-25:rgba(25, 42, 86, 0.25);
 
 }
 

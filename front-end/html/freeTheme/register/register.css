@@ -2,26 +2,56 @@ body {
   height: 100vh;
 }
 
-@media only screen and  (max-width: 768px) {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
   body {
     height: auto;
   }
 }
 
-.loginFormContainer {
+
+/* 取消自動填入預設樣式 */
+input:-webkit-autofill{
+  border: 0;
+  -webkit-text-fill-color: var(--primary-color);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+  transition-delay: 50000s;
+  transition: color 50000s ease-out, background-color 50000s ease-out;
+  -webkit-transition-delay: 50000s;
+  -webkit-transition: color 50000s ease-out, background-color 50000s ease-out;
+
+
+}
+
+
+
+.registerFormContainer {
+  height: 100%;
   display: flex;
   background: linear-gradient(
       0deg,
       rgba(11, 21, 48, 0.51) 0%,
       rgba(11, 21, 48, 0.51) 100%
     ),
-    url(../img/bg-img/forest.jpg) lightgray 50% / cover no-repeat;
+    url(../img/bg-img/lake.jpg) lightgray 50% / cover no-repeat;
 }
 
-
-
-@media only screen and  (max-width: 991px) {
-  .loginFormContainer {
+@media only screen and (max-width: 991px) {
+  .registerFormContainer {
     flex-direction: column-reverse;
   }
 }
@@ -30,53 +60,67 @@ body {
   justify-content: right;
 }
 
+.registerFormContainer {
+  display: flex;
+  justify-content: center;
+}
+
 /*leftBox Start*/
 
-.leftBox {
+.registerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+
+  padding: 4rem 0;
+}
+
+.registerBox h5 {
+  width: 100%;
+  border-bottom: 2px white solid;
+}
+
+.registerForm {
+  height: auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 28%;
-  background-color: var(--primary-color-75);
-  box-shadow: 10px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  .leftBox {
-    width: 45%;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .leftBox {
-    width: 100%;
-    padding: 3%;
-  }
-}
-
-
-.groupIcon,
-.loginForm,
-.thirdPartyLogin {
+.registerTitle,
+.thirdPartyLogin,
+.registerForm {
   display: flex;
   width: 75%;
-  margin: 1.2rem;
+  margin: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
 }
 
+.registerTitle {
+  background-color: var(--primary-color-50);
+  padding: 2rem 0;
+}
+
+.thirdPartyLogin,
+.registerForm {
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 1.2rem 1.2rem;
+}
+
 @media only screen and (max-width: 991px) {
-  .loginForm,
+  .registerForm,
   .thirdPartyLogin {
     width: 50%;
   }
 }
 @media only screen and (max-width: 576px) {
-  .loginForm,
+  .registerForm,
   .thirdPartyLogin {
     width: 85%;
   }
@@ -89,16 +133,54 @@ body {
   background-color: aquamarine;
 }
 
-.loginItem {
+.registerItem {
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 3.5rem;
   margin-bottom: 3%;
   align-items: center;
   border-bottom: 1px solid white;
 }
 
-.loginInput {
+.thirdPartyLogin .registerItem {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.middleBox {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.leftBox,
+.rightBox {
+  width: 45%;
+}
+
+.bottomBox {
+  display: flex;
+  width: 90%;
+}
+
+.bottomBox .registerItem {
+  border: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.alreadyHave {
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--primary-color-75);
+}
+.alreadyHave:hover {
+  color: white;
+}
+
+.registerInput {
   display: flex;
   width: 100%;
   height: 100%;
@@ -111,34 +193,64 @@ body {
   background-color: transparent;
 }
 
-.loginInput:focus {
+.registerInput:focus {
   background-color: transparent;
   border: none;
   outline: none;
 }
 
-.loginForm .loginItem:nth-last-child(-n + 3) {
-  border: 0;
-  margin-bottom: 0.5rem;
-}
-
-.loginItem label {
+.registerItem label {
   color: white;
   margin: 0;
+  padding-right: 0.1rem;
   display: flex;
   align-items: center;
   height: 100%;
-  width: 25%;
+  width: 30%;
 }
 
-.loginItem input {
+.registerItem input {
   display: flex;
   height: 100%;
   padding: 0;
   letter-spacing: 0.1rem;
 }
 
-.loginBtn,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 5px;
+  width: 50%;
+  font-size: 16px;
+  background-color: transparent;
+  border: 0;
+  color: white;
+}
+select:focus {
+  border: 0;
+}
+
+option {
+  background-color: #000;
+  border: 0;
+  color: white;
+}
+
+.eyeIcon {
+  border: 0;
+  background-color: transparent;
+  color:rgba(255, 255, 255, 0.7);
+  transition: 0.3s;
+}
+
+.eyeIcon:hover {
+  color:rgba(255, 255, 255, 1);
+}
+
+.eyeIcon:focus{
+  outline: none;
+}
+
 .registerBtn {
   display: flex;
   justify-content: center;
@@ -153,49 +265,27 @@ body {
   background-color: #192a56;
 }
 
-.registerBtn:hover,
-.loginBtn:hover {
-  font-size: 0.9rem;
-}
-
 .registerBtn:hover {
+  font-size: 0.9rem;
   background-color: white;
   border: 0;
   color: #192a56;
 }
 
-.forgetPW {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  color: #192a56a4;
-}
-.forgetPW:hover {
-  color: white;
-}
-
-.leftBox h5 {
-  display: flex;
-  width: 100%;
-  padding-bottom: 0.5rem;
-  text-align: center;
-  border-bottom: 2px white solid;
-  color: white;
-  font: 600;
-}
-
-.thirdPartyLogin .loginItem {
-  width: 100%;
+.thirdPartyLogin .registerItem {
+  width: 90%;
   display: flex;
   align-items: center;
+}
+
+.thirdPartyLogin a:hover {
+  color: var(--primary-color);
 }
 
 .thirdPartyLoginBtn {
   color: white;
   display: flex;
-  width: 50%;
+  width: 45%;
   height: 2.5rem;
   padding: 0px 5%;
   margin: 0px 0.3rem;
@@ -211,36 +301,6 @@ body {
 
 /* leftBox End */
 /* rightBox Start */
-.rightBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 70%;
-}
-
-@media only screen and (max-width: 991px) {
-  .rightBox{
-    margin: 5%;
-    width: auto;
-    padding: 2rem;
-  }
-}
-
-.rightBox h1,
-.rightBox h2,
-.rightBox h5 {
-  color: white;
-}
-
-.rightBox h1 {
-  font-size: 5rem;
-}
-
-.rightBox h5 {
-  font-size: 1.2rem;
-}
 
 .introduction,
 .contact {
@@ -254,17 +314,17 @@ body {
 }
 
 @media only screen and (max-width: 991px) {
-  .introduction h1{
+  .introduction h1 {
     width: 50%;
   }
 }
 @media only screen and (max-width: 576px) {
-  .introduction h1{
+  .introduction h1 {
     width: 50%;
   }
 }
 @media only screen and (max-width: 414px) {
-  .introduction h1{
+  .introduction h1 {
     width: 70%;
   }
 }
@@ -274,10 +334,10 @@ body {
 }
 
 @media only screen and (max-width: 991px) {
-  .introduction{
+  .introduction {
     padding: 0;
   }
-  .contact{
+  .contact {
     padding-left: 0;
   }
 }
