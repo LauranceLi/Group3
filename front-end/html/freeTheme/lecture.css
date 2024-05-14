@@ -1,3 +1,37 @@
+a {
+  color: white;
+  font-size: 1.2rem;
+}
+
+a:hover {
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s linear;
+}
+
+.nav-link {
+  position: relative; /* Add this line */
+}
+
+.nav-link:after {
+  width: 0%;
+  content: "";
+
+  transition: all 0.3s linear;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  content: "";
+  height: 2px;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s linear;
+}
+
 .btn-1 {
   background-color: #ffb534;
 }
@@ -7,6 +41,26 @@
   color: #ffb534;
   border-color: #ffb534;
 }
+
+.lectureBtn {
+width: 50%;
+  border: 0;
+  width: 12rem;
+  font-size: 1.2rem;
+}
+.lectureBtn:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: var(--info-color);
+}
+.lectureBtn:focus {
+  box-shadow: none;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  background-color: white;
+}
+
+
 
 .signUpform h3 {
   display: flex;
@@ -35,12 +89,13 @@
   align-items: center;
 }
 
-
 .sonar-projects-area {
-margin: auto;
+  margin: auto;
 }
 
-.gallery-content h4,.gallery-content h5,.gallery-content h3 {
+.gallery-content h4,
+.gallery-content h5,
+.gallery-content h3 {
   color: white;
 }
 
@@ -56,8 +111,6 @@ margin: auto;
   background-color: #e2c28e2c;
   border: 2px solid #e2c28e;
 }
-
-
 
 .signUpBox {
   background-color: #ffb534;

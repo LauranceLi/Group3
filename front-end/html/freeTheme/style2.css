@@ -389,7 +389,7 @@ img {
 .sonar-btn {
   position: relative;
   z-index: 1;
-  min-width: 180px;
+  /* min-width: 180px; */
   height: 66px;
   border: 1px solid;
   border-color: #2f2f2f;
@@ -578,7 +578,7 @@ img {
   }
 }
 .header-area.sticky {
-  background-color: #ffb534cb;
+  background-color: #ffb534;
 }
 @media only screen and (max-width: 767px) {
   .header-area {
@@ -622,15 +622,10 @@ img {
   align-items: center;
 }
 
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   cursor: pointer;
-}
-
-@media only screen and (min-width: 993px) {
-  .navbar-toggler-icon {
-    display: none;
-  }
 }
 
 .mainMenu {
@@ -1129,39 +1124,6 @@ img {
   }
 }
 
-/* footer */
-footer {
-  background-color: rgb(28, 84, 136);
-  padding: 2rem;
-}
-
-footer h4 {
-  color: #ffb534;
-}
-
-footer ul {
-  padding: 0;
-}
-
-footer a,
-footer li {
-  color: white;
-  font-size: 1.2rem;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .footer {
-  }
-}
-
-.footerItem {
-  width: 30%;
-}
-
 /* :: Hero Area CSS */
 .hero-area {
   background-color: #ffb534;
@@ -1181,7 +1143,7 @@ footer li {
 .hero-area .hero-thumbnail,
 .hero-area .hero-content {
   flex: 0 0 50%;
-  min-width: 50%;
+  min-width: 30%;
   position: relative;
   z-index: 1;
 }
@@ -1361,38 +1323,38 @@ footer li {
 
 /* :: Portfolio Area CSS */
 .sonar-projects-area {
+  position: relative;
   z-index: 1;
   padding: 100px 35px 50px;
 }
-
-.sonar-projects-area .lecture_item {
+.sonar-projects-area .single_gallery_item {
   position: relative;
   z-index: 1;
   margin-bottom: 50px;
 }
-.sonar-projects-area .lecture_item .gallery-content {
+.sonar-projects-area .single_gallery_item .gallery-content {
   padding-top: 30px;
 }
-.sonar-projects-area .lecture_item .gallery-content h4 {
+.sonar-projects-area .single_gallery_item .gallery-content h4 {
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 767px) {
-  .sonar-projects-area .lecture_item .gallery-content h4 {
+  .sonar-projects-area .single_gallery_item .gallery-content h4 {
     font-size: 20px;
   }
 }
-.sonar-projects-area .lecture_item .gallery-content p {
+.sonar-projects-area .single_gallery_item .gallery-content p {
   margin-bottom: 0;
 }
 
-.lectureList-menu {
+.sonar-portfolio-menu {
   position: absolute;
   bottom: 40px;
   right: 0;
   width: 50%;
   z-index: 100;
 }
-.lectureList-menu .btn {
+.sonar-portfolio-menu .btn {
   padding: 5px 0;
   border: none;
   border-bottom: 2px solid;
@@ -1402,32 +1364,32 @@ footer li {
   border-radius: 0;
   margin: 0 20px;
 }
-.lectureList-menu .btn.active {
+.sonar-portfolio-menu .btn.active {
   border-color: #ffffff;
 }
-.lectureList-menu .btn:hover,
-.lectureList-menu .btn:focus {
+.sonar-portfolio-menu .btn:hover,
+.sonar-portfolio-menu .btn:focus {
   box-shadow: none;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .lectureList-menu .btn {
+  .sonar-portfolio-menu .btn {
     margin: 0 10px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .lectureList-menu .btn {
+  .sonar-portfolio-menu .btn {
     margin: 0 5px;
     font-size: 14px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .lectureList-menu .btn {
+  .sonar-portfolio-menu .btn {
     margin: 0 5px;
     font-size: 14px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .lectureList-menu {
+  .sonar-portfolio-menu {
     width: 100%;
     bottom: 20px;
   }
