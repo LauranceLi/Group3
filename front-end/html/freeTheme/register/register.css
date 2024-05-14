@@ -12,32 +12,24 @@ h6 {
   color: white;
 }
 
-@media only screen and (max-width: 768px) {
-  body {
-    height: auto;
-  }
-}
-
-
 /* 取消自動填入預設樣式 */
-input:-webkit-autofill{
+input:-webkit-autofill {
   border: 0;
   -webkit-text-fill-color: var(--primary-color);
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active
-{
+input:-webkit-autofill:active {
   transition-delay: 50000s;
   transition: color 50000s ease-out, background-color 50000s ease-out;
   -webkit-transition-delay: 50000s;
   -webkit-transition: color 50000s ease-out, background-color 50000s ease-out;
-
-
 }
 
-
+main {
+  height: 100%;
+}
 
 .registerFormContainer {
   height: 100%;
@@ -50,11 +42,15 @@ input:-webkit-autofill:active
     url(../img/bg-img/lake.jpg) lightgray 30% / cover no-repeat;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1024px) {
   .registerFormContainer {
     flex-direction: column-reverse;
+    height: auto;
   }
+  
 }
+
+
 
 .header-social-area {
   justify-content: right;
@@ -69,11 +65,12 @@ input:-webkit-autofill:active
 
 .registerBox {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
-  width: 70%;
-
-  padding: 4rem 0;
+  justify-content: center;
+  width: 100%;
+  padding: 5rem 0;
 }
 
 .registerBox h5 {
@@ -94,12 +91,41 @@ input:-webkit-autofill:active
 .thirdPartyLogin,
 .registerForm {
   display: flex;
-  width: 75%;
+  width: 50%;
   margin: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .registerForm,
+  .thirdPartyLogin,
+  .registerTitle {
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .registerForm,
+  .thirdPartyLogin,
+  .registerTitle {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .registerForm,
+  .thirdPartyLogin,
+  .registerTitle {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .registerForm,
+  .thirdPartyLogin,
+  .registerTitle {
+    width: 85%;
+  }
 }
 
 .registerTitle {
@@ -111,26 +137,6 @@ input:-webkit-autofill:active
 .registerForm {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1.2rem 1.2rem;
-}
-
-@media only screen and (max-width: 991px) {
-  .registerForm,
-  .thirdPartyLogin {
-    width: 50%;
-  }
-}
-@media only screen and (max-width: 576px) {
-  .registerForm,
-  .thirdPartyLogin {
-    width: 85%;
-  }
-}
-
-.groupIcon {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  background-color: aquamarine;
 }
 
 .registerItem {
@@ -153,10 +159,19 @@ input:-webkit-autofill:active
   justify-content: space-between;
   width: 90%;
 }
-
 .leftBox,
 .rightBox {
   width: 45%;
+}
+
+@media only screen and (max-width: 576px) {
+  .middleBox {
+    flex-direction: column;
+  }
+  .leftBox,
+  .rightBox {
+    width: 100%;
+  }
 }
 
 .bottomBox {
@@ -239,15 +254,15 @@ option {
 .eyeIcon {
   border: 0;
   background-color: transparent;
-  color:rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   transition: 0.3s;
 }
 
 .eyeIcon:hover {
-  color:rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
-.eyeIcon:focus{
+.eyeIcon:focus {
   outline: none;
 }
 
@@ -259,8 +274,8 @@ option {
   height: 80%;
   font-size: 0.9rem;
 }
-#checkMail{
-
+#checkMail {
+  width: 50%;
   background-color: var(--info-color-75);
 }
 
@@ -268,6 +283,8 @@ option {
   background-color: white;
   color: var(--info-color);
 }
+
+
 
 .registerBtn {
   color: white;
